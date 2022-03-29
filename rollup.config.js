@@ -30,7 +30,10 @@ export default [
       typescript(
         { 
           tsconfig: "./tsconfig.json",
-          exclude: ["**/__tests__", "**/*.test.tsx", "**/*.stories.tsx"]
+          exclude: [
+            /\.test.((js|jsx|ts|tsx))$/,
+            /\.stories.((js|jsx|ts|tsx|mdx))$/,
+          ],
         }
       ),
       postcss(),
@@ -41,6 +44,6 @@ export default [
     input: "dist/esm/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
-    external: [/\.css$/],
+    external: [/\.css$/, /\.scss$/],
   },
 ];
