@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import "./Button.scss";
-import AnimatedIcon, {AnimationState, Type} from "../AnimatedIcon/AnimatedIcon"
+import AnimatedIcon, {AnimationState} from "../AnimatedIcon/AnimatedIcon";
+import {IconType, IconKind} from "../Icon/Icon";
 
 export enum Kind {
   PRIMARY = "PRIMARY",
@@ -8,25 +9,26 @@ export enum Kind {
   TERTIARY = "TERTIARY"
 }
 
-export enum Icon {
-  NONE = "NONE",
-  RIGHT_ARROW = "RIGHT_ARROW"
-}
-
 export interface ButtonProps {
   kind: Kind;
   label: string;
-  startIcon?: Icon;
-  endIcon?: Icon;
+  startIcon?: IconType;
+  endIcon?: IconType;
 }
 
 const Button = ({label, kind = Kind.PRIMARY, 
-  startIcon = Icon.NONE, endIcon = Icon.NONE}: ButtonProps) => {
+  startIcon = null, endIcon = null}: ButtonProps) => {
   const [animationState, setAnimationState] = useState(AnimationState.DEFAULT);
   const renderIcon = (icon) => {
-    if (icon == Icon.RIGHT_ARROW) {
-      return (<AnimatedIcon type={kindToIconType(kind)} animation={animationState}/>);
-    } else if (icon == Icon.NONE) {
+    if (icon != null) {
+      return (
+        <AnimatedIcon 
+          type={icon} 
+          kind={kindToIconKind(kind)} 
+          animation={animationState}
+          loop={false}/>
+      );
+    } else {
       return null;
     }
   }
@@ -55,11 +57,11 @@ const kindToClassName = (kind) => {
   }
 }
 
-const kindToIconType = (kind) => {
+const kindToIconKind = (kind) => {
   if (kind == Kind.PRIMARY || kind == Kind.SECONDARY) {
-    return Type.LIGHT;
+    return IconKind.LIGHT;
   } else if (kind == Kind.TERTIARY) {
-    return Type.DARK;
+    return IconKind.DARK;
   }
 }
 
