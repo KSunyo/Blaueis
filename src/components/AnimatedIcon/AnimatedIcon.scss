@@ -1,0 +1,45 @@
+@keyframes left-to-right {
+  from {
+  	margin-left: -20px;
+  }
+
+  to {
+    margin-left: 0px;
+    margin-right: 20px;
+  }
+}
+
+@keyframes right-to-left {
+  from {
+  	margin-left: 0px;
+    margin-right: 20px;
+  }
+
+  to {
+  	margin-left: -20px;
+    margin-right: 0px;
+  }
+}
+
+.iconContainer {
+	display: flex;
+	overflow: hidden;	
+	width: 20px;
+	height: 20px;
+
+	img {
+		width: 20px;
+	}
+}
+
+.left-to-right-animation {
+	animation-name: left-to-right;
+	animation-duration: 1s;
+  	animation-iteration-count: 1;
+}
+
+.right-to-left-animation {
+	animation-name: right-to-left;
+	animation-duration: 1s;
+  	animation-iteration-count: 1;
+}

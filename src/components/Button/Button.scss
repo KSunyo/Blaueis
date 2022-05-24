@@ -5,6 +5,11 @@ button {
   border-radius: 44px;
   border: none;
   padding: 13px 18px;
+
+  span {
+    display: flex;
+    gap: 15px;
+  }
 }
 
 .primary {
