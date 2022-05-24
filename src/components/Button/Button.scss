@@ -1,5 +1,47 @@
-$base-color: blue;
+@import "../../values/colors.scss";
+
 button {
-  font-size: 24px;
-  background-color: $base-color;
+  font-size: 14px;
+  border-radius: 44px;
+  border: none;
+  padding: 13px 18px;
+}
+
+.primary {
+  background: $blue-gradient-45;
+  color: $grayscale-00;
+}
+
+.primary:hover {
+  background: $blue-50;
+}
+
+.primary:active {
+  background: $blue-60;
+}
+
+.secondary {
+  background: $grayscale-80;
+  color: $grayscale-00;
+}
+
+.secondary:hover {
+  background: $grayscale-95;
+}
+
+.secondary:active {
+  background: $grayscale-95;
+}
+
+.tertiary {
+  background: $grayscale-20;
+  color: $grayscale-80;
+}
+
+.tertiary:hover {
+  background: $grayscale-10;
+}
+
+.tertiary:active {
+  background: $grayscale-25;
 }
