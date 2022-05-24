@@ -14,11 +14,15 @@ button {
 
 .primary {
   background: $blue-gradient-45;
+  background-color: $blue-50;
   color: $grayscale-00;
 }
 
 .primary:hover {
   background: $blue-50;
+  -webkit-transition: background 300ms linear;
+  -ms-transition: background 300ms linear;
+  transition: background 300ms linear;  
 }
 
 .primary:active {
