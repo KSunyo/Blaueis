@@ -32,6 +32,9 @@ button {
 
 .secondary:hover {
   background: $grayscale-95;
+  -webkit-transition: background 300ms linear;
+  -ms-transition: background 300ms linear;
+  transition: background 300ms linear;
 }
 
 .secondary:active {
@@ -45,6 +48,9 @@ button {
 
 .tertiary:hover {
   background: $grayscale-10;
+  -webkit-transition: background 300ms linear;
+  -ms-transition: background 300ms linear;
+  transition: background 300ms linear;
 }
 
 .tertiary:active {
