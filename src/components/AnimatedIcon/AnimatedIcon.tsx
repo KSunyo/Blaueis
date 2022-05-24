@@ -19,7 +19,7 @@ const AnimatedIcon = ({type, kind,
   if (animation == AnimationState.DEFAULT) {
     return (
       <div className={getIconContainerClass(type)}>
-        <Icon kind={kind} type={(type == IconType.UP_RIGHT_ARROW ? IconType.RIGHT_ARROW : type)}/>
+        <span><Icon kind={kind} type={(type == IconType.UP_RIGHT_ARROW ? IconType.RIGHT_ARROW : type)}/></span>
       </div>
     );
   } else if (animation == AnimationState.FORWARD) {
