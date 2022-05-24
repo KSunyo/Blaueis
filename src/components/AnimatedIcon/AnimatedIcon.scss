@@ -21,25 +21,73 @@
   }
 }
 
-.iconContainer {
+@keyframes top-to-bottom {
+  from {
+  	margin-top: -20px;
+  }
+
+  to {
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+}
+
+@keyframes bottom-to-top {
+  from {
+  	margin-top: 0px;
+    margin-bottom: 20px;
+  }
+
+  to {
+  	margin-top: -20px;
+    margin-bottom: 0px;
+  }
+}
+
+.icon-container {
 	display: flex;
-	overflow: hidden;	
+	overflow: hidden;
 	width: 20px;
 	height: 20px;
 
-	img {
+	span {
 		width: 20px;
 	}
 }
 
-.left-to-right-animation {
+.right-arrow-container {
+	flex-direction: row;
+}
+
+.down-arrow-container {
+	flex-direction: column;
+}
+
+.up-right-arrow-container {
+	flex-direction: row;
+	transform: rotate(-45deg);
+}
+
+.right-arrow-forward-animation {
 	animation-name: left-to-right;
 	animation-duration: 1s;
   	animation-iteration-count: 1;
 }
 
-.right-to-left-animation {
+.right-arrow-backward-animation {
 	animation-name: right-to-left;
+	animation-duration: 1s;
+  	animation-iteration-count: 1;
+}
+
+.down-arrow-forward-animation {
+	animation-name: top-to-bottom;
+	animation-duration: 1s;
+  	animation-iteration-count: 1;
+}
+
+.down-arrow-backward-animation {
+	animation-name: bottom-to-top;
 	animation-duration: 1s;
   	animation-iteration-count: 1;
 }

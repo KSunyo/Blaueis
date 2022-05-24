@@ -1,6 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import AnimatedIcon, {Kind} from "./AnimatedIcon";
+import AnimatedIcon from "./AnimatedIcon";
+import {IconType} from "../Icon/Icon"
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -11,7 +12,7 @@ export default {
       control: {
         type: "radio",
       },
-      defaultValue: Kind.RIGHT_ARROW
+      defaultValue: IconType.RIGHT_ARROW
     }
   }
 } as ComponentMeta<typeof AnimatedIcon>;
@@ -21,5 +22,5 @@ const Template: ComponentStory<typeof AnimatedIcon> = (args) => <AnimatedIcon {.
 
 export const RightArrow = Template.bind({});
 RightArrow.args = {
-  kind: Kind.RIGHT_ARROW
+  kind: IconType.RIGHT_ARROW
 };
