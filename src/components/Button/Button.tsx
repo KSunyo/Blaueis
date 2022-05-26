@@ -38,7 +38,8 @@ const Button = ({label, kind = Kind.PRIMARY,
       onMouseLeave={() => setAnimationState(AnimationState.BACKWARD)}
       className={kindToClassName(kind)}
     >
-      <span>
+      <span className="button-background-helper"></span>
+      <span className="button-container">
         <span>{renderIcon(startIcon)}</span>
         <span>{label}</span>
         <span>{renderIcon(endIcon)}</span>
