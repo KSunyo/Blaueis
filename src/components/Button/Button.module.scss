@@ -1,6 +1,6 @@
 @import "../../values/colors.scss";
 
-button {
+.Button {
   position: relative;
   font-size: 14px;
   border-radius: 44px;
@@ -12,18 +12,18 @@ button {
   }
 }
 
-.button-container {
+.buttonContainer {
   gap: 15px;
   padding: 13px 18px;
 }
 
-.button-container span {
+.buttonContainer span {
   display: inline-flex;
   align-items: center;
   z-index: 1;
 }
 
-.primary .button-background-helper {
+.primary .buttonBackgroundHelper {
   position: absolute;
   top: 0;
   border-radius: 44px;
@@ -38,7 +38,7 @@ button {
   color: $grayscale-00;
 }
 
-.primary:hover > .button-background-helper {
+.primary:hover > .buttonBackgroundHelper {
   opacity: 0;
   -webkit-transition: opacity 300ms linear;
   -ms-transition: opacity 300ms linear;

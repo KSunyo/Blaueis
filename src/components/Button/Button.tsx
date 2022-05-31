@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import "./Button.scss";
+import styles from "./Button.module.scss";
 import AnimatedIcon, {AnimationState} from "../AnimatedIcon/AnimatedIcon";
 import {IconType, IconKind} from "../Icon/Icon";
 
@@ -36,10 +36,10 @@ const Button = ({label, kind = Kind.PRIMARY,
     <button 
       onMouseEnter={() => setAnimationState(AnimationState.FORWARD)}
       onMouseLeave={() => setAnimationState(AnimationState.BACKWARD)}
-      className={kind}
+      className={`${styles.Button} ${kindToStyle(kind)}`}
     >
-      <span className="button-background-helper"></span>
-      <span className="button-container">
+      <span className={styles.buttonBackgroundHelper}></span>
+      <span className={styles.buttonContainer}>
         <span>{renderIcon(startIcon)}</span>
         <span>{label}</span>
         <span>{renderIcon(endIcon)}</span>
@@ -47,6 +47,18 @@ const Button = ({label, kind = Kind.PRIMARY,
     </button>
   );
 };
+
+const kindToStyle = (kind) => {
+  if (kind == Kind.PRIMARY) {
+    return styles.primary;
+  } else if (kind == Kind.SECONDARY) {
+    return styles.secondary;
+  } else if (kind == Kind.TERTIARY) {
+    return styles.tertiary;
+  } else {
+    return null;
+  }
+}
 
 const kindToIconKind = (kind) => {
   if (kind == Kind.PRIMARY || kind == Kind.SECONDARY) {
