@@ -1,0 +1,55 @@
+@import "../../values/colors.scss";
+
+.icon-button {
+	display: flex;
+	align-items: center;
+  	justify-content: center;
+	width: 80px;
+	height: 80px;
+	border-radius: 0;
+	background-color: $grayscale-20;
+}
+
+button:hover {
+	background-color: $grayscale-80;
+	transition: background-color 300ms linear;
+}
+
+button:active {
+	background-color: $grayscale-95;
+}
+
+@keyframes move-icon-up {
+  from {
+  	margin-bottom: 0;
+  }
+
+  to {
+    margin-bottom: 15px;
+  }
+}
+
+@keyframes move-icon-down {
+  from {
+  	margin-bottom: 0;
+  }
+
+  to {
+    margin-bottom: 15px;
+  }
+}
+
+.forward-animation {
+	animation-name: move-icon-up;
+	animation-duration: 300ms;
+  	animation-iteration-count: 1;
+  	animation-fill-mode: forwards;
+}
+
+.backward-animation {
+	animation-name: move-icon-down;
+	animation-duration: 300ms;
+  	animation-iteration-count: 1;
+	animation-direction: reverse;
+	animation-fill-mode: forwards;
+}

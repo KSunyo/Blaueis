@@ -17,7 +17,7 @@ export interface StackProps {
 const Stack = (props: StackProps) => {
 
 	return (
-		<div className={"stack " + orientation} style={gap: spacing}>
+		<div className={"stack " + orientation} style={{gap: spacing}}>
 			{props.children.map(child => <div className="item">child</div>)}
 		</div>
 	);

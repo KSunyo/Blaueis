@@ -1,5 +1,7 @@
 import React from "react";
 import "./Icon.scss";
+import UpArrowLight from "./icons/arrow-up-light.svg"
+import UpArrowDark from "./icons/arrow-up-dark.svg"
 import RightArrowLight from "./icons/arrow-right-light.svg"
 import RightArrowDark from "./icons/arrow-right-dark.svg"
 import DownArrowLight from "./icons/arrow-down-light.svg"
@@ -8,6 +10,7 @@ import UpRightArrowLight from "./icons/arrow-up-right-light.svg"
 import UpRightArrowDark from "./icons/arrow-up-right-dark.svg"
 
 export enum IconType {
+	UP_ARROW = "UP_ARROW",
   RIGHT_ARROW = "RIGHT_ARROW",
   DOWN_ARROW = "DOWN_ARROW",
   UP_RIGHT_ARROW = "UP_RIGHT_ARROW"
@@ -41,6 +44,12 @@ const Icon = (props: IconProps) => {
 			return <img src={UpRightArrowLight}/>;
 		} else if (props.kind == IconKind.DARK) {
 			return <img src={UpRightArrowDark}/>;
+		}
+	} else if (props.type == IconType.UP_ARROW) {
+		if (props.kind == IconKind.LIGHT) {
+			return <img src={UpArrowLight}/>;
+		} else if (props.kind == IconKind.DARK) {
+			return <img src={UpArrowDark}/>;
 		}
 	} else {
 		return null;
