@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import "./IconButton.scss";
+import styles from "./IconButton.module.scss";
 import Icon, {IconType, IconKind} from "../Icon/Icon";
 
 export enum AnimationState {
@@ -19,7 +19,7 @@ const IconButton = ({icon}) => {
 	if (animationState == AnimationState.DEFAULT) {
 			return (
 				<button 
-					className="icon-button"
+					className={styles.iconButton}
 					onMouseEnter={() => setAnimationState(AnimationState.FORWARD)}
 					onMouseLeave={() => setAnimationState(AnimationState.BACKWARD)}
 				>
@@ -31,11 +31,11 @@ const IconButton = ({icon}) => {
 		} else if (animationState == AnimationState.FORWARD) {
 			return (
 				<button 
-					className="icon-button"
+					className={styles.iconButton}
 					onMouseEnter={() => setAnimationState(AnimationState.FORWARD)}
 					onMouseLeave={() => setAnimationState(AnimationState.BACKWARD)}
 				>
-					<span className="forward-animation">
+					<span className={styles.forwardAnimation}>
 						<Icon type={icon} kind={IconKind.LIGHT} />
 					</span>
 				</button>
@@ -43,11 +43,11 @@ const IconButton = ({icon}) => {
 		} else if (animationState == AnimationState.BACKWARD) {
 			return (
 				<button 
-					className="icon-button"
+					className={styles.iconButton}
 					onMouseEnter={() => setAnimationState(AnimationState.FORWARD)}
 					onMouseLeave={() => setAnimationState(AnimationState.BACKWARD)}
 				>
-					<span className="backward-animation">
+					<span className={styles.backwardAnimation}>
 						<Icon type={icon} kind={IconKind.DARK} />
 					</span>
 				</button>

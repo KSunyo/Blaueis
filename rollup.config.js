@@ -36,7 +36,11 @@ export default [
           ],
         }
       ),
-      postcss(),
+      postcss({
+        extract: false,
+        modules: true,
+        use: ['sass'],
+      }),
       terser(),
     ],
   },
