@@ -22,7 +22,7 @@ const Template: ComponentStory<typeof Stack> = (args) => <Stack {...args} />;
 
 export const ButtonGroup = Template.bind({});
 ButtonGroup.args = {
-  orientation: Orientation.COLUMN,
+  orientation: Orientation.ROW,
   spacing: 10,
   children: [(<Button kind={Kind.PRIMARY} label="Button 1"/>),
     (<Button kind={Kind.PRIMARY} label="Button 2"/>),
