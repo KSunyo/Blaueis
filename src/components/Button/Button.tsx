@@ -4,9 +4,9 @@ import AnimatedIcon, {AnimationState} from "../AnimatedIcon/AnimatedIcon";
 import {IconType, IconKind} from "../Icon/Icon";
 
 export enum Kind {
-  PRIMARY = "PRIMARY",
-  SECONDARY = "SECONDARY",
-  TERTIARY = "TERTIARY"
+  PRIMARY = "primary",
+  SECONDARY = "secondary",
+  TERTIARY = "tertiary"
 }
 
 export interface ButtonProps {
@@ -36,7 +36,7 @@ const Button = ({label, kind = Kind.PRIMARY,
     <button 
       onMouseEnter={() => setAnimationState(AnimationState.FORWARD)}
       onMouseLeave={() => setAnimationState(AnimationState.BACKWARD)}
-      className={kindToClassName(kind)}
+      className={kind}
     >
       <span className="button-background-helper"></span>
       <span className="button-container">
@@ -47,16 +47,6 @@ const Button = ({label, kind = Kind.PRIMARY,
     </button>
   );
 };
-
-const kindToClassName = (kind) => {
-  if (kind == Kind.PRIMARY) {
-    return "primary";
-  } else if (kind == Kind.SECONDARY) {
-    return "secondary";
-  } else if (kind == Kind.TERTIARY) {
-    return "tertiary";
-  }
-}
 
 const kindToIconKind = (kind) => {
   if (kind == Kind.PRIMARY || kind == Kind.SECONDARY) {
