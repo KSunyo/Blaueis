@@ -11,18 +11,18 @@ export enum	Orientation {
 export interface StackProps {
 	orientation: Orientation;
 	spacing: number;
-	children?: React.ReactNode;
+	children?: React.ReactNode[];
 }
 
 const Stack = (props: StackProps) => {
 	return (
 		<div className={`${styles.Stack} ${orientationToStyle(props.orientation)}`} style={{gap: props.spacing}}>
-			{props.children.map(child => <div className="item">child</div>)}
+			{props.children.map(child => (<div className="item">{child}</div>))}
 		</div>
 	);
 };
 
-const orientationToStyle = (orientation) => {
+const orientationToStyle = (orientation : Orientation) => {
 	if (orientation == Orientation.ROW) {
 		return styles.row;
 	} else if (orientation == Orientation.ROW_REVERSE) {
