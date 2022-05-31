@@ -1,5 +1,5 @@
 import React from "react";
-import "./Icon.scss";
+import styles from "./Icon.module.scss";
 import UpArrowLight from "./icons/arrow-up-light.svg"
 import UpArrowDark from "./icons/arrow-up-dark.svg"
 import RightArrowLight from "./icons/arrow-right-light.svg"
