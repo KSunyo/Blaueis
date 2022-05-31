@@ -44,7 +44,7 @@
   }
 }
 
-.icon-container {
+.iconContainer {
 	display: flex;
 	overflow: hidden;
 	width: 20px;
@@ -55,38 +55,38 @@
 	}
 }
 
-.right-arrow-container {
+.rightArrowContainer {
 	flex-direction: row;
 }
 
-.down-arrow-container {
+.downArrowContainer {
 	flex-direction: column;
 }
 
-.up-right-arrow-container {
+.upRightArrowContainer {
 	flex-direction: row;
 	transform: rotate(-45deg);
 }
 
-.right-arrow-forward-animation {
+.rightArrowForwardAnimation {
 	animation-name: left-to-right;
 	animation-duration: 300ms;
   animation-iteration-count: 1;
 }
 
-.right-arrow-backward-animation {
+.rightArrowBackwardAnimation {
 	animation-name: right-to-left;
 	animation-duration: 300ms;
   animation-iteration-count: 1;
 }
 
-.down-arrow-forward-animation {
+.downArrowForwardAnimation {
 	animation-name: top-to-bottom;
 	animation-duration: 300ms;
   animation-iteration-count: 1;
 }
 
-.down-arrow-backward-animation {
+.downArrowBackwardAnimation {
 	animation-name: bottom-to-top;
 	animation-duration: 300ms;
   animation-iteration-count: 1;

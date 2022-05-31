@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import "./AnimatedIcon.scss";
+import styles from "./AnimatedIcon.module.scss";
 import Icon, {IconType, IconKind} from "../Icon/Icon"
 
 export enum AnimationState {
@@ -41,31 +41,31 @@ const AnimatedIcon = ({type, kind,
 
 const getIconContainerClass = (type) => {
   if (type == IconType.RIGHT_ARROW) {
-    return "icon-container right-arrow-container";
+    return `${styles.iconContainer} ${styles.rightArrowContainer}`;
   } else if (type == IconType.DOWN_ARROW) {
-    return "icon-container down-arrow-container";
+    return `${styles.iconContainer} ${styles.downArrowContainer}`;
   } else if (type == IconType.UP_RIGHT_ARROW) {
-    return "icon-container up-right-arrow-container";
+    return `${styles.iconContainer} ${styles.upRightArrowContainer}`;
   }
 }
 
 const getForwardAnimationClass = (type) => {
   if (type == IconType.RIGHT_ARROW) {
-    return "right-arrow-forward-animation";
+    return styles.rightArrowForwardAnimation;
   } else if (type == IconType.DOWN_ARROW) {
-    return "down-arrow-forward-animation";
+    return styles.downArrowForwardAnimation;
   } else if (type == IconType.UP_RIGHT_ARROW) {
-    return "right-arrow-forward-animation";
+    return styles.rightArrowForwardAnimation;
   }
 }
 
 const getBackwardAnimationClass = (type) => {
   if (type == IconType.RIGHT_ARROW) {
-    return "right-arrow-backward-animation";
+    return styles.rightArrowBackwardAnimation;
   } else if (type == IconType.DOWN_ARROW) {
-    return "down-arrow-backward-animation";
+    return styles.downArrowBackwardAnimation;
   } else if (type == IconType.UP_RIGHT_ARROW) {
-    return "right-arrow-backward-animation";
+    return styles.rightArrowBackwardAnimation;
   }
 }
 
