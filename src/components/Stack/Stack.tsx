@@ -1,5 +1,5 @@
 import React from "react";
-import "./Stack.scss";
+import styles from "./Stack.module.scss";
 
 export enum	Orientation {
 	ROW = "row",
@@ -15,12 +15,24 @@ export interface StackProps {
 }
 
 const Stack = (props: StackProps) => {
-
 	return (
-		<div className={"stack " + orientation} style={{gap: spacing}}>
+		<div className={`${styles.Stack} ${orientationToStyle(props.orientation)}`} style={{gap: props.spacing}}>
 			{props.children.map(child => <div className="item">child</div>)}
 		</div>
 	);
 };
+
+const orientationToStyle = (orientation) => {
+	if (orientation == Orientation.ROW) {
+		return styles.row;
+	} else if (orientation == Orientation.ROW_REVERSE) {
+		return styles.rowReverse;
+	} else if (orientation == Orientation.COLUMN) {
+		return styles.column;
+	} else if (orientation == Orientation.COLUMN_REVERSE) {
+		return styles.columnReverse;
+	}
+	return null;
+}
 
 export default Stack;
