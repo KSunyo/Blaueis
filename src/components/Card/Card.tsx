@@ -1,6 +1,6 @@
 import React from "react";
-// @ts-ignore
-import styles from "./Card.module.scss";
+
+const styles = require("./Card.module.scss");
 
 export interface CardProps {
 	title: string;

@@ -1,8 +1,9 @@
 import React, {ReactElement, ReactNode, useState} from "react";
-// @ts-ignore
-import styles from "./Button.module.scss";
 import AnimatedIcon, {AnimationState} from "../AnimatedIcon/AnimatedIcon";
 import {IconType, IconKind} from "../Icon/Icon";
+
+const styles = require("./Button.module.scss");
+
 
 export enum Kind {
   PRIMARY = "primary",
