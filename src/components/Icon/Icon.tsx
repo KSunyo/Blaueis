@@ -25,33 +25,34 @@ export enum IconKind {
 
 export interface IconProps {
 	type: IconType,
-	kind: IconKind
+	kind: IconKind,
+	alt?: string
 }
 
-const Icon = (props: IconProps) : (JSX.Element | null) => {
-	if (props.type == IconType.RIGHT_ARROW) {
-		if (props.kind == IconKind.LIGHT) {
-			return <img src={RightArrowLight}/>;
-		} else if (props.kind == IconKind.DARK) {
-			return <img src={RightArrowDark}/>;
+const Icon = ({type, kind, alt = ""}: IconProps) : (JSX.Element | null) => {
+	if (type == IconType.RIGHT_ARROW) {
+		if (kind == IconKind.LIGHT) {
+			return <img src={RightArrowLight} alt={alt}/>;
+		} else if (kind == IconKind.DARK) {
+			return <img src={RightArrowDark} alt={alt}/>;
 		}
-	} else if (props.type == IconType.DOWN_ARROW) {
-		if (props.kind == IconKind.LIGHT) {
-			return <img src={DownArrowLight}/>;
-		} else if (props.kind == IconKind.DARK) {
-			return <img src={DownArrowDark}/>;
+	} else if (type == IconType.DOWN_ARROW) {
+		if (kind == IconKind.LIGHT) {
+			return <img src={DownArrowLight} alt={alt}/>;
+		} else if (kind == IconKind.DARK) {
+			return <img src={DownArrowDark} alt={alt}/>;
 		}
-	} else if (props.type == IconType.UP_RIGHT_ARROW) {
-		if (props.kind == IconKind.LIGHT) {
-			return <img src={UpRightArrowLight}/>;
-		} else if (props.kind == IconKind.DARK) {
-			return <img src={UpRightArrowDark}/>;
+	} else if (type == IconType.UP_RIGHT_ARROW) {
+		if (kind == IconKind.LIGHT) {
+			return <img src={UpRightArrowLight} alt={alt}/>;
+		} else if (kind == IconKind.DARK) {
+			return <img src={UpRightArrowDark} alt={alt}/>;
 		}
-	} else if (props.type == IconType.UP_ARROW) {
-		if (props.kind == IconKind.LIGHT) {
-			return <img src={UpArrowLight}/>;
-		} else if (props.kind == IconKind.DARK) {
-			return <img src={UpArrowDark}/>;
+	} else if (type == IconType.UP_ARROW) {
+		if (kind == IconKind.LIGHT) {
+			return <img src={UpArrowLight} alt={alt}/>;
+		} else if (kind == IconKind.DARK) {
+			return <img src={UpArrowDark} alt={alt}/>;
 		}
 	}
 	return null;

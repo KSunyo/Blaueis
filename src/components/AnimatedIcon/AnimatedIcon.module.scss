@@ -4,20 +4,20 @@
   }
 
   to {
-    margin-left: 0px;
+    margin-left: 0;
     margin-right: 20px;
   }
 }
 
 @keyframes right-to-left {
   from {
-  	margin-left: 0px;
+  	margin-left: 0;
     margin-right: 20px;
   }
 
   to {
   	margin-left: -20px;
-    margin-right: 0px;
+    margin-right: 0;
   }
 }
 
@@ -27,20 +27,20 @@
   }
 
   to {
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 20px;
   }
 }
 
 @keyframes bottom-to-top {
   from {
-  	margin-top: 0px;
+  	margin-top: 0;
     margin-bottom: 20px;
   }
 
   to {
   	margin-top: -20px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 

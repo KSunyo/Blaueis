@@ -6,13 +6,14 @@ export interface CardProps {
 	title: string;
 	description: string;
 	cover: string;
+	coverAlt: string;
 	link: string;
 }
 
 const Card = (props: CardProps) => {
 	return(
 		<div className={styles.Card}>
-			<img className={styles.cardCover} src={props.cover}/>
+			<img className={styles.cardCover} src={props.cover} alt={props.coverAlt}/>
 			<div className={styles.cardInfo}>
 				<h1>{props.title}</h1>
 			</div>
