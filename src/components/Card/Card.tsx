@@ -1,6 +1,6 @@
 import React from "react";
+// @ts-ignore
 import styles from "./Card.module.scss";
-//import Stack from "../Stack/Stack";
 
 export interface CardProps {
 	title: string;
@@ -11,7 +11,12 @@ export interface CardProps {
 
 const Card = (props: CardProps) => {
 	return(
-		<h1>{props.title}</h1>
+		<div className={styles.Card}>
+			<img className={styles.cardCover} src={props.cover}/>
+			<div className={styles.cardInfo}>
+				<h1>{props.title}</h1>
+			</div>
+		</div>
 	);
 };
 

@@ -1,6 +1,7 @@
-import React, {useState} from "react";
-import styles from "./IconButton.module.scss";
+import React, {ReactNode, useState} from "react";
 import Icon, {IconType, IconKind} from "../Icon/Icon";
+
+const styles = require("./IconButton.module.scss");
 
 export enum AnimationState {
   DEFAULT = "DEFAULT",
@@ -12,7 +13,7 @@ export interface IconButtonProps {
 	icon:IconType
 }
 
-const IconButton = ({icon}) => {
+const IconButton = ({icon} : IconButtonProps) : (JSX.Element | null) => {
 
 	const [animationState, setAnimationState] = useState(AnimationState.DEFAULT);
 

@@ -1,0 +1,7 @@
+@import "../../values/colors.scss";
+
+.Card {
+	display: flex;
+	background-color: $grayscale-05;
+	border-radius: 20px;
+}

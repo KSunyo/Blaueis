@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from "react";
-import styles from "./AnimatedIcon.module.scss";
-import Icon, {IconType, IconKind} from "../Icon/Icon"
+import React, {useState, useEffect, ReactNode} from "react";
+import Icon, {IconType, IconKind} from "../Icon/Icon";
+
+const styles = require("./AnimatedIcon.module.scss");
 
 export enum AnimationState {
   DEFAULT = "DEFAULT",
@@ -15,7 +16,7 @@ export interface AnimatedIconProps {
 }
 
 const AnimatedIcon = ({type, kind, 
-  animation = AnimationState.DEFAULT}: AnimatedIconProps) => {
+  animation = AnimationState.DEFAULT}: AnimatedIconProps) : (JSX.Element | null) => {
   if (animation == AnimationState.DEFAULT) {
     return (
       <div className={getIconContainerClass(type)}>
@@ -37,9 +38,10 @@ const AnimatedIcon = ({type, kind,
       </div>
     );
   }
+  return null;
 };
 
-const getIconContainerClass = (type) => {
+const getIconContainerClass = (type: IconType) => {
   if (type == IconType.RIGHT_ARROW) {
     return `${styles.iconContainer} ${styles.rightArrowContainer}`;
   } else if (type == IconType.DOWN_ARROW) {
@@ -49,7 +51,7 @@ const getIconContainerClass = (type) => {
   }
 }
 
-const getForwardAnimationClass = (type) => {
+const getForwardAnimationClass = (type: IconType) => {
   if (type == IconType.RIGHT_ARROW) {
     return styles.rightArrowForwardAnimation;
   } else if (type == IconType.DOWN_ARROW) {
@@ -59,7 +61,7 @@ const getForwardAnimationClass = (type) => {
   }
 }
 
-const getBackwardAnimationClass = (type) => {
+const getBackwardAnimationClass = (type: IconType) => {
   if (type == IconType.RIGHT_ARROW) {
     return styles.rightArrowBackwardAnimation;
   } else if (type == IconType.DOWN_ARROW) {

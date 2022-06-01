@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {ReactElement, ReactNode, useState} from "react";
+// @ts-ignore
 import styles from "./Button.module.scss";
 import AnimatedIcon, {AnimationState} from "../AnimatedIcon/AnimatedIcon";
 import {IconType, IconKind} from "../Icon/Icon";
@@ -16,17 +17,16 @@ export interface ButtonProps {
   endIcon?: IconType;
 }
 
-const Button = ({label, kind = Kind.PRIMARY, 
-  startIcon = null, endIcon = null}: ButtonProps) => {
+const Button = ({label, kind = Kind.PRIMARY,
+  startIcon = undefined, endIcon = undefined}: ButtonProps) => {
   const [animationState, setAnimationState] = useState(AnimationState.DEFAULT);
-  const renderIcon = (icon) => {
-    if (icon != null) {
+  const renderIcon = (icon: IconType | undefined) : ReactNode => {
+    if (icon != undefined) {
       return (
         <AnimatedIcon 
           type={icon} 
           kind={kindToIconKind(kind)} 
-          animation={animationState}
-          loop={false}/>
+          animation={animationState}/>
       );
     } else {
       return null;
@@ -48,7 +48,7 @@ const Button = ({label, kind = Kind.PRIMARY,
   );
 };
 
-const kindToStyle = (kind) => {
+const kindToStyle = (kind: Kind) => {
   if (kind == Kind.PRIMARY) {
     return styles.primary;
   } else if (kind == Kind.SECONDARY) {
@@ -60,11 +60,13 @@ const kindToStyle = (kind) => {
   }
 }
 
-const kindToIconKind = (kind) => {
+const kindToIconKind = (kind: Kind) : IconKind => {
   if (kind == Kind.PRIMARY || kind == Kind.SECONDARY) {
     return IconKind.LIGHT;
   } else if (kind == Kind.TERTIARY) {
     return IconKind.DARK;
+  } else {
+    return IconKind.LIGHT;
   }
 }
 

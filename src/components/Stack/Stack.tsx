@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./Stack.module.scss";
+
+const styles = require("./Stack.module.scss");
 
 export enum	Orientation {
 	ROW = "row",
@@ -17,7 +18,7 @@ export interface StackProps {
 const Stack = (props: StackProps) => {
 	return (
 		<div className={`${styles.Stack} ${orientationToStyle(props.orientation)}`} style={{gap: props.spacing}}>
-			{props.children.map(child => (<div className="item">{child}</div>))}
+			{props.children}
 		</div>
 	);
 };
