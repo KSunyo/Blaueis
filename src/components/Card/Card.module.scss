@@ -5,3 +5,77 @@
 	background-color: $grayscale-05;
 	border-radius: 20px;
 }
+
+.row {
+	flex-direction: row;
+
+	.cardInfo {
+		width: 50%;
+	}
+
+	.cardCover {
+		width: 50%;
+		border-top-left-radius: 20px;
+		border-bottom-left-radius: 20px;
+	}
+}
+
+.rowReverse {
+	flex-direction: row-reverse;
+
+	.cardInfo {
+		width: 50%;
+	}
+
+	.cardCover {
+		width: 50%;
+		border-top-right-radius: 20px;
+		border-bottom-right-radius: 20px;
+	}
+}
+
+.column {
+	flex-direction: column;
+
+	.cardInfo {
+		height: 50%;
+	}
+
+	.cardCover {
+		height: 50%;
+		border-bottom-left-radius: 20px;
+		border-bottom-right-radius: 20px;
+	}
+}
+
+.columnReverse {
+	flex-direction: column;
+
+	.cardInfo {
+		height: 50%;
+	}
+
+	.cardCover {
+		height: 50%;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+	}
+}
+
+.cardInfo {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 32px 27px 32px 28px;
+}
+
+.title {
+	font-size: 22px;
+	line-height: 130%;
+}
+
+.description {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 100%;
+}

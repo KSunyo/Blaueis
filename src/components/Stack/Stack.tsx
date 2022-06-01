@@ -1,6 +1,6 @@
 import React from "react";
-
-const styles = require("./Stack.module.scss");
+// @ts-ignore
+import styles from "./Stack.module.scss";
 
 export enum	Orientation {
 	ROW = "row",

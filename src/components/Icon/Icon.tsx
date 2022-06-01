@@ -1,6 +1,5 @@
 import React, {ReactNode} from "react";
 
-const styles = require("./Icon.module.scss");
 const UpArrowLight = require("./icons/arrow-up-light.svg") as string;
 const UpArrowDark = require("./icons/arrow-up-dark.svg") as string;
 const RightArrowLight = require("./icons/arrow-right-light.svg") as string;

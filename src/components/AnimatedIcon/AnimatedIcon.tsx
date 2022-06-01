@@ -1,7 +1,7 @@
 import React, {useState, useEffect, ReactNode} from "react";
 import Icon, {IconType, IconKind} from "../Icon/Icon";
-
-const styles = require("./AnimatedIcon.module.scss");
+// @ts-ignore
+import styles from "./AnimatedIcon.module.scss";
 
 export enum AnimationState {
   DEFAULT = "DEFAULT",

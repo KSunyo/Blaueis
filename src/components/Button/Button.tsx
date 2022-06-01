@@ -1,8 +1,8 @@
 import React, {ReactElement, ReactNode, useState} from "react";
 import AnimatedIcon, {AnimationState} from "../AnimatedIcon/AnimatedIcon";
 import {IconType, IconKind} from "../Icon/Icon";
-
-const styles = require("./Button.module.scss");
+// @ts-ignore
+import styles from "./Button.module.scss";
 
 
 export enum Kind {
