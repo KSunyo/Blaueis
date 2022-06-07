@@ -39,15 +39,18 @@
   color: $grayscale-00;
 }
 
-.primary:hover > .buttonBackgroundHelper {
+.primary:not(.disabled, .touch):hover > .buttonBackgroundHelper {
   opacity: 0;
   -webkit-transition: opacity 300ms linear;
   -ms-transition: opacity 300ms linear;
   transition: opacity 300ms linear;  
 }
 
-.primary:active {
+.primary:not(.disabled):active {
   background: $blue-60;
+  .buttonBackgroundHelper {
+    opacity: 0;
+  }
 }
 
 .secondary {
@@ -55,14 +58,14 @@
   color: $grayscale-00;
 }
 
-.secondary:hover {
-  background: $grayscale-95;
+.secondary:not(.disabled, .touch):hover {
+  background: $grayscale-60;
   -webkit-transition: background 300ms linear;
   -ms-transition: background 300ms linear;
   transition: background 300ms linear;
 }
 
-.secondary:active {
+.secondary:not(.disabled):active {
   background: $grayscale-95;
 }
 
@@ -71,13 +74,19 @@
   color: $grayscale-80;
 }
 
-.tertiary:hover {
+.tertiary:not(.disabled, .touch):hover {
   background: $grayscale-10;
   -webkit-transition: background 300ms linear;
   -ms-transition: background 300ms linear;
   transition: background 300ms linear;
 }
 
-.tertiary:active {
+.tertiary:not(.disabled):active {
   background: $grayscale-25;
 }
+
+.disabled {
+  opacity: 50%;
+}
+
+.touch {}

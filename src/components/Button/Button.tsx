@@ -1,4 +1,4 @@
-import React, {ReactElement, ReactNode, useState} from "react";
+import React, {ReactNode, MouseEventHandler, useState} from "react";
 import AnimatedIcon, {AnimationState} from "../AnimatedIcon/AnimatedIcon";
 import {IconType, IconKind} from "../Icon/Icon";
 // @ts-ignore
@@ -8,24 +8,40 @@ import styles from "./Button.module.scss";
 export enum Kind {
   PRIMARY = "primary",
   SECONDARY = "secondary",
-  TERTIARY = "tertiary"
+  TERTIARY = "tertiary",
 }
 
 export interface ButtonProps {
   kind: Kind;
   label: string;
+  disabled: boolean;
+  touch: boolean;
   startIcon?: IconType;
   endIcon?: IconType;
+  onClick?: MouseEventHandler;
 }
 
-const Button = ({label, kind = Kind.PRIMARY,
-  startIcon = undefined, endIcon = undefined}: ButtonProps) => {
+const Button = ({
+                  label,
+                  kind = Kind.PRIMARY,
+                  disabled = false,
+                  touch = false,
+                  startIcon,
+                  endIcon,
+                  onClick = () => {}
+}: ButtonProps) => {
   const [animationState, setAnimationState] = useState(AnimationState.DEFAULT);
+  const onClickFunction = (event: React.MouseEvent<Element, MouseEvent>) => {
+    if (!disabled && onClick) {
+      onClick(event);
+    }
+  }
   return (
-    <button 
-      onMouseEnter={() => setAnimationState(AnimationState.FORWARD)}
-      onMouseLeave={() => setAnimationState(AnimationState.BACKWARD)}
-      className={`${styles.Button} ${kindToStyle(kind)}`}
+    <button
+        onClick={onClickFunction}
+        onMouseEnter={() => setAnimationState(AnimationState.FORWARD)}
+        onMouseLeave={() => setAnimationState(AnimationState.BACKWARD)}
+        className={`${styles.Button} ${kindToStyle(kind)} ${disabled ? styles.disabled : ""} ${touch ? styles.touch : ""}`}
     >
       <span className={styles.buttonBackgroundHelper}></span>
       <span className={styles.buttonContainer}>

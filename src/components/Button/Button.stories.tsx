@@ -41,5 +41,8 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 export const ClickMe = Template.bind({});
 ClickMe.args = {
   label: "Click me!",
-  kind: Kind.PRIMARY
+  kind: Kind.PRIMARY,
+  onClick: () => {
+    alert("hi")
+  }
 };
