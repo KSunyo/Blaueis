@@ -21,18 +21,6 @@ export interface ButtonProps {
 const Button = ({label, kind = Kind.PRIMARY,
   startIcon = undefined, endIcon = undefined}: ButtonProps) => {
   const [animationState, setAnimationState] = useState(AnimationState.DEFAULT);
-  const renderIcon = (icon: IconType | undefined) : ReactNode => {
-    if (icon != undefined) {
-      return (
-        <AnimatedIcon 
-          type={icon} 
-          kind={kindToIconKind(kind)} 
-          animation={animationState}/>
-      );
-    } else {
-      return null;
-    }
-  }
   return (
     <button 
       onMouseEnter={() => setAnimationState(AnimationState.FORWARD)}
@@ -41,13 +29,26 @@ const Button = ({label, kind = Kind.PRIMARY,
     >
       <span className={styles.buttonBackgroundHelper}></span>
       <span className={styles.buttonContainer}>
-        <span>{renderIcon(startIcon)}</span>
+        <span>{renderIcon(kind, startIcon, animationState)}</span>
         <span>{label}</span>
-        <span>{renderIcon(endIcon)}</span>
+        <span>{renderIcon(kind, endIcon, animationState)}</span>
       </span>
     </button>
   );
 };
+
+const renderIcon = (kind: Kind, icon: IconType | undefined, animationState: AnimationState) : ReactNode => {
+  if (icon != undefined) {
+    return (
+        <AnimatedIcon
+            type={icon}
+            kind={kindToIconKind(kind)}
+            animation={animationState}/>
+    );
+  } else {
+    return null;
+  }
+}
 
 const kindToStyle = (kind: Kind) => {
   if (kind == Kind.PRIMARY) {
