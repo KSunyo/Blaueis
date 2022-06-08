@@ -28,6 +28,7 @@ const Carousel = ({urls = [], compact = false, width}: CarouselProps) => {
             style={{width: (width != undefined) ? width + "px" : "auto"}}
             onClick={()=>setImageIndex(imageIndex + 1)}
         >
+            <div></div>
             <animated.div style={carouselAnimation} className={styles.imgHolder}>
                 {urls.map((url, i) => <img src={url} key={i}/>)}
             </animated.div>
