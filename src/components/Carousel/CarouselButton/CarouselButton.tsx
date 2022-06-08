@@ -32,7 +32,7 @@ const CarouselButton = ({
 
     return (
         <button
-            className={styles.CarouselButton}
+            className={`${styles.CarouselButton} ${disabled ? styles.disabled : ""} ${touch ? styles.touch : ""}`}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
             onClick={onClickFunction}

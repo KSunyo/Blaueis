@@ -10,6 +10,7 @@
   border: none;
   font-weight: 600;
   background-color: $grayscale--3;
+  color: $grayscale-80;
 }
 
 .CarouselButton:not(.disabled, .touch):hover {
@@ -23,6 +24,8 @@
   background-color: $blue-60;
 }
 
-.disabled {}
+.disabled {
+  opacity: 50%;
+}
 
 .touch {}

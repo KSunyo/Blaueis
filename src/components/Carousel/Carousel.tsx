@@ -17,7 +17,6 @@ const Carousel = ({urls = [], compact = false, width}: CarouselProps) => {
     const carouselAnimation = useSpring({
         transform: "translateX(" + (imageIndex == 0 ? 0 : (imageIndex - 1) * (-100) + (-90)) + "%)",
     });
-
     urls = [
         "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXh8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60",
         "https://images.unsplash.com/photo-1529119513315-c7c361862fc7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXh8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60",
@@ -32,11 +31,13 @@ const Carousel = ({urls = [], compact = false, width}: CarouselProps) => {
             <div className={styles.controls}>
                 <CarouselButton
                     label="Previous"
-                    startIcon={IconType.RIGHT_ARROW}
+                    disabled={imageIndex == 0}
+                    startIcon={IconType.LEFT_ARROW}
                     onClick={()=>setImageIndex(imageIndex - 1)}
                 />
                 <CarouselButton
                     label="Next"
+                    disabled={imageIndex == urls.length - 1}
                     endIcon={IconType.RIGHT_ARROW}
                     onClick={()=>setImageIndex(imageIndex + 1)}
                 />
