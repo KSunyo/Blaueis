@@ -1,0 +1,28 @@
+@import "../../../values/colors.scss";
+
+.CarouselButton {
+  display: flex;
+  padding: 9px 10px;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 80px;
+  border: none;
+  font-weight: 600;
+  background-color: $grayscale--3;
+}
+
+.CarouselButton:not(.disabled, .touch):hover {
+  background-color: $blue-50;
+  span {
+    color: $grayscale-00;
+  }
+}
+
+.CarouselButton:not(.disabled):active {
+  background-color: $blue-60;
+}
+
+.disabled {}
+
+.touch {}

@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 // @ts-ignore
 import styles from "./Carousel.module.scss";
-import { useSpring, animated } from 'react-spring';
+import {animated, useSpring} from 'react-spring';
+import CarouselButton from "./CarouselButton/CarouselButton";
+import {IconType} from "../Icon/Icon";
 
 export interface CarouselProps {
     urls: string[];
@@ -13,22 +15,32 @@ const Carousel = ({urls = [], compact = false, width}: CarouselProps) => {
 
     const [imageIndex, setImageIndex] = useState(0);
     const carouselAnimation = useSpring({
-        transform: "translateX(" + (imageIndex == 0 ? 0 : (imageIndex - 1) * (-100) + (-90)) + "%)"
+        transform: "translateX(" + (imageIndex == 0 ? 0 : (imageIndex - 1) * (-100) + (-90)) + "%)",
     });
 
     urls = [
-        "https://images.unsplash.com/photo-1637323988659-8e5cc44d41b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDJ8cVBZc0R6dkpPWWN8fGVufDB8fHx8&auto=format&fit=crop&w=900&q=60",
-        "https://images.unsplash.com/photo-1636352412645-1a17e4ff7c93?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDN8cVBZc0R6dkpPWWN8fGVufDB8fHx8&auto=format&fit=crop&w=900&q=60",
-        "https://images.unsplash.com/photo-1653866576648-a8ca4c79a35c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8cVBZc0R6dkpPWWN8fGVufDB8fHx8&auto=format&fit=crop&w=900&q=60",
-        "https://images.unsplash.com/photo-1653409242754-434b55b8bc25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDMxfHFQWXNEenZKT1ljfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60"
+        "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXh8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60",
+        "https://images.unsplash.com/photo-1529119513315-c7c361862fc7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXh8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60",
+        "https://images.unsplash.com/file-1646172372557-6258c0de0873image",
+        "https://images.unsplash.com/photo-1640653410511-bee9946865ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHV4fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60"
     ]
     return (
         <div
             className={styles.Carousel}
             style={{width: (width != undefined) ? width + "px" : "auto"}}
-            onClick={()=>setImageIndex(imageIndex + 1)}
         >
-            <div></div>
+            <div className={styles.controls}>
+                <CarouselButton
+                    label="Previous"
+                    startIcon={IconType.RIGHT_ARROW}
+                    onClick={()=>setImageIndex(imageIndex - 1)}
+                />
+                <CarouselButton
+                    label="Next"
+                    endIcon={IconType.RIGHT_ARROW}
+                    onClick={()=>setImageIndex(imageIndex + 1)}
+                />
+            </div>
             <animated.div style={carouselAnimation} className={styles.imgHolder}>
                 {urls.map((url, i) => <img src={url} key={i}/>)}
             </animated.div>

@@ -14,9 +14,24 @@
 
   img {
     width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
   }
 
   img:first-child {
     width: 90%;
+  }
+}
+
+.controls {
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    margin: 5px;
   }
 }
