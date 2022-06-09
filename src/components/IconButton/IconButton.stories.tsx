@@ -1,7 +1,8 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import {ComponentMeta, ComponentStory} from "@storybook/react";
 import IconButton from "./IconButton";
 import {IconType} from "../Icon/Icon"
+import {Direction} from "../AnimatedIcon/AnimatedIcon";
 
 export default {
   title: "blaueis/IconButton",
@@ -19,5 +20,6 @@ const Template: ComponentStory<typeof IconButton> = (args) => <IconButton {...ar
 
 export const BackToTop = Template.bind({});
 BackToTop.args = {
-  icon: IconType.UP_ARROW
+  icon: IconType.UP_ARROW,
+  animation: {type: "NudgeAnimation", direction: Direction.TO_TOP}
 };

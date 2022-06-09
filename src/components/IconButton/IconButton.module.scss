@@ -3,7 +3,7 @@
 .iconButton {
 	display: flex;
 	align-items: center;
-  justify-content: center;
+  	justify-content: center;
 	width: 80px;
 	height: 80px;
 	border-radius: 0;
@@ -18,39 +18,4 @@
 
 .iconButton:active {
 	background-color: $grayscale-95;
-}
-
-@keyframes move-icon-up {
-  from {
-  	margin-bottom: 0;
-  }
-
-  to {
-    margin-bottom: 15px;
-  }
-}
-
-@keyframes move-icon-down {
-  from {
-  	margin-bottom: 0;
-  }
-
-  to {
-    margin-bottom: 15px;
-  }
-}
-
-.forwardAnimation {
-	animation-name: move-icon-up;
-	animation-duration: 300ms;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-}
-
-.backwardAnimation {
-	animation-name: move-icon-down;
-	animation-duration: 300ms;
-  animation-iteration-count: 1;
-	animation-direction: reverse;
-	animation-fill-mode: forwards;
 }

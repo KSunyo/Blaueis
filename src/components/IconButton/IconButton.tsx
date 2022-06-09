@@ -1,13 +1,8 @@
-import React, {ReactNode, useState} from "react";
-import Icon, {IconType, IconKind} from "../Icon/Icon";
+import React, {useState} from "react";
+import Icon, {IconKind, IconType} from "../Icon/Icon";
 // @ts-ignore
 import styles from "./IconButton.module.scss";
-
-export enum AnimationState {
-  DEFAULT = "DEFAULT",
-  FORWARD = "FORWARD",
-  BACKWARD = "BACKWARD"
-}
+import AnimatedIcon, {ChaseAnimationProps, NudgeAnimationProps, ScaleAnimationProps, AnimationState} from "../AnimatedIcon/AnimatedIcon";
 
 export enum Size {
 	SMALL,
@@ -23,52 +18,55 @@ export interface IconButtonProps {
 	icon:IconType;
 	size?:Size;
 	shape?:Shape;
+	animation?: ChaseAnimationProps | NudgeAnimationProps | ScaleAnimationProps;
 }
 
-const IconButton = ({icon} : IconButtonProps) : (JSX.Element | null) => {
+const IconButton = ({icon, size, shape, animation} : IconButtonProps) : (JSX.Element | null) => {
 
-	const [animationState, setAnimationState] = useState(AnimationState.DEFAULT);
+	const [hover, setHover] = useState(false);
 
-	if (animationState == AnimationState.DEFAULT) {
-			return (
-				<button 
-					className={styles.iconButton}
-					onMouseEnter={() => setAnimationState(AnimationState.FORWARD)}
-					onMouseLeave={() => setAnimationState(AnimationState.BACKWARD)}
-				>
-					<span>
-						<Icon type={icon} kind={IconKind.DARK} />
-					</span>
-				</button>
-			);
-		} else if (animationState == AnimationState.FORWARD) {
-			return (
-				<button 
-					className={styles.iconButton}
-					onMouseEnter={() => setAnimationState(AnimationState.FORWARD)}
-					onMouseLeave={() => setAnimationState(AnimationState.BACKWARD)}
-				>
-					<span className={styles.forwardAnimation}>
-						<Icon type={icon} kind={IconKind.LIGHT} />
-					</span>
-				</button>
-			);
-		} else if (animationState == AnimationState.BACKWARD) {
-			return (
-				<button 
-					className={styles.iconButton}
-					onMouseEnter={() => setAnimationState(AnimationState.FORWARD)}
-					onMouseLeave={() => setAnimationState(AnimationState.BACKWARD)}
-				>
-					<span className={styles.backwardAnimation}>
-						<Icon type={icon} kind={IconKind.DARK} />
-					</span>
-				</button>
-			);
+	if (animation == undefined) {
+		return (
+			<button
+				className={styles.iconButton}
+				onMouseEnter={() => setHover(true)}
+				onMouseLeave={() => setHover(false)}
+			>
+				<Icon
+					type={icon}
+					kind={hover ? IconKind.LIGHT : IconKind.DARK}
+				/>
+			</button>
+		);
+	} else {
+		return (
+			<button
+				className={styles.iconButton}
+				onMouseEnter={() => setHover(true)}
+				onMouseLeave={() => setHover(false)}
+			>
+				<AnimatedIcon
+					type={icon}
+					kind={hover ? IconKind.LIGHT : IconKind.DARK}
+					state={getAnimationState(hover)}
+					animation={animation}/>
+			</button>
+		);
+	}
+
+
+}
+
+const getAnimationState = (hover): AnimationState => {
+	if (hover == undefined) {
+		return AnimationState.DEFAULT;
+	} else {
+		if (hover) {
+			return AnimationState.FORWARD;
 		} else {
-			return null;
+			return AnimationState.BACKWARD;
 		}
-
-};
+	}
+}
 
 export default IconButton;
