@@ -3,6 +3,7 @@ import Icon, {IconType, IconKind} from "../Icon/Icon";
 // @ts-ignore
 import styles from "./AnimatedIcon.module.scss";
 import ChaseAnimation from "./animations/ChaseAnimation/ChaseAnimation";
+import NudgeAnimation from "./animations/NudgeAnimation/NudgeAnimation";
 
 export enum AnimationState {
   DEFAULT = "DEFAULT",
@@ -17,18 +18,19 @@ export enum Direction {
   TO_BOTTOM
 }
 
-export interface ChaseAnimation {
+export interface ChaseAnimationProps {
   type: "ChaseAnimation";
   direction: Direction;
   rotation?: number;
 }
 
-export interface NudgeAnimation {
+export interface NudgeAnimationProps {
   type: "NudgeAnimation";
   direction: Direction;
+  rotation?: number;
 }
 
-export interface ScaleAnimation {
+export interface ScaleAnimationProps {
   type: "ScaleAnimation";
   factor: number;
 }
@@ -37,7 +39,7 @@ export interface AnimatedIconProps {
   type: IconType;
   kind: IconKind;
   state: AnimationState;
-  animation: ChaseAnimation | NudgeAnimation | ScaleAnimation;
+  animation: ChaseAnimationProps | NudgeAnimationProps | ScaleAnimationProps;
 }
 
 const AnimatedIcon = ({
@@ -54,10 +56,23 @@ const AnimatedIcon = ({
             kind={kind}
             state={state}
             direction={animation.direction}
-            rotation={animation.rotation}
+            rotation={animation.rotation ? animation.rotation : 0}
         />
     )
+  } else if (animation.type == "NudgeAnimation") {
+    return (
+        <NudgeAnimation
+            type={type}
+            kind={kind}
+            state={state}
+            direction={animation.direction}
+            rotation={animation.rotation ? animation.rotation : 0}
+        />
+    );
+  } else if (animation.type == "ScaleAnimation") {
+
   }
+  return null;
 }
 
 const getIconContainerClass = (type: IconType) => {

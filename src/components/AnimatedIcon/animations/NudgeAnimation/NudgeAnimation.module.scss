@@ -1,0 +1,16 @@
+.iconContainer {
+  display: flex;
+
+  span {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.leftRightContainer {
+  flex-direction: row;
+}
+
+.topBottomContainer {
+  flex-direction: column;
+}
