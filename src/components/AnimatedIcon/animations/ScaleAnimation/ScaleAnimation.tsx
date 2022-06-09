@@ -2,7 +2,7 @@ import React from "react";
 import Icon, {IconKind, IconType} from "../../../Icon/Icon";
 import {AnimationState, Direction} from "../../AnimatedIcon";
 //@ts-ignore
-//import styles from "./NudgeAnimation.module.scss";
+import styles from "./ScaleAnimation.module.scss";
 import {animated, useSpring} from "react-spring";
 
 export interface ScaleAnimationProps {
@@ -19,9 +19,10 @@ const ScaleAnimation = ({type, kind, state, factor}: ScaleAnimationProps) => {
 
     return (
         <animated.div
+            className={styles.iconContainer}
             style={scale}
         >
-            <span><Icon kind={kind} type={type}/></span>
+            <Icon kind={kind} type={type}/>
         </animated.div>
     );
 }

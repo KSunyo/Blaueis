@@ -2,21 +2,26 @@ import React, {useState} from "react";
 import Icon, {IconKind, IconType} from "../Icon/Icon";
 // @ts-ignore
 import styles from "./IconButton.module.scss";
-import AnimatedIcon, {ChaseAnimationProps, NudgeAnimationProps, ScaleAnimationProps, AnimationState} from "../AnimatedIcon/AnimatedIcon";
+import AnimatedIcon, {
+	AnimationState,
+	ChaseAnimationProps,
+	NudgeAnimationProps,
+	ScaleAnimationProps
+} from "../AnimatedIcon/AnimatedIcon";
 
 export enum Kind {
-	PRIMARY,
-	SECONDARY
+	PRIMARY = "PRIMARY",
+	SECONDARY = "SECONDARY"
 }
 
 export enum Size {
-	SMALL,
-	LARGE,
+	SMALL = "SMALL",
+	LARGE = "LARGE",
 }
 
 export enum Shape {
-	SQUARE,
-	CIRCLE
+	SQUARE = "SQUARE",
+	CIRCLE = "CIRCLE"
 }
 
 export interface IconButtonProps {
@@ -27,14 +32,14 @@ export interface IconButtonProps {
 	animation?: ChaseAnimationProps | NudgeAnimationProps | ScaleAnimationProps;
 }
 
-const IconButton = ({icon, size, shape, animation} : IconButtonProps) : (JSX.Element | null) => {
+const IconButton = ({kind, icon, size = Size.SMALL, shape = Shape.SQUARE, animation} : IconButtonProps) : (JSX.Element | null) => {
 
 	const [hover, setHover] = useState(false);
 
 	if (animation == undefined) {
 		return (
 			<button
-				className={styles.iconButton}
+				className={`${styles.iconButton} ${getKindClass(kind)} ${getShapeClass(shape)} ${getSizeClass(size)}`}
 				onMouseEnter={() => setHover(true)}
 				onMouseLeave={() => setHover(false)}
 			>
@@ -47,7 +52,7 @@ const IconButton = ({icon, size, shape, animation} : IconButtonProps) : (JSX.Ele
 	} else {
 		return (
 			<button
-				className={styles.iconButton}
+				className={`${styles.iconButton} ${getKindClass(kind)} ${getShapeClass(shape)} ${getSizeClass(size)}`}
 				onMouseEnter={() => setHover(true)}
 				onMouseLeave={() => setHover(false)}
 			>
@@ -59,6 +64,37 @@ const IconButton = ({icon, size, shape, animation} : IconButtonProps) : (JSX.Ele
 			</button>
 		);
 	}
+}
+
+const getKindClass = (kind: Kind) => {
+	if (kind == Kind.PRIMARY) return styles.primary;
+	if (kind == Kind.SECONDARY) return styles.secondary;
+}
+
+const getIconKind = (kind: Kind, hover: boolean) => {
+	if (kind == Kind.PRIMARY) {
+		if (hover) {
+			return IconKind.LIGHT;
+		} else {
+			return IconKind.DARK;
+		}
+	} else if (kind == Kind.SECONDARY) {
+		if (hover) {
+			return IconKind.DARK;
+		} else {
+			return IconKind.LIGHT;
+		}
+	}
+}
+
+const getShapeClass = (shape: Shape | undefined) => {
+	if (shape == Shape.CIRCLE) return styles.circle;
+	if (shape == Shape.SQUARE) return styles.square;
+}
+
+const getSizeClass = (size: Size | undefined) => {
+	if (size == Size.SMALL) return styles.small;
+	if (size == Size.LARGE) return styles.large;
 }
 
 const getAnimationState = (hover): AnimationState => {

@@ -4,18 +4,58 @@
 	display: flex;
 	align-items: center;
   	justify-content: center;
-	width: 80px;
-	height: 80px;
-	border-radius: 0;
-	background-color: $grayscale-20;
 	border: none;
 }
 
-.iconButton:hover {
+.primary {
+	background-color: $grayscale--3;
+}
+
+.secondary {
+	background-color: $grayscale-20;
+}
+
+.primary:hover {
+	background-color: $blue-50;
+	transition: background-color 300ms linear;
+}
+
+.secondary:hover {
 	background-color: $grayscale-80;
 	transition: background-color 300ms linear;
 }
 
-.iconButton:active {
+.primary:active {
+	background-color: $blue-60;
+}
+
+.secondary:active {
 	background-color: $grayscale-95;
+}
+
+.large {
+	width: 80px;
+	height: 80px;
+}
+
+.small {
+	width: 35px;
+	height: 35px;
+
+	img {
+		width: 60%;
+		height: 60%;
+	}
+}
+
+.square {
+	border-radius: 0;
+}
+
+.circle {
+	border-radius: 50%;
+}
+
+.disabled {
+	opacity: 50%;
 }
