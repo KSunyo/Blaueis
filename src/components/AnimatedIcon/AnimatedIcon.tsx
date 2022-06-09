@@ -4,6 +4,7 @@ import Icon, {IconType, IconKind} from "../Icon/Icon";
 import styles from "./AnimatedIcon.module.scss";
 import ChaseAnimation from "./animations/ChaseAnimation/ChaseAnimation";
 import NudgeAnimation from "./animations/NudgeAnimation/NudgeAnimation";
+import ScaleAnimation from "./animations/ScaleAnimation/ScaleAnimation";
 
 export enum AnimationState {
   DEFAULT = "DEFAULT",
@@ -70,39 +71,16 @@ const AnimatedIcon = ({
         />
     );
   } else if (animation.type == "ScaleAnimation") {
-
+    return (
+        <ScaleAnimation
+            type={type}
+            kind={kind}
+            state={state}
+            factor={animation.factor}
+        />
+    );
   }
   return null;
-}
-
-const getIconContainerClass = (type: IconType) => {
-  if (type == IconType.RIGHT_ARROW) {
-    return `${styles.iconContainer} ${styles.rightArrowContainer}`;
-  } else if (type == IconType.DOWN_ARROW) {
-    return `${styles.iconContainer} ${styles.downArrowContainer}`;
-  } else if (type == IconType.UP_RIGHT_ARROW) {
-    return `${styles.iconContainer} ${styles.upRightArrowContainer}`;
-  }
-}
-
-const getForwardAnimationClass = (type: IconType) => {
-  if (type == IconType.RIGHT_ARROW) {
-    return styles.rightArrowForwardAnimation;
-  } else if (type == IconType.DOWN_ARROW) {
-    return styles.downArrowForwardAnimation;
-  } else if (type == IconType.UP_RIGHT_ARROW) {
-    return styles.rightArrowForwardAnimation;
-  }
-}
-
-const getBackwardAnimationClass = (type: IconType) => {
-  if (type == IconType.RIGHT_ARROW) {
-    return styles.rightArrowBackwardAnimation;
-  } else if (type == IconType.DOWN_ARROW) {
-    return styles.downArrowBackwardAnimation;
-  } else if (type == IconType.UP_RIGHT_ARROW) {
-    return styles.rightArrowBackwardAnimation;
-  }
 }
 
 export default AnimatedIcon;

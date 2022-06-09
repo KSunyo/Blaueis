@@ -60,7 +60,7 @@ const renderIcon = (kind: Kind, icon: IconType | undefined, animationState: Anim
             type={icon}
             kind={kindToIconKind(kind)}
             state={animationState}
-            animation={{type: "NudgeAnimation", direction: Direction.TO_BOTTOM}}
+            animation={{type: "ChaseAnimation", direction: Direction.TO_RIGHT}}
         />
     );
   } else {

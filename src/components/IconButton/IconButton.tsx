@@ -4,6 +4,11 @@ import Icon, {IconKind, IconType} from "../Icon/Icon";
 import styles from "./IconButton.module.scss";
 import AnimatedIcon, {ChaseAnimationProps, NudgeAnimationProps, ScaleAnimationProps, AnimationState} from "../AnimatedIcon/AnimatedIcon";
 
+export enum Kind {
+	PRIMARY,
+	SECONDARY
+}
+
 export enum Size {
 	SMALL,
 	LARGE,
@@ -15,6 +20,7 @@ export enum Shape {
 }
 
 export interface IconButtonProps {
+	kind: Kind;
 	icon:IconType;
 	size?:Size;
 	shape?:Shape;
@@ -53,8 +59,6 @@ const IconButton = ({icon, size, shape, animation} : IconButtonProps) : (JSX.Ele
 			</button>
 		);
 	}
-
-
 }
 
 const getAnimationState = (hover): AnimationState => {
