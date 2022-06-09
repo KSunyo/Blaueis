@@ -9,8 +9,20 @@ export enum AnimationState {
   BACKWARD = "BACKWARD"
 }
 
+export enum Size {
+	SMALL,
+	LARGE,
+}
+
+export enum Shape {
+	SQUARE,
+	CIRCLE
+}
+
 export interface IconButtonProps {
-	icon:IconType
+	icon:IconType;
+	size:Size;
+	shape:Shape;
 }
 
 const IconButton = ({icon} : IconButtonProps) : (JSX.Element | null) => {
