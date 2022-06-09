@@ -59,7 +59,7 @@ const renderIcon = (kind: Kind, icon: IconType | undefined, animationState: Anim
         <AnimatedIcon
             type={icon}
             kind={kindToIconKind(kind)}
-            animation={animationState}/>
+            state={animationState}/>
     );
   } else {
     return null;

@@ -21,8 +21,8 @@ export enum Shape {
 
 export interface IconButtonProps {
 	icon:IconType;
-	size:Size;
-	shape:Shape;
+	size?:Size;
+	shape?:Shape;
 }
 
 const IconButton = ({icon} : IconButtonProps) : (JSX.Element | null) => {

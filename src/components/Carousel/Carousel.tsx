@@ -15,7 +15,7 @@ const Carousel = ({urls = [], compact = false, width}: CarouselProps) => {
 
     const [imageIndex, setImageIndex] = useState(0);
     const carouselAnimation = useSpring({
-        transform: "translateX(" + (imageIndex == 0 ? 0 : (imageIndex - 1) * (-100) + (-90)) + "%)",
+        transform: "translateX(" + (imageIndex == 0 ? 0 : (imageIndex - 1) * (-100) + (-90)) + "%)"
     });
     urls = [
         "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXh8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60",

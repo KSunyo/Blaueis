@@ -9,28 +9,53 @@ export enum AnimationState {
   BACKWARD = "BACKWARD"
 }
 
+export enum Direction {
+  TO_TOP,
+  TO_LEFT,
+  TO_RIGHT,
+  TO_BOTTOM
+}
+
+export interface ChaseAnimation {
+  direction: Direction;
+  rotation?: number;
+}
+
+export interface NudgeAnimation {
+  direction: Direction;
+}
+
+export interface ScaleAnimation {
+  factor: number;
+}
+
 export interface AnimatedIconProps {
   type: IconType;
   kind: IconKind;
-  animation: AnimationState;
+  state: AnimationState;
+  animation: ChaseAnimation | NudgeAnimation | ScaleAnimation;
 }
 
-const AnimatedIcon = ({type, kind, 
-  animation = AnimationState.DEFAULT}: AnimatedIconProps) : (JSX.Element | null) => {
-  if (animation == AnimationState.DEFAULT) {
+const AnimatedIcon = ({
+                        type,
+                        kind,
+                        state = AnimationState.DEFAULT
+}: AnimatedIconProps) : (JSX.Element | null) => {
+
+  if (state == AnimationState.DEFAULT) {
     return (
       <div className={getIconContainerClass(type)}>
         <span><Icon kind={kind} type={(type == IconType.UP_RIGHT_ARROW ? IconType.RIGHT_ARROW : type)}/></span>
       </div>
     );
-  } else if (animation == AnimationState.FORWARD) {
+  } else if (state == AnimationState.FORWARD) {
     return(
       <div className={getIconContainerClass(type)}>
         <span className={getForwardAnimationClass(type)}><Icon kind={kind} type={(type == IconType.UP_RIGHT_ARROW ? IconType.RIGHT_ARROW : type)}/></span>
         <span><Icon kind={kind} type={(type == IconType.UP_RIGHT_ARROW ? IconType.RIGHT_ARROW : type)}/></span>
       </div>
     );
-  } else if (animation == AnimationState.BACKWARD) {
+  } else if (state == AnimationState.BACKWARD) {
     return(
       <div className={getIconContainerClass(type)}>
         <span className={getBackwardAnimationClass(type)}><Icon kind={kind} type={(type == IconType.UP_RIGHT_ARROW ? IconType.RIGHT_ARROW : type)}/></span>
@@ -39,7 +64,7 @@ const AnimatedIcon = ({type, kind,
     );
   }
   return null;
-};
+}
 
 const getIconContainerClass = (type: IconType) => {
   if (type == IconType.RIGHT_ARROW) {
