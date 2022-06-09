@@ -1,5 +1,5 @@
 import React, {ReactNode, MouseEventHandler, useState} from "react";
-import AnimatedIcon, {AnimationState} from "../AnimatedIcon/AnimatedIcon";
+import AnimatedIcon, {AnimationState, Direction} from "../AnimatedIcon/AnimatedIcon";
 import {IconType, IconKind} from "../Icon/Icon";
 // @ts-ignore
 import styles from "./Button.module.scss";
@@ -59,7 +59,9 @@ const renderIcon = (kind: Kind, icon: IconType | undefined, animationState: Anim
         <AnimatedIcon
             type={icon}
             kind={kindToIconKind(kind)}
-            state={animationState}/>
+            state={animationState}
+            animation={{type: "ChaseAnimation", direction: Direction.TO_RIGHT, rotation: -45}}
+        />
     );
   } else {
     return null;

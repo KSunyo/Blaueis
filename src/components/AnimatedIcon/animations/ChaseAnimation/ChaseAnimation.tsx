@@ -13,32 +13,61 @@ export interface ChaseAnimationProps {
 }
 
 const ChaseAnimation = ({type, kind, state, direction, rotation = 0}: ChaseAnimationProps) => {
-    const rotate = useSpring({transform: `rotate(${rotation})`});
-    const toLeft = useSpring({transform: `translateX(${getTranslationMultiplier(state) * 20}px)`});
-    const toRight = useSpring({transform: `translateX(${getTranslationMultiplier(state) * 20}px)`});
+    const rotate = useSpring({
+        to: {transform: `rotate(${rotation}deg)`}
+    });
+    const toRight = useSpring({
+        from: {transform: `translateX(${((state) => state == AnimationState.BACKWARD ? 0 : -20)(state)}px)`},
+        to: {transform: `translateX(${((state) => state == AnimationState.FORWARD ? 0 : -20)(state)}px)`}
+    });
+    const toLeft = useSpring({
+        from: {transform: `translateX(${((state) => state == AnimationState.FORWARD ? 0 : -20)(state)}px)`},
+        to: {transform: `translateX(${((state) => state == AnimationState.BACKWARD ? 0 : -20)(state)}px)`}
+    });
+    const toTop = useSpring({
+        from: {transform: `translateY(${((state) => state == AnimationState.BACKWARD ? -20 : 0)(state)}px)`},
+        to: {transform: `translateY(${((state) => state == AnimationState.FORWARD ? -20 : 0)(state)}px)`}
+    });
+    const toBottom = useSpring({
+        from: {transform: `translateY(${((state) => state == AnimationState.FORWARD ? -20 : 0)(state)}px)`},
+        to: {transform: `translateY(${((state) => state == AnimationState.BACKWARD ? -20 : 0)(state)}px)`}
+    });
 
     if (direction == Direction.TO_LEFT || direction == Direction.TO_RIGHT) {
         return (
             <animated.div className={styles.animationContainer} style={rotate}>
-                <div className={`${styles.iconContainer} ${styles.leftRightContainer}`}>
-                    <animated.span style={direction == Direction.TO_LEFT ? toLeft : toRight}><Icon kind={kind} type={type}/></animated.span>
+                <animated.div
+                    className={`${styles.iconContainer} ${styles.leftRightContainer}`}
+                    style={direction == Direction.TO_LEFT ? toLeft : toRight}
+                >
                     <span><Icon kind={kind} type={type}/></span>
-                </div>
+                    <span><Icon kind={kind} type={type}/></span>
+                </animated.div>
             </animated.div>
         );
     } else if (direction == Direction.TO_TOP || direction == Direction.TO_BOTTOM) {
-
+        return (
+            <animated.div className={styles.animationContainer} style={rotate}>
+                <animated.div
+                    className={`${styles.iconContainer} ${styles.topBottomContainer}`}
+                    style={direction == Direction.TO_TOP ? toTop : toBottom}
+                >
+                    <span><Icon kind={kind} type={type}/></span>
+                    <span><Icon kind={kind} type={type}/></span>
+                </animated.div>
+            </animated.div>
+        );
     }
     return null;
 }
 
-const getTranslationMultiplier = (state: AnimationState) => {
+const pickAnimation = (state: AnimationState, def, forward, backward) => {
     if (state == AnimationState.FORWARD) {
-        return 1;
+        return forward;
     } else if (state == AnimationState.BACKWARD) {
-        return -1;
+        return backward;
     } else {
-        return 0;
+        return def;
     }
 }
 

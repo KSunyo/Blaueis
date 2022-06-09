@@ -2,6 +2,7 @@ import React, {useState, useEffect, ReactNode} from "react";
 import Icon, {IconType, IconKind} from "../Icon/Icon";
 // @ts-ignore
 import styles from "./AnimatedIcon.module.scss";
+import ChaseAnimation from "./animations/ChaseAnimation/ChaseAnimation";
 
 export enum AnimationState {
   DEFAULT = "DEFAULT",
@@ -17,15 +18,18 @@ export enum Direction {
 }
 
 export interface ChaseAnimation {
+  type: "ChaseAnimation";
   direction: Direction;
   rotation?: number;
 }
 
 export interface NudgeAnimation {
+  type: "NudgeAnimation";
   direction: Direction;
 }
 
 export interface ScaleAnimation {
+  type: "ScaleAnimation";
   factor: number;
 }
 
@@ -39,31 +43,21 @@ export interface AnimatedIconProps {
 const AnimatedIcon = ({
                         type,
                         kind,
-                        state = AnimationState.DEFAULT
+                        state = AnimationState.DEFAULT,
+                        animation
 }: AnimatedIconProps) : (JSX.Element | null) => {
 
-  if (state == AnimationState.DEFAULT) {
+  if (animation.type === "ChaseAnimation") {
     return (
-      <div className={getIconContainerClass(type)}>
-        <span><Icon kind={kind} type={(type == IconType.UP_RIGHT_ARROW ? IconType.RIGHT_ARROW : type)}/></span>
-      </div>
-    );
-  } else if (state == AnimationState.FORWARD) {
-    return(
-      <div className={getIconContainerClass(type)}>
-        <span className={getForwardAnimationClass(type)}><Icon kind={kind} type={(type == IconType.UP_RIGHT_ARROW ? IconType.RIGHT_ARROW : type)}/></span>
-        <span><Icon kind={kind} type={(type == IconType.UP_RIGHT_ARROW ? IconType.RIGHT_ARROW : type)}/></span>
-      </div>
-    );
-  } else if (state == AnimationState.BACKWARD) {
-    return(
-      <div className={getIconContainerClass(type)}>
-        <span className={getBackwardAnimationClass(type)}><Icon kind={kind} type={(type == IconType.UP_RIGHT_ARROW ? IconType.RIGHT_ARROW : type)}/></span>
-        <span><Icon kind={kind} type={(type == IconType.UP_RIGHT_ARROW ? IconType.RIGHT_ARROW : type)}/></span>
-      </div>
-    );
+        <ChaseAnimation
+            type={type}
+            kind={kind}
+            state={state}
+            direction={animation.direction}
+            rotation={animation.rotation}
+        />
+    )
   }
-  return null;
 }
 
 const getIconContainerClass = (type: IconType) => {
