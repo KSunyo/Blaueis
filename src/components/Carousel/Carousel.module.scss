@@ -23,15 +23,30 @@
   }
 }
 
-.controls {
+.lowerControls {
   position: absolute;
   bottom: 0;
   z-index: 1;
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   button {
+    margin: 5px;
+  }
+}
+
+.upperControls {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  span {
     margin: 5px;
   }
 }
