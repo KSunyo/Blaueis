@@ -13,7 +13,7 @@ export const Article = Template.bind({});
 Article.args = {
   title: "FireHome: a universal multimedia device that meets the post-covid expectations",
   description: "During the 21st century, digital devices advanced quicker than ever before. However, in spite of the market being consolidated, expectations have gotten higher than ever.",
-  cover: "https://images.unsplash.com/photo-1653856289645-8601ab0e422f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=900&q=60",
+  cover: "https://firebasestorage.googleapis.com/v0/b/freelance-mail.appspot.com/o/casestudycover.png?alt=media&token=051881ca-db3a-42fe-97cd-a813a9754a8c",
   coverAlt: "An artic view.",
   link: "https://google.com",
   width: 700,
@@ -23,7 +23,7 @@ export const ArticleMobile = Template.bind({});
 ArticleMobile.args = {
   title: "FireHome: a universal multimedia device that meets the post-covid expectations",
   description: "During the 21st century, digital devices advanced quicker than ever before. However, in spite of the market being consolidated, expectations have gotten higher than ever.",
-  cover: "https://images.unsplash.com/photo-1653856289645-8601ab0e422f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=900&q=60",
+  cover: "https://firebasestorage.googleapis.com/v0/b/freelance-mail.appspot.com/o/casestudycover.png?alt=media&token=051881ca-db3a-42fe-97cd-a813a9754a8c",
   coverAlt: "An artic view.",
   link: "https://google.com",
   width: 335,
