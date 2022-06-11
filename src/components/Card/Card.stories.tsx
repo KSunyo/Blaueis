@@ -19,6 +19,17 @@ Article.args = {
   width: 700,
 };
 
+export const ArticleVideo = Template.bind({});
+ArticleVideo.args = {
+  title: "FireHome: a universal multimedia device that meets the post-covid expectations",
+  description: "During the 21st century, digital devices advanced quicker than ever before. However, in spite of the market being consolidated, expectations have gotten higher than ever.",
+  cover: "https://www.w3schools.com/html/movie.mp4",
+  isCoverVideo: true,
+  coverAlt: "An artic view.",
+  link: "https://google.com",
+  width: 700,
+};
+
 export const ArticleMobile = Template.bind({});
 ArticleMobile.args = {
   title: "FireHome: a universal multimedia device that meets the post-covid expectations",

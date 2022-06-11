@@ -17,12 +17,13 @@ export interface CardProps {
 	cover: string;
 	coverAlt: string;
 	link: string;
+	isCoverVideo?: boolean;
 	orientation?: Orientation;
 	width?: number;
 	height?: number;
 }
 
-const Card = ({title, description, cover, coverAlt, link,
+const Card = ({title, description, cover, coverAlt, link, isCoverVideo = false,
 				  orientation = Orientation.ROW, width, height}: CardProps) : (JSX.Element | null) => {
 	if (orientation == Orientation.ROW || orientation == Orientation.ROW_REVERSE) {
 		return(
@@ -30,7 +31,7 @@ const Card = ({title, description, cover, coverAlt, link,
 				className={`${styles.Card} ${orientation == Orientation.ROW ? styles.row : styles.rowReverse}`}
 				style={{width: width, height: height}}
 			>
-				<img className={styles.cardCover} src={cover} alt={coverAlt}/>
+				{renderCover(cover, coverAlt, isCoverVideo)}
 				<div className={styles.cardInfo}>
 					<h1 className={styles.title}>{title}</h1>
 					<p className={styles.description}>{description}</p>
@@ -49,7 +50,7 @@ const Card = ({title, description, cover, coverAlt, link,
 					<p className={styles.description}>{description}</p>
 					<Button kind={Kind.PRIMARY} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
 				</div>
-				<img className={styles.cardCover} src={cover} alt={coverAlt}/>
+				{renderCover(cover, coverAlt, isCoverVideo)}
 			</div>
 		);
 	} else if (orientation == Orientation.COLUMN_REVERSE) {
@@ -58,7 +59,7 @@ const Card = ({title, description, cover, coverAlt, link,
 				className={`${styles.Card} ${styles.columnReverse}`}
 				style={{width: width, height: height}}
 			>
-				<img className={styles.cardCover} src={cover} alt={coverAlt}/>
+				{renderCover(cover, coverAlt, isCoverVideo)}
 				<div className={styles.cardInfo}>
 					<h1 className={styles.title}>{title}</h1>
 					<p className={styles.description}>{description}</p>
@@ -69,5 +70,18 @@ const Card = ({title, description, cover, coverAlt, link,
 	}
 	return null;
 };
+
+const renderCover = (cover, coverAlt, isCoverVideo) => {
+	if (isCoverVideo) {
+		return (
+			<video autoPlay muted loop>
+				<source src={cover} type="video/mp4"/>
+				Your browser does not support the video tag.
+			</video>
+		);
+	} else {
+		return <img className={styles.cardCover} src={cover} alt={coverAlt}/>
+	}
+}
 
 export default Card;
