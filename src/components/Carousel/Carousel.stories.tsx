@@ -20,5 +20,5 @@ CarouselNormal.args = {
 export const CarouselCompact = Template.bind({});
 CarouselCompact.args = {
     width: 400,
-    rightEnhancer: () => <IconButton kind={Kind.PRIMARY} icon={IconType.MINIMIZE} shape={Shape.CIRCLE} animation={{type: "ScaleAnimation", factor: 0.75}}/>,
+    rightEnhancer: () => <IconButton kind={Kind.PRIMARY} icon={IconType.MAXIMIZE} shape={Shape.CIRCLE} animation={{type: "ScaleAnimation", factor: 1.5}}/>,
 };
