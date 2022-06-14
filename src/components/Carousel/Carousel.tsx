@@ -6,8 +6,13 @@ import CarouselButton from "./CarouselButton/CarouselButton";
 import {IconType} from "../Icon/Icon";
 import Tag from "../Tag";
 
+export interface Image {
+    url: string;
+    alt: string;
+}
+
 export interface CarouselProps {
-    urls: string[];
+    urls: Image[];
     compact: boolean;
     width?: number;
     leftEnhancer?: () => ReactNode;
@@ -20,12 +25,7 @@ const Carousel = ({urls = [], compact = false, width, leftEnhancer, rightEnhance
     const carouselAnimation = useSpring({
         transform: "translateX(" + (imageIndex == 0 ? 0 : (imageIndex - 1) * (-100) + (-90)) + "%)"
     });
-    urls = [
-        "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXh8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60",
-        "https://images.unsplash.com/photo-1529119513315-c7c361862fc7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXh8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60",
-        "https://images.unsplash.com/file-1646172372557-6258c0de0873image",
-        "https://images.unsplash.com/photo-1640653410511-bee9946865ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHV4fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60"
-    ]
+
     return (
         <div
             className={styles.Carousel}
@@ -58,7 +58,7 @@ const Carousel = ({urls = [], compact = false, width, leftEnhancer, rightEnhance
                 />
             </div>
             <animated.div style={carouselAnimation} className={styles.imgHolder}>
-                {urls.map((url, i) => <img src={url} key={i}/>)}
+                {urls.map(({url, alt}, i) => <img src={url} key={i} alt={alt}/>)}
             </animated.div>
         </div>
     );
