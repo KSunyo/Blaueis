@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ReactNode} from "react";
 import Button, {Kind} from "../Button/Button";
 import {IconType} from "../Icon/Icon";
 // @ts-ignore
@@ -12,30 +12,25 @@ export enum	Orientation {
 }
 
 export interface CardProps {
-	title: string;
-	description: string;
-	cover: string;
-	coverAlt: string;
-	link: string;
-	isCoverVideo?: boolean;
+	children?: ReactNode;
+	coverMediaUrl?: string;
+	coverMediaAlt?: string;
+	isCoverMediaVideo?: boolean;
 	orientation?: Orientation;
 	width?: number;
 	height?: number;
 }
 
-const Card = ({title, description, cover, coverAlt, link, isCoverVideo = false,
-				  orientation = Orientation.ROW, width, height}: CardProps) : (JSX.Element | null) => {
+const Card = ({children, coverMediaUrl, coverMediaAlt, isCoverMediaVideo = false, orientation = Orientation.ROW, width, height}: CardProps) : (JSX.Element | null) => {
 	if (orientation == Orientation.ROW || orientation == Orientation.ROW_REVERSE) {
 		return(
 			<div
 				className={`${styles.Card} ${orientation == Orientation.ROW ? styles.row : styles.rowReverse}`}
 				style={{width: width, height: height}}
 			>
-				{renderCover(cover, coverAlt, isCoverVideo)}
-				<div className={styles.cardInfo}>
-					<h1 className={styles.title}>{title}</h1>
-					<p className={styles.description}>{description}</p>
-					<Button kind={Kind.PRIMARY} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
+				{coverMediaUrl ? renderCover(coverMediaUrl, coverMediaAlt, isCoverMediaVideo) : null}
+				<div className={`${styles.cardInfo} ${coverMediaUrl ? null : styles.noMedia}`}>
+					{children}
 				</div>
 			</div>
 		);
@@ -45,12 +40,10 @@ const Card = ({title, description, cover, coverAlt, link, isCoverVideo = false,
 				className={`${styles.Card} ${styles.column}`}
 				style={{width: width, height: height}}
 			>
-				<div className={styles.cardInfo}>
-					<h1 className={styles.title}>{title}</h1>
-					<p className={styles.description}>{description}</p>
-					<Button kind={Kind.PRIMARY} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
+				<div className={`${styles.cardInfo} ${coverMediaUrl ? null : styles.noMedia}`}>
+					{children}
 				</div>
-				{renderCover(cover, coverAlt, isCoverVideo)}
+				{coverMediaUrl ? renderCover(coverMediaUrl, coverMediaAlt, isCoverMediaVideo) : null}
 			</div>
 		);
 	} else if (orientation == Orientation.COLUMN_REVERSE) {
@@ -59,11 +52,9 @@ const Card = ({title, description, cover, coverAlt, link, isCoverVideo = false,
 				className={`${styles.Card} ${styles.columnReverse}`}
 				style={{width: width, height: height}}
 			>
-				{renderCover(cover, coverAlt, isCoverVideo)}
-				<div className={styles.cardInfo}>
-					<h1 className={styles.title}>{title}</h1>
-					<p className={styles.description}>{description}</p>
-					<Button kind={Kind.PRIMARY} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
+				{coverMediaUrl ? renderCover(coverMediaUrl, coverMediaAlt, isCoverMediaVideo) : null}
+				<div className={`${styles.cardInfo} ${coverMediaUrl ? null : styles.noMedia}`}>
+					{children}
 				</div>
 			</div>
 		);
@@ -74,7 +65,7 @@ const Card = ({title, description, cover, coverAlt, link, isCoverVideo = false,
 const renderCover = (cover, coverAlt, isCoverVideo) => {
 	if (isCoverVideo) {
 		return (
-			<video autoPlay muted loop>
+			<video className={styles.cardCover} autoPlay muted loop>
 				<source src={cover} type="video/mp4"/>
 				Your browser does not support the video tag.
 			</video>
