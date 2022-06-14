@@ -11,8 +11,14 @@ export enum Kind {
   TERTIARY = "tertiary",
 }
 
+export enum Size {
+  NORMAL = "NORMAL",
+  LARGE = "LARGE"
+}
+
 export interface ButtonProps {
   kind: Kind;
+  size: Size;
   label: string;
   disabled: boolean;
   touch: boolean;
@@ -24,6 +30,7 @@ export interface ButtonProps {
 const Button = ({
                   label,
                   kind = Kind.PRIMARY,
+                  size = Size.NORMAL,
                   disabled = false,
                   touch = false,
                   startIcon,
@@ -44,7 +51,7 @@ const Button = ({
         className={`${styles.Button} ${kindToStyle(kind)} ${disabled ? styles.disabled : ""} ${touch ? styles.touch : ""}`}
     >
       <span className={styles.buttonBackgroundHelper}></span>
-      <span className={styles.buttonContainer}>
+      <span className={`${styles.buttonContainer} ${sizeToStyle(size)}`}>
         <span>{renderIcon(kind, startIcon, animationState)}</span>
         <span>{label}</span>
         <span>{renderIcon(kind, endIcon, animationState)}</span>
@@ -65,6 +72,14 @@ const renderIcon = (kind: Kind, icon: IconType | undefined, animationState: Anim
     );
   } else {
     return null;
+  }
+}
+
+const sizeToStyle = (size: Size) => {
+  if (size == Size.LARGE) {
+    return styles.large;
+  } else if (size == Size.NORMAL) {
+    return styles.normal;
   }
 }
 

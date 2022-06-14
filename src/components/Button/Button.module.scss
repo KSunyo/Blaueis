@@ -15,7 +15,6 @@
 
 .buttonContainer {
   gap: 15px;
-  padding: 13px 18px;
 }
 
 .buttonContainer span {
@@ -90,3 +89,12 @@
 }
 
 .touch {}
+
+.normal {
+  padding: 13px 18px;
+}
+
+.large {
+  padding: 20px 28px;
+  font-size: 20px;
+}
