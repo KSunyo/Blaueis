@@ -4,8 +4,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $grayscale-80;
-  color: $grayscale-00;
   width: fit-content;
   height: fit-content;
   border-radius: 75px;
@@ -18,4 +16,14 @@
 
 .compact {
   font-size: 12px;
+}
+
+.primary {
+  background-color: $grayscale-10;
+  color: $blue-50;
+}
+
+.secondary {
+  background-color: $grayscale-80;
+  color: $grayscale-00;
 }
