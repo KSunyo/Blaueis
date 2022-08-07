@@ -1,5 +1,5 @@
 import React, {ReactNode} from "react";
-import Button, {Kind} from "../Button/Button";
+import Button, {ButtonKind} from "../Button/Button";
 import {IconType} from "../Icon/Icon";
 // @ts-ignore
 import styles from "./Card.module.scss";

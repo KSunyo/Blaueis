@@ -2,7 +2,7 @@ import React, {Fragment} from "react";
 import {ComponentMeta, ComponentStory} from "@storybook/react";
 import Card, {Orientation} from "./Card";
 import Button from "../Button";
-import {Kind, Size} from "../Button/Button";
+import {ButtonKind, ButtonSizes} from "../Button/Button";
 import {IconType} from "../Icon/Icon";
 
 export default {
@@ -30,7 +30,7 @@ Article.args = {
       lineHeight: "150%",
       margin: 0
     }}>During the 21st century, digital devices advanced quicker than ever before. However, in spite of the market being consolidated, expectations have gotten higher than ever.</p>
-    <Button kind={Kind.PRIMARY} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
+    <Button kind={ButtonKind.Primary} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
   </Fragment>
 };
 
@@ -53,7 +53,7 @@ ArticleVideo.args = {
       lineHeight: "150%",
       margin: 0
     }}>During the 21st century, digital devices advanced quicker than ever before. However, in spite of the market being consolidated, expectations have gotten higher than ever.</p>
-    <Button kind={Kind.PRIMARY} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
+    <Button kind={ButtonKind.Primary} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
   </Fragment>
 };
 
@@ -76,7 +76,7 @@ ArticleMobile.args = {
       lineHeight: "150%",
       margin: 0
     }}>During the 21st century, digital devices advanced quicker than ever before. However, in spite of the market being consolidated, expectations have gotten higher than ever.</p>
-    <Button kind={Kind.PRIMARY} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
+    <Button kind={ButtonKind.Primary} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
   </Fragment>
 };
 
@@ -90,6 +90,6 @@ ContactCard.args = {
       margin: 0,
       color: "#2B3233"
     }}>Interested in working together?</h1>
-    <Button kind={Kind.PRIMARY} size={Size.LARGE} label="Get in touch" endIcon={IconType.RIGHT_ARROW}/>
+    <Button kind={ButtonKind.Primary} size={ButtonSizes.Large} label="Get in touch" endIcon={IconType.RIGHT_ARROW}/>
   </div>
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Stack, {Orientation} from "./Stack";
-import Button, {Kind} from "../Button/Button";
+import Button, {ButtonKind} from "../Button/Button";
 
 export default {
   title: "blaueis/Stack",
@@ -24,9 +24,9 @@ export const ButtonGroup = Template.bind({});
 ButtonGroup.args = {
   orientation: Orientation.ROW,
   spacing: 10,
-  children: [(<Button kind={Kind.PRIMARY} label="Button 1"/>),
-    (<Button kind={Kind.PRIMARY} label="Button 2"/>),
-    (<Button kind={Kind.PRIMARY} label="Button 3"/>),
-    (<Button kind={Kind.PRIMARY} label="Button 4"/>),
-    (<Button kind={Kind.PRIMARY} label="Button 5"/>)]
+  children: [(<Button kind={ButtonKind.Primary} label="Button 1"/>),
+    (<Button kind={ButtonKind.Primary} label="Button 2"/>),
+    (<Button kind={ButtonKind.Primary} label="Button 3"/>),
+    (<Button kind={ButtonKind.Primary} label="Button 4"/>),
+    (<Button kind={ButtonKind.Primary} label="Button 5"/>)]
 };
