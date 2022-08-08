@@ -1,67 +1,64 @@
 import React, {ReactNode, MouseEventHandler, useState} from "react";
+import classNames from 'classnames/bind';
 import AnimatedIcon, {AnimationState, Direction} from "../AnimatedIcon/AnimatedIcon";
 import {IconType, IconKind} from "../Icon/Icon";
 // @ts-ignore
 import styles from "./Button.module.scss";
 
-export const KINDS = {
-    Primary: 1,
-    Secondary: 2,
-    Tertiary: 3,
-} as const;
-
 export type ButtonKind = typeof KINDS[keyof typeof KINDS];
-
-export const SIZES = {
-    Normal: 1,
-    Large: 2,
-} as const;
-
 export type ButtonSize = typeof SIZES[keyof typeof SIZES];
+type ButtonProps = { label: string; startIcon?: IconType; endIcon?: IconType; onClick?: MouseEventHandler} & typeof defaultProps;
 
-export interface ButtonProps {
-    kind: ButtonKind;
-    size: ButtonSize;
-    label: string;
-    disabled: boolean;
-    touch: boolean;
-    startIcon?: IconType;
-    endIcon?: IconType;
-    onClick?: MouseEventHandler;
-}
+export const KINDS = {Primary: 1, Secondary: 2, Tertiary: 3} as const;
+export const SIZES = {Normal: 1, Large: 2} as const;
+const defaultProps = Object.freeze({kind: KINDS.Primary, size: SIZES.Normal, disabled: false, touch: false});
 
-const Button = ({
-                    label,
-                    kind = KINDS.Primary,
-                    size = SIZES.Normal,
-                    disabled = false,
-                    touch = false,
-                    startIcon,
-                    endIcon,
-                    onClick = () => {}
-}: ButtonProps) => {
+let cx = classNames.bind(styles);
+
+const Button = (props: ButtonProps) => {
+    const {label, kind, size, disabled, touch, startIcon, endIcon, onClick} = props;
     const [animationState, setAnimationState] = useState(AnimationState.DEFAULT);
     const onClickFunction = (event: React.MouseEvent<Element, MouseEvent>) => {
         if (!disabled && onClick) {
             onClick(event);
         }
     }
+
     return (
         <button
             onClick={onClickFunction}
             onMouseEnter={() => setAnimationState(AnimationState.FORWARD)}
             onMouseLeave={() => setAnimationState(AnimationState.BACKWARD)}
-            className={`${styles.Button} ${kindToStyle(kind)} ${disabled ? styles.disabled : ""} ${touch ? styles.touch : ""}`}
+            className={cx('Button',
+                {
+                    primary: kind == KINDS.Primary,
+                    // @ts-ignore
+                    secondary: kind == KINDS.Secondary,
+                    // @ts-ignore
+                    tertiary: kind == KINDS.Tertiary,
+                },
+                {disabled: disabled},
+                {touch: touch}
+            )}
         >
-            <span className={styles.buttonBackgroundHelper}></span>
-            <span className={`${styles.buttonContainer} ${sizeToStyle(size)}`}>
-        <span>{renderIcon(kind, startIcon, animationState)}</span>
-        <span>{label}</span>
-        <span>{renderIcon(kind, endIcon, animationState)}</span>
-      </span>
+            <span className={cx('buttonBackgroundHelper')}></span>
+            <span className={cx('buttonContainer',
+                {
+                    normal: size == SIZES.Normal,
+                    // @ts-ignore
+                    large: size == SIZES.Large
+                })}
+            >
+                <span>{renderIcon(kind, startIcon, animationState)}</span>
+                <span>{label}</span>
+                <span>{renderIcon(kind, endIcon, animationState)}</span>
+            </span>
         </button>
     );
 };
+
+Button.defaultProps = defaultProps;
+export default Button;
 
 const renderIcon = (kind: ButtonKind, icon: IconType | undefined, animationState: AnimationState) : ReactNode => {
     if (icon != undefined) {
@@ -78,26 +75,6 @@ const renderIcon = (kind: ButtonKind, icon: IconType | undefined, animationState
     }
 }
 
-const sizeToStyle = (size: ButtonSize) => {
-    if (size == SIZES.Large) {
-        return styles.large;
-    } else if (size == SIZES.Normal) {
-        return styles.normal;
-    }
-}
-
-const kindToStyle = (kind: ButtonKind) => {
-    if (kind == KINDS.Primary) {
-        return styles.primary;
-    } else if (kind == KINDS.Secondary) {
-        return styles.secondary;
-    } else if (kind == KINDS.Tertiary) {
-        return styles.tertiary;
-    } else {
-        return null;
-    }
-}
-
 const kindToIconKind = (kind: ButtonKind) : IconKind => {
     if (kind == KINDS.Primary || kind == KINDS.Secondary) {
         return IconKind.LIGHT;
@@ -107,5 +84,3 @@ const kindToIconKind = (kind: ButtonKind) : IconKind => {
         return IconKind.LIGHT;
     }
 }
-
-export default Button;

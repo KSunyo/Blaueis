@@ -1,10 +1,10 @@
 import React from "react";
 import {render} from "@testing-library/react";
 
-import Button, {ButtonKind} from "./Button";
+import Button from "./Button";
 
 describe("Button", () => {
   test("renders the Button component", () => {
-    render(<Button label="Hello world!"  kind={ButtonKind.Primary}/>);
+    render(<Button label="Hello world!"/>);
   });
 });

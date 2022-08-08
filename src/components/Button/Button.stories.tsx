@@ -18,7 +18,7 @@ export default {
             },
             options: Object.keys(KINDS),
             mapping: KINDS,
-            defaultValue: 1
+            defaultValue: KINDS.Primary,
         },
         size: {
             control: {
@@ -30,7 +30,13 @@ export default {
             },
             options: Object.keys(SIZES),
             mapping: SIZES,
-            defaultValue: 1
+            defaultValue: SIZES.Normal,
+        },
+        disabled: {
+          defaultValue: false,
+        },
+        touch: {
+          defaultValue: false,
         },
         startIcon: {
             control: {type: "select"},
