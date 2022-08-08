@@ -1,8 +1,8 @@
 import React, {Fragment} from "react";
 import {ComponentMeta, ComponentStory} from "@storybook/react";
-import Card, {Orientation} from "./Card";
+import Card, { ORIENTATIONS } from "./Card";
 import Button from "../Button";
-import {ButtonKind, ButtonSizes} from "../Button/Button";
+import {KINDS, SIZES} from "../Button/Button";
 import {IconType} from "../Icon/Icon";
 
 export default {
@@ -30,7 +30,7 @@ Article.args = {
       lineHeight: "150%",
       margin: 0
     }}>During the 21st century, digital devices advanced quicker than ever before. However, in spite of the market being consolidated, expectations have gotten higher than ever.</p>
-    <Button kind={ButtonKind.Primary} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
+    <Button kind={KINDS.Primary} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
   </Fragment>
 };
 
@@ -53,7 +53,7 @@ ArticleVideo.args = {
       lineHeight: "150%",
       margin: 0
     }}>During the 21st century, digital devices advanced quicker than ever before. However, in spite of the market being consolidated, expectations have gotten higher than ever.</p>
-    <Button kind={ButtonKind.Primary} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
+    <Button kind={KINDS.Primary} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
   </Fragment>
 };
 
@@ -62,7 +62,7 @@ ArticleMobile.args = {
   coverMediaUrl: "https://firebasestorage.googleapis.com/v0/b/freelance-mail.appspot.com/o/casestudycover.png?alt=media&token=051881ca-db3a-42fe-97cd-a813a9754a8c",
   coverMediaAlt: "An Imac computer displaying a webshop.",
   width: 335,
-  orientation: Orientation.COLUMN,
+  orientation: ORIENTATIONS.Column,
   children: <Fragment>
     <h1 style={{
       fontSize: "22px",
@@ -76,7 +76,7 @@ ArticleMobile.args = {
       lineHeight: "150%",
       margin: 0
     }}>During the 21st century, digital devices advanced quicker than ever before. However, in spite of the market being consolidated, expectations have gotten higher than ever.</p>
-    <Button kind={ButtonKind.Primary} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
+    <Button kind={KINDS.Primary} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
   </Fragment>
 };
 
@@ -90,6 +90,6 @@ ContactCard.args = {
       margin: 0,
       color: "#2B3233"
     }}>Interested in working together?</h1>
-    <Button kind={ButtonKind.Primary} size={ButtonSizes.Large} label="Get in touch" endIcon={IconType.RIGHT_ARROW}/>
+    <Button kind={KINDS.Primary} size={SIZES.Large} label="Get in touch" endIcon={IconType.RIGHT_ARROW}/>
   </div>
 };

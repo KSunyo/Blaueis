@@ -5,19 +5,20 @@ import {IconType, IconKind} from "../Icon/Icon";
 // @ts-ignore
 import styles from "./Button.module.scss";
 
-export type ButtonKind = typeof KINDS[keyof typeof KINDS];
-export type ButtonSize = typeof SIZES[keyof typeof SIZES];
-type ButtonProps = { label: string; startIcon?: IconType; endIcon?: IconType; onClick?: MouseEventHandler} & typeof defaultProps;
+type ButtonKind = typeof KINDS[ keyof typeof KINDS ];
+type ButtonSize = typeof SIZES[ keyof typeof SIZES ];
+type ButtonProps = { label: string; kind?: ButtonKind, size?: ButtonSize, disabled?: boolean, touch?: boolean,
+    startIcon?: IconType; endIcon?: IconType; onClick?: MouseEventHandler } & typeof defaultProps;
 
-export const KINDS = {Primary: 1, Secondary: 2, Tertiary: 3} as const;
-export const SIZES = {Normal: 1, Large: 2} as const;
-const defaultProps = Object.freeze({kind: KINDS.Primary, size: SIZES.Normal, disabled: false, touch: false});
+export const KINDS = { Primary: 1, Secondary: 2, Tertiary: 3 } as const;
+export const SIZES = { Normal: 1, Large: 2 } as const;
+const defaultProps = { kind: KINDS.Primary, size: SIZES.Normal, disabled: false, touch: false };
 
 let cx = classNames.bind(styles);
 
 const Button = (props: ButtonProps) => {
-    const {label, kind, size, disabled, touch, startIcon, endIcon, onClick} = props;
-    const [animationState, setAnimationState] = useState(AnimationState.DEFAULT);
+    const { label, kind, size, disabled, touch, startIcon, endIcon, onClick } = props;
+    const [ animationState, setAnimationState ] = useState(AnimationState.DEFAULT);
     const onClickFunction = (event: React.MouseEvent<Element, MouseEvent>) => {
         if (!disabled && onClick) {
             onClick(event);
@@ -73,7 +74,7 @@ const renderIcon = (kind: ButtonKind, icon: IconType | undefined, animationState
     } else {
         return null;
     }
-}
+};
 
 const kindToIconKind = (kind: ButtonKind) : IconKind => {
     if (kind == KINDS.Primary || kind == KINDS.Secondary) {
@@ -83,4 +84,4 @@ const kindToIconKind = (kind: ButtonKind) : IconKind => {
     } else {
         return IconKind.LIGHT;
     }
-}
+};
