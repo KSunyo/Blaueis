@@ -1,7 +1,7 @@
 import React from "react";
-import {ComponentMeta, ComponentStory} from "@storybook/react";
-import Button, {ButtonKind, ButtonSize, KINDS, SIZES} from "./Button";
-import {IconType} from "../Icon/Icon"
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import Button, { KINDS, SIZES } from "./Button";
+import { IconType } from "../Icon/Icon"
 
 export default {
     title: "blaueis/Button",
