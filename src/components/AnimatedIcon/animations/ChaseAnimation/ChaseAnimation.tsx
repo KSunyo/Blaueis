@@ -1,6 +1,7 @@
 import React from "react";
 import Icon, {IconKind, IconType} from "../../../Icon/Icon";
 import {AnimationState, Direction} from "../../AnimatedIcon";
+// @ts-ignore
 import styles from "./ChaseAnimation.module.scss";
 import {animated, useSpring} from "react-spring";
 
