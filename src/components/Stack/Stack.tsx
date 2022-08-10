@@ -1,39 +1,36 @@
 import React from "react";
+import classNames from 'classnames/bind';
 // @ts-ignore
 import styles from "./Stack.module.scss";
 
-export enum	Orientation {
-	ROW = "row",
-	ROW_REVERSE = "row-reverse",
-	COLUMN = "column",
-	COLUMN_REVERSE = "column-reverse"
-}
+type Orientation = typeof ORIENTATIONS[ keyof typeof ORIENTATIONS ]
+type StackProps = { orientation: Orientation, spacing: number, children?: React.ReactNode[] } & typeof defaultProps;
 
-export interface StackProps {
-	orientation: Orientation;
-	spacing: number;
-	children?: React.ReactNode[];
-}
+export const ORIENTATIONS = {Row: 1, RowReverse: 2, Column: 3, ColumnReverse: 4} as const;
+const defaultProps = Object.freeze({ orientation: ORIENTATIONS.Row, spacing: 0});
+
+let cx = classNames.bind(styles);
 
 const Stack = (props: StackProps) => {
+	const { orientation, spacing, children } = props;
+
 	return (
-		<div className={`${styles.Stack} ${orientationToStyle(props.orientation)}`} style={{gap: props.spacing}}>
-			{props.children}
+		<div
+			style={{gap: spacing}}
+			className={cx('Stack', {
+				row: orientation == ORIENTATIONS.Row,
+				// @ts-ignore
+				rowReverse: orientation == ORIENTATIONS.RowReverse,
+				// @ts-ignore
+				column: orientation == ORIENTATIONS.Column,
+				// @ts-ignore
+				columnReverse: orientation == ORIENTATIONS.ColumnReverse
+			})}
+		>
+			{children}
 		</div>
 	);
 };
 
-const orientationToStyle = (orientation : Orientation) => {
-	if (orientation == Orientation.ROW) {
-		return styles.row;
-	} else if (orientation == Orientation.ROW_REVERSE) {
-		return styles.rowReverse;
-	} else if (orientation == Orientation.COLUMN) {
-		return styles.column;
-	} else if (orientation == Orientation.COLUMN_REVERSE) {
-		return styles.columnReverse;
-	}
-	return null;
-}
-
+Stack.defaultProps = defaultProps;
 export default Stack;
