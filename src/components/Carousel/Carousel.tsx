@@ -1,37 +1,34 @@
 import React, {ReactNode, useState} from "react";
-// @ts-ignore
-import styles from "./Carousel.module.scss";
+import classNames from 'classnames/bind';
 import {animated, useSpring} from 'react-spring';
 import CarouselButton from "./CarouselButton/CarouselButton";
 import {IconType} from "../Icon/Icon";
 import Tag from "../Tag";
+// @ts-ignore
+import styles from "./Carousel.module.scss";
+import {TagType} from "../Tag/Tag";
 
-export interface Image {
-    url: string;
-    alt: string;
-}
+export type Image = { url: string, alt: string };
+type CarouselProps = { urls: Image[], compact: boolean, width?: number, leftEnhancer?: () => ReactNode,
+    rightEnhancer?: () => ReactNode } & typeof defaultProps;
 
-export interface CarouselProps {
-    urls: Image[];
-    compact: boolean;
-    width?: number;
-    leftEnhancer?: () => ReactNode;
-    rightEnhancer?: () => ReactNode;
-}
+const defaultProps = Object.freeze({urls: [], compact: false});
 
-const Carousel = ({urls = [], compact = false, width, leftEnhancer, rightEnhancer}: CarouselProps) => {
+let cx = classNames.bind(styles);
 
-    const [imageIndex, setImageIndex] = useState(0);
+const Carousel = (props: CarouselProps) => {
+    const { urls, compact, width, leftEnhancer, rightEnhancer } = props;
+    const [ imageIndex, setImageIndex ] = useState(0);
     const carouselAnimation = useSpring({
-        transform: "translateX(" + (imageIndex == 0 ? 0 : (imageIndex - 1) * (-100) + (-90)) + "%)"
+        transform: 'translateX(' + (imageIndex == 0 ? 0 : (imageIndex - 1) * (-100) + (-90)) + '%)'
     });
 
     return (
         <div
-            className={styles.Carousel}
+            className={cx('Carousel')}
             style={{width: (width != undefined) ? width + "px" : "auto"}}
         >
-            <div className={styles.upperControls}>
+            <div className={cx('upperControls')}>
                 <span>
                     {leftEnhancer ? leftEnhancer() : null}
                 </span>
@@ -39,7 +36,7 @@ const Carousel = ({urls = [], compact = false, width, leftEnhancer, rightEnhance
                     {rightEnhancer ? rightEnhancer() : null}
                 </span>
             </div>
-            <div className={styles.lowerControls}>
+            <div className={cx('lowerControls')}>
                 <CarouselButton
                     label="Previous"
                     disabled={imageIndex == 0}
@@ -48,7 +45,7 @@ const Carousel = ({urls = [], compact = false, width, leftEnhancer, rightEnhance
                 />
                 <Tag
                     label={`${imageIndex + 1}/${urls.length}`}
-                    compact={compact}
+                    type={compact ? TagType.COMPACT : TagType.DEFAULT}
                 />
                 <CarouselButton
                     label="Next"
@@ -57,11 +54,12 @@ const Carousel = ({urls = [], compact = false, width, leftEnhancer, rightEnhance
                     onClick={()=>setImageIndex(imageIndex + 1)}
                 />
             </div>
-            <animated.div style={carouselAnimation} className={styles.imgHolder}>
+            <animated.div style={carouselAnimation} className={cx('imgHolder')}>
                 {urls.map(({url, alt}, i) => <img src={url} key={i} alt={alt}/>)}
             </animated.div>
         </div>
     );
 };
 
+Carousel.defaultProps = defaultProps;
 export default Carousel;

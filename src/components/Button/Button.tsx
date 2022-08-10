@@ -12,7 +12,7 @@ type ButtonProps = { label: string; kind?: ButtonKind, size?: ButtonSize, disabl
 
 export const KINDS = { Primary: 1, Secondary: 2, Tertiary: 3 } as const;
 export const SIZES = { Normal: 1, Large: 2 } as const;
-const defaultProps = { kind: KINDS.Primary, size: SIZES.Normal, disabled: false, touch: false };
+const defaultProps = Object.freeze({ kind: KINDS.Primary, size: SIZES.Normal, disabled: false, touch: false });
 
 let cx = classNames.bind(styles);
 
