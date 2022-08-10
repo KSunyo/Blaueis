@@ -94,6 +94,7 @@ ArticleMobile.args = {
     coverMediaUrl: "https://firebasestorage.googleapis.com/v0/b/freelance-mail.appspot.com/o/casestudycover.png?alt=media&token=051881ca-db3a-42fe-97cd-a813a9754a8c",
     coverMediaAlt: "An Imac computer displaying a webshop.",
     width: 335,
+    //@ts-ignore
     orientation: ORIENTATIONS.Column,
     children: <Fragment>
         <h1 style={{
@@ -122,6 +123,12 @@ ContactCard.args = {
             margin: 0,
             color: "#2B3233"
         }}>Interested in working together?</h1>
-        <Button kind={KINDS.Primary} size={SIZES.Large} label="Get in touch" endIcon={IconType.RIGHT_ARROW}/>
+        <Button
+            kind={KINDS.Primary}
+            //@ts-ignore
+            size={SIZES.Large}
+            label="Get in touch"
+            endIcon={IconType.RIGHT_ARROW}
+        />
     </div>
 };
