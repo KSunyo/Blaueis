@@ -1,41 +1,39 @@
 import React from "react";
+import classNames from 'classnames/bind';
 //@ts-ignore
 import styles from "./Tag.module.scss";
 
-export enum TagType {
-    DEFAULT = "DEFAULT",
-    COMPACT = "COMPACT"
-}
+type TagType = typeof TYPES[ keyof typeof TYPES ];
+type TagKind = typeof KINDS[ keyof typeof KINDS ];
+type TagProps = { label: string, type?: TagType, kind?: TagKind } & typeof defaultProps;
 
-export enum TagKind {
-    PRIMARY = "PRIMARY",
-    SECONDARY = "SECONDARY"
-}
+export const TYPES = { Default: 1, Compact: 2 } as const;
+export const KINDS = { Primary: 1, Secondary: 2 } as const;
+const defaultProps = Object.freeze({ type: TYPES.Default, kind: KINDS.Primary });
 
-export interface TagProps {
-    label: string;
-    type?: TagType;
-    kind?: TagKind;
-}
+let cx = classNames.bind(styles);
 
-const Tag = ({label, type = TagType.DEFAULT, kind = TagKind.PRIMARY}: TagProps) => {
+const Tag = (props: TagProps) => {
+    const { label, type, kind } = props;
 
     return (
         <div
-            className={`${styles.Tag} ${type == TagType.DEFAULT ? styles.default : styles.compact} ${kindToStyle(kind)}`}
+            className={cx('Tag',
+                {
+                    default: type == TYPES.Default,
+                    //@ts-ignore
+                    compact: type == TYPES.Compact
+                },
+                {
+                    primary: kind == KINDS.Primary,
+                    //@ts-ignore
+                    secondary: kind == KINDS.Secondary
+                })}
         >
             <span>{label}</span>
         </div>
     );
 }
 
-const kindToStyle = (kind: TagKind | undefined) => {
-    if (kind == TagKind.PRIMARY) {
-        return styles.primary;
-    } else if (kind == TagKind.SECONDARY) {
-        return styles.secondary;
-    }
-    return "";
-}
-
+Tag.defaultProps = defaultProps;
 export default Tag;
