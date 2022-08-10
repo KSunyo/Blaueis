@@ -19,11 +19,7 @@ let cx = classNames.bind(styles);
 const Button = (props: ButtonProps) => {
     const { label, kind, size, disabled, touch, startIcon, endIcon, onClick } = props;
     const [ animationState, setAnimationState ] = useState(AnimationState.DEFAULT);
-    const onClickFunction = (event: React.MouseEvent<Element, MouseEvent>) => {
-        if (!disabled && onClick) {
-            onClick(event);
-        }
-    }
+    const onClickFunction = (event: React.MouseEvent<Element, MouseEvent>) => {if(!disabled && onClick) onClick(event);}
 
     return (
         <button

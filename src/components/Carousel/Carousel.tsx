@@ -4,12 +4,12 @@ import {animated, useSpring} from 'react-spring';
 import CarouselButton from "./CarouselButton/CarouselButton";
 import {IconType} from "../Icon/Icon";
 import Tag from "../Tag";
+import {TagType} from "../Tag/Tag";
 // @ts-ignore
 import styles from "./Carousel.module.scss";
-import {TagType} from "../Tag/Tag";
 
 export type Image = { url: string, alt: string };
-type CarouselProps = { urls: Image[], compact: boolean, width?: number, leftEnhancer?: () => ReactNode,
+type CarouselProps = { urls: { url: string, alt: string }[], compact: boolean, width?: number, leftEnhancer?: () => ReactNode,
     rightEnhancer?: () => ReactNode } & typeof defaultProps;
 
 const defaultProps = Object.freeze({urls: [], compact: false});
@@ -40,6 +40,7 @@ const Carousel = (props: CarouselProps) => {
                 <CarouselButton
                     label="Previous"
                     disabled={imageIndex == 0}
+                    touch={compact}
                     startIcon={IconType.LEFT_ARROW}
                     onClick={()=>setImageIndex(imageIndex - 1)}
                 />
@@ -50,12 +51,13 @@ const Carousel = (props: CarouselProps) => {
                 <CarouselButton
                     label="Next"
                     disabled={imageIndex == urls.length - 1}
+                    touch={compact}
                     endIcon={IconType.RIGHT_ARROW}
                     onClick={()=>setImageIndex(imageIndex + 1)}
                 />
             </div>
             <animated.div style={carouselAnimation} className={cx('imgHolder')}>
-                {urls.map(({url, alt}, i) => <img src={url} key={i} alt={alt}/>)}
+                { urls.map(({url, alt}, i) => <img src={url} key={i} alt={alt}/>) }
             </animated.div>
         </div>
     );

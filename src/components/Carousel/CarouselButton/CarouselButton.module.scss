@@ -13,19 +13,19 @@
   color: $grayscale-80;
 }
 
-.CarouselButton:not(.disabled, .touch):hover {
+.CarouselButton:not(.isDisabled, .isTouch):hover {
   background-color: $blue-50;
   span {
     color: $grayscale-00;
   }
 }
 
-.CarouselButton:not(.disabled):active {
+.CarouselButton:not(.isDisabled):active {
   background-color: $blue-60;
 }
 
-.disabled {
+.isDisabled {
   opacity: 50%;
 }
 
-.touch {}
+.isTouch {}

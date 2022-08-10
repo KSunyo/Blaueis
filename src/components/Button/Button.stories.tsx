@@ -67,5 +67,5 @@ export const ClickMe = Template.bind({});
 ClickMe.args = {
     label: "Click me!",
     kind: KINDS.Primary,
-    size: SIZES.Normal,
+    size: SIZES.Normal
 };

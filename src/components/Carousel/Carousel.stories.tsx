@@ -34,12 +34,14 @@ const urls = [
 export const CarouselNormal = Template.bind({});
 CarouselNormal.args = {
     width: 500,
+    // @ts-ignore
     urls: urls
 };
 
 export const CarouselCompact = Template.bind({});
 CarouselCompact.args = {
     width: 400,
+    // @ts-ignore
     urls: urls,
     rightEnhancer: () => <IconButton kind={Kind.PRIMARY} icon={IconType.MAXIMIZE} shape={Shape.CIRCLE} animation={{type: "ScaleAnimation", factor: 1.5}}/>,
 };
