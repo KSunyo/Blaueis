@@ -7,6 +7,15 @@ import {IconType} from "../Icon/Icon";
 
 export default {
     title: "blaueis/Carousel",
+    argTypes: {
+        width: {
+            control: { type: 'range', min: 0, max: 1000, step: 10 },
+            defaultValue: 0
+        },
+        compact: {
+            defaultValue: false,
+        }
+    },
     component: Carousel,
 } as ComponentMeta<typeof Carousel>;
 
@@ -43,5 +52,6 @@ CarouselCompact.args = {
     width: 400,
     // @ts-ignore
     urls: urls,
+    compact: true,
     rightEnhancer: () => <IconButton kind={Kind.PRIMARY} icon={IconType.MAXIMIZE} shape={Shape.CIRCLE} animation={{type: "ScaleAnimation", factor: 1.5}}/>,
 };
