@@ -1,7 +1,7 @@
 import React, {ReactNode, MouseEventHandler, useState} from "react";
 import classNames from 'classnames/bind';
-import AnimatedIcon, {AnimationState, Direction} from "../AnimatedIcon/AnimatedIcon";
-import {IconType, IconKind} from "../Icon/Icon";
+import AnimatedIcon, { AnimationState, Direction } from "../AnimatedIcon/AnimatedIcon";
+import {FIGURES, IconType, KINDS as ICON_KINDS} from "../Icon/Icon";
 // @ts-ignore
 import styles from "./Button.module.scss";
 
@@ -11,7 +11,7 @@ type ButtonProps = { label: string; kind?: ButtonKind, size?: ButtonSize, disabl
     startIcon?: IconType; endIcon?: IconType; onClick?: MouseEventHandler } & typeof defaultProps;
 
 export const KINDS = { Primary: 1, Secondary: 2, Tertiary: 3 } as const;
-export const SIZES = { Normal: 1, Large: 2 } as const;
+export const SIZES = { Small: 1, Normal: 2, Large: 3 } as const;
 const defaultProps = Object.freeze({ kind: KINDS.Primary, size: SIZES.Normal, disabled: false, touch: false });
 
 let cx = classNames.bind(styles);
@@ -74,10 +74,10 @@ const renderIcon = (kind: ButtonKind, icon: IconType | undefined, animationState
 
 const kindToIconKind = (kind: ButtonKind) : IconKind => {
     if (kind == KINDS.Primary || kind == KINDS.Secondary) {
-        return IconKind.LIGHT;
+        return ICON_KINDS.Primary;
     } else if (kind == KINDS.Tertiary) {
-        return IconKind.DARK;
+        return ICON_KINDS.Secondary;
     } else {
-        return IconKind.LIGHT;
+        return ICON_KINDS.Primary;
     }
 };

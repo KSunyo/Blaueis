@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Button, { KINDS, SIZES } from "./Button";
-import { IconType } from "../Icon/Icon"
+import {FIGURES, IconType} from "../Icon/Icon"
 
 export default {
     title: "blaueis/Button",
@@ -24,8 +24,9 @@ export default {
             control: {
                 type: "select",
                 labels: {
-                    1: "Normal",
-                    2: "Large",
+                    1: "Small",
+                    2: "Normal",
+                    3: "Large",
                 },
             },
             options: Object.keys(SIZES),
@@ -40,22 +41,20 @@ export default {
         },
         startIcon: {
             control: {type: "select"},
-            options: ["NONE", "RIGHT_ARROW", "DOWN_ARROW", "UP_RIGHT_ARROW"],
+            options: ["NONE", "RIGHT_ARROW", "DOWN_ARROW"],
             mapping: {
                 NONE: null,
-                RIGHT_ARROW: IconType.RIGHT_ARROW,
-                DOWN_ARROW: IconType.DOWN_ARROW,
-                UP_RIGHT_ARROW: IconType.UP_RIGHT_ARROW
+                RIGHT_ARROW: FIGURES.ArrowRight,
+                DOWN_ARROW: FIGURES.ArrowDown,
             }
         },
         endIcon: {
             control: {type: "select"},
-            options: ["NONE", "RIGHT_ARROW", "DOWN_ARROW", "UP_RIGHT_ARROW"],
+            options: ["NONE", "RIGHT_ARROW", "DOWN_ARROW"],
             mapping: {
                 NONE: null,
-                RIGHT_ARROW: IconType.RIGHT_ARROW,
-                DOWN_ARROW: IconType.DOWN_ARROW,
-                UP_RIGHT_ARROW: IconType.UP_RIGHT_ARROW
+                RIGHT_ARROW: FIGURES.ArrowRight,
+                DOWN_ARROW: FIGURES.ArrowDown,
             }
         }
     }

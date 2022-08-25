@@ -1,6 +1,6 @@
 import React, {MouseEventHandler, useState} from "react";
 import classNames from 'classnames/bind';
-import Icon, {IconKind, IconType} from "../../Icon/Icon";
+import Icon, {KINDS, IconType} from "../../Icon/Icon";
 //@ts-ignore
 import styles from "./CarouselButton.module.scss";
 
@@ -35,12 +35,12 @@ export default CarouselButton;
 
 const getIconKind = (hover: boolean, disabled: boolean | undefined, touch: boolean | undefined) => {
     if (disabled || touch) {
-        return IconKind.DARK;
+        return KINDS.Secondary;
     } else {
         if (hover) {
-            return IconKind.LIGHT;
+            return KINDS.Primary;
         } else {
-            return IconKind.DARK;
+            return KINDS.Secondary;
         }
     }
 }

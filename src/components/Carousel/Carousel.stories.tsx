@@ -3,7 +3,7 @@ import {ComponentMeta, ComponentStory} from "@storybook/react";
 import Carousel from "./Carousel";
 import IconButton from "../IconButton";
 import {Kind, Shape} from "../IconButton/IconButton";
-import {IconType} from "../Icon/Icon";
+import {FIGURES, IconType} from "../Icon/Icon";
 
 export default {
     title: "blaueis/Carousel",
@@ -53,5 +53,5 @@ CarouselCompact.args = {
     // @ts-ignore
     urls: urls,
     compact: true,
-    rightEnhancer: () => <IconButton kind={Kind.PRIMARY} icon={IconType.MAXIMIZE} shape={Shape.CIRCLE} animation={{type: "ScaleAnimation", factor: 1.5}}/>,
+    rightEnhancer: () => <IconButton kind={Kind.PRIMARY} icon={FIGURES.Minimize} shape={Shape.CIRCLE} animation={{type: "ScaleAnimation", factor: 1.5}}/>,
 };

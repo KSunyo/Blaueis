@@ -2,7 +2,7 @@ import React, {ReactNode, useState} from "react";
 import classNames from 'classnames/bind';
 import {animated, useSpring} from 'react-spring';
 import CarouselButton from "./CarouselButton/CarouselButton";
-import {IconType} from "../Icon/Icon";
+import {FIGURES, IconType} from "../Icon/Icon";
 import Tag, { TYPES } from "../Tag/Tag";
 // @ts-ignore
 import styles from "./Carousel.module.scss";
@@ -40,7 +40,7 @@ const Carousel = (props: CarouselProps) => {
                     label="Previous"
                     disabled={imageIndex == 0}
                     touch={compact}
-                    startIcon={IconType.LEFT_ARROW}
+                    startIcon={FIGURES.ArrowLeft}
                     onClick={()=>setImageIndex(imageIndex - 1)}
                 />
                 <Tag
@@ -51,7 +51,7 @@ const Carousel = (props: CarouselProps) => {
                     label="Next"
                     disabled={imageIndex == urls.length - 1}
                     touch={compact}
-                    endIcon={IconType.RIGHT_ARROW}
+                    endIcon={FIGURES.ArrowRight}
                     onClick={()=>setImageIndex(imageIndex + 1)}
                 />
             </div>

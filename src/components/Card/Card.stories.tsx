@@ -3,7 +3,7 @@ import {ComponentMeta, ComponentStory} from "@storybook/react";
 import Card, { ORIENTATIONS } from "./Card";
 import Button from "../Button";
 import {KINDS, SIZES} from "../Button/Button";
-import {IconType} from "../Icon/Icon";
+import {FIGURES, IconType} from "../Icon/Icon";
 
 export default {
     title: "blaueis/Card",
@@ -62,7 +62,7 @@ Article.args = {
             lineHeight: "150%",
             margin: 0
         }}>During the 21st century, digital devices advanced quicker than ever before. However, in spite of the market being consolidated, expectations have gotten higher than ever.</p>
-        <Button kind={KINDS.Primary} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
+        <Button kind={KINDS.Primary} label="Read more" endIcon={FIGURES.ArrowRight}/>
     </Fragment>
 };
 
@@ -85,7 +85,7 @@ ArticleVideo.args = {
             lineHeight: "150%",
             margin: 0
         }}>During the 21st century, digital devices advanced quicker than ever before. However, in spite of the market being consolidated, expectations have gotten higher than ever.</p>
-        <Button kind={KINDS.Primary} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
+        <Button kind={KINDS.Primary} label="Read more" endIcon={FIGURES.ArrowRight}/>
     </Fragment>
 };
 
@@ -109,7 +109,7 @@ ArticleMobile.args = {
             lineHeight: "150%",
             margin: 0
         }}>During the 21st century, digital devices advanced quicker than ever before. However, in spite of the market being consolidated, expectations have gotten higher than ever.</p>
-        <Button kind={KINDS.Primary} label="Read more" endIcon={IconType.RIGHT_ARROW}/>
+        <Button kind={KINDS.Primary} label="Read more" endIcon={FIGURES.ArrowRight}/>
     </Fragment>
 };
 
@@ -128,7 +128,7 @@ ContactCard.args = {
             //@ts-ignore
             size={SIZES.Large}
             label="Get in touch"
-            endIcon={IconType.RIGHT_ARROW}
+            endIcon={FIGURES.ArrowRight}
         />
     </div>
 };

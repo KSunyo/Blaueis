@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Icon, {IconKind, IconType} from "../Icon/Icon";
+import Icon, {IconKind, IconType, KINDS} from "../Icon/Icon";
 // @ts-ignore
 import styles from "./IconButton.module.scss";
 import AnimatedIcon, {
@@ -45,7 +45,7 @@ const IconButton = ({kind, icon, size = Size.SMALL, shape = Shape.SQUARE, animat
 			>
 				<Icon
 					type={icon}
-					kind={hover ? IconKind.LIGHT : IconKind.DARK}
+					kind={hover ? KINDS.Primary : KINDS.Secondary}
 				/>
 			</button>
 		);
@@ -58,7 +58,7 @@ const IconButton = ({kind, icon, size = Size.SMALL, shape = Shape.SQUARE, animat
 			>
 				<AnimatedIcon
 					type={icon}
-					kind={hover ? IconKind.LIGHT : IconKind.DARK}
+					kind={hover ? KINDS.Primary : KINDS.Secondary}
 					state={getAnimationState(hover)}
 					animation={animation}/>
 			</button>
