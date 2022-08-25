@@ -1,20 +1,5 @@
-import React, {ReactNode} from "react";
-
-const UpArrowLight = require("./icons/arrow-up-light.svg") as string;
-const UpArrowDark = require("./icons/arrow-up-dark.svg") as string;
-const RightArrowLight = require("./icons/arrow-right-light.svg") as string;
-const RightArrowDark = require("./icons/arrow-right-dark.svg") as string;
-const LeftArrowLight = require("./icons/arrow-left-light.svg") as string;
-const LeftArrowDark = require("./icons/arrow-left-dark.svg") as string;
-const DownArrowLight = require("./icons/arrow-down-light.svg") as string;
-const DownArrowDark = require("./icons/arrow-down-dark.svg") as string;
-const UpRightArrowLight = require("./icons/arrow-up-right-light.svg") as string;
-const UpRightArrowDark = require("./icons/arrow-up-right-dark.svg") as string;
-const MaximizeLight = require("./icons/maximize-light.svg") as string;
-const MaximizeDark = require("./icons/maximize-dark.svg") as string;
-const MinimizeLight = require("./icons/minimize-light.svg") as string;
-const MinimizeDark = require("./icons/minimize-dark.svg") as string;
-
+import React from "react";
+import { ArrowUp, ArrowRight, ArrowLeft, ArrowDown, Maximize, Minimize} from "react-feather";
 
 export enum IconType {
 	UP_ARROW = "UP_ARROW",
@@ -37,49 +22,24 @@ export interface IconProps {
 	alt?: string
 }
 
+const colorMap = new Map<IconKind, string>([
+	[IconKind.LIGHT, "#FFFFFF"],
+	[IconKind.DARK, "#1A2026"]
+]);
+
 const Icon = ({type, kind, alt = ""}: IconProps) : (JSX.Element | null) => {
-	if (type == IconType.RIGHT_ARROW) {
-		if (kind == IconKind.LIGHT) {
-			return <img src={RightArrowLight} alt={alt}/>;
-		} else if (kind == IconKind.DARK) {
-			return <img src={RightArrowDark} alt={alt}/>;
-		}
-	} else if (type == IconType.DOWN_ARROW) {
-		if (kind == IconKind.LIGHT) {
-			return <img src={DownArrowLight} alt={alt}/>;
-		} else if (kind == IconKind.DARK) {
-			return <img src={DownArrowDark} alt={alt}/>;
-		}
-	} else if (type == IconType.UP_RIGHT_ARROW) {
-		if (kind == IconKind.LIGHT) {
-			return <img src={UpRightArrowLight} alt={alt}/>;
-		} else if (kind == IconKind.DARK) {
-			return <img src={UpRightArrowDark} alt={alt}/>;
-		}
-	} else if (type == IconType.UP_ARROW) {
-		if (kind == IconKind.LIGHT) {
-			return <img src={UpArrowLight} alt={alt}/>;
-		} else if (kind == IconKind.DARK) {
-			return <img src={UpArrowDark} alt={alt}/>;
-		}
+	if (type == IconType.UP_ARROW) {
+		return <ArrowUp color={colorMap.get(kind)} alt={alt}/>
+	} else if (type == IconType.RIGHT_ARROW) {
+		return <ArrowRight color={colorMap.get(kind)} alt={alt}/>
 	} else if (type == IconType.LEFT_ARROW) {
-		if (kind == IconKind.LIGHT) {
-			return <img src={LeftArrowLight} alt={alt}/>;
-		} else if (kind == IconKind.DARK) {
-			return <img src={LeftArrowDark} alt={alt}/>;
-		}
+		return <ArrowLeft color={colorMap.get(kind)} alt={alt}/>
+	} else if (type == IconType.DOWN_ARROW) {
+		return <ArrowDown color={colorMap.get(kind)} alt={alt}/>
 	} else if (type == IconType.MAXIMIZE) {
-		if (kind == IconKind.LIGHT) {
-			return <img src={MaximizeLight} alt={alt}/>;
-		} else if (kind == IconKind.DARK) {
-			return <img src={MaximizeDark} alt={alt}/>;
-		}
+		return <Maximize color={colorMap.get(kind)} alt={alt}/>
 	} else if (type == IconType.MINIMIZE) {
-		if (kind == IconKind.LIGHT) {
-			return <img src={MinimizeLight} alt={alt}/>;
-		} else if (kind == IconKind.DARK) {
-			return <img src={MinimizeDark} alt={alt}/>;
-		}
+		return <Minimize color={colorMap.get(kind)} alt={alt}/>
 	}
 	return null;
 };

@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 //@ts-ignore
 import styles from "./Tag.module.scss";
 
-type TagType = typeof TYPES[ keyof typeof TYPES ];
+export type TagType = typeof TYPES[ keyof typeof TYPES ];
 type TagKind = typeof KINDS[ keyof typeof KINDS ];
 type TagProps = { label: string, type?: TagType, kind?: TagKind } & typeof defaultProps;
 

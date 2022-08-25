@@ -3,8 +3,7 @@ import classNames from 'classnames/bind';
 import {animated, useSpring} from 'react-spring';
 import CarouselButton from "./CarouselButton/CarouselButton";
 import {IconType} from "../Icon/Icon";
-import Tag from "../Tag";
-import {TagType} from "../Tag/Tag";
+import Tag, { TYPES } from "../Tag/Tag";
 // @ts-ignore
 import styles from "./Carousel.module.scss";
 
@@ -46,7 +45,7 @@ const Carousel = (props: CarouselProps) => {
                 />
                 <Tag
                     label={`${imageIndex + 1}/${urls.length}`}
-                    type={compact ? TagType.COMPACT : TagType.DEFAULT}
+                    type={compact ? TYPES.Compact : TYPES.Default}
                 />
                 <CarouselButton
                     label="Next"
