@@ -1,10 +1,10 @@
 import React from "react";
-import { ArrowUp, ArrowRight, ArrowLeft, ArrowDown, Maximize, Minimize} from "react-feather";
+import { ArrowUp, ArrowRight, ArrowLeft, ArrowDown, Maximize, Minimize } from "react-feather";
 
 export type IconType = typeof FIGURES[ keyof typeof FIGURES ];
 export type IconKind = typeof KINDS[ keyof typeof KINDS ];
 export type IconSize = typeof SIZES[ keyof typeof SIZES ];
-type IconProps = { figure: IconType; kind?: IconKind, size?: IconSize,
+type IconProps = { type: IconType; kind?: IconKind, size?: IconSize,
 	rotation?: number, alt?: string } & typeof defaultProps;
 
 export const FIGURES = { ArrowUp: 1, ArrowRight: 2, ArrowLeft: 3, ArrowDown: 4, Maximize: 5, Minimize: 6 } as const;
@@ -17,7 +17,8 @@ const colorMap = new Map<IconKind, string>([
 	[KINDS.Secondary, "#1A2026"]
 ]);
 
-const Icon = ({type, kind, alt = ""}: IconProps) : (JSX.Element | null) => {
+const Icon = (props: IconProps) : (JSX.Element | null) => {
+	const { type, kind, size, rotation, alt } = props;
 	if (type == FIGURES.ArrowUp) {
 		return <ArrowUp color={colorMap.get(kind)} alt={alt}/>
 	} else if (type == FIGURES.ArrowRight) {
