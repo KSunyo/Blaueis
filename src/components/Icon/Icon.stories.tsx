@@ -45,6 +45,14 @@ export default {
             options: Object.keys(SIZES),
             mapping: SIZES,
         },
+        rotation: {
+            control: {
+                type: "range",
+                min: 0,
+                max: 359,
+                step: 1
+            }
+        }
     }
 } as ComponentMeta<typeof Icon>;
 
@@ -54,5 +62,5 @@ export const Icons = Template.bind({});
 Icons.args = {
     type: FIGURES.ArrowRight,
     kind: KINDS.Secondary,
-    size: SIZES.Normal
+    size: SIZES.Medium
 };

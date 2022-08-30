@@ -31,7 +31,7 @@ export default {
             },
             options: Object.keys(SIZES),
             mapping: SIZES,
-            defaultValue: SIZES.Normal,
+            defaultValue: SIZES.Medium,
         },
         disabled: {
           defaultValue: false,
@@ -66,5 +66,5 @@ export const ClickMe = Template.bind({});
 ClickMe.args = {
     label: "Click me!",
     kind: KINDS.Primary,
-    size: SIZES.Normal
+    size: SIZES.Medium
 };

@@ -11,8 +11,8 @@ type ButtonProps = { label: string; kind?: ButtonKind, size?: ButtonSize, disabl
     startIcon?: IconType; endIcon?: IconType; onClick?: MouseEventHandler } & typeof defaultProps;
 
 export const KINDS = { Primary: 1, Secondary: 2, Tertiary: 3 } as const;
-export const SIZES = { Small: 1, Normal: 2, Large: 3 } as const;
-const defaultProps = Object.freeze({ kind: KINDS.Primary, size: SIZES.Normal, disabled: false, touch: false });
+export const SIZES = { Small: 1, Medium: 2, Large: 3 } as const;
+const defaultProps = Object.freeze({ kind: KINDS.Primary, size: SIZES.Medium, disabled: false, touch: false });
 
 let cx = classNames.bind(styles);
 
@@ -41,7 +41,7 @@ const Button = (props: ButtonProps) => {
             <span className={cx('buttonBackgroundHelper')}></span>
             <span className={cx('buttonContainer',
                 {
-                    normal: size == SIZES.Normal,
+                    normal: size == SIZES.Medium,
                     // @ts-ignore
                     large: size == SIZES.Large
                 })}
