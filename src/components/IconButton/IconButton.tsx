@@ -1,23 +1,19 @@
 import React, {useState} from "react";
 import classNames from 'classnames/bind';
+import { ICONS, KINDS, SHAPES, SIZES } from "../../values/constants";
 import Icon from "../Icon/Icon";
 import AnimatedIcon, { AnimationState, ChaseAnimationProps,
 	NudgeAnimationProps, ScaleAnimationProps } from "../AnimatedIcon/AnimatedIcon";
 // @ts-ignore
 import styles from "./IconButton.module.scss";
 
+export type IconButtonFigure = typeof ICONS[ keyof typeof ICONS ];
 export type IconButtonKind = typeof KINDS[ keyof typeof KINDS ];
 export type IconButtonSize = typeof SIZES[ keyof typeof SIZES ];
-export type IconButtonFigure = typeof FIGURES[ keyof typeof FIGURES ];
 export type IconButtonShape = typeof SHAPES[ keyof typeof SHAPES ];
+const defaultProps = Object.freeze({ kind: KINDS.Primary, size: SIZES.Medium, shape: SHAPES.Square });
 type IconButtonProps = { icon: IconButtonFigure, kind?: IconButtonKind, size?: IconButtonSize, shape?: IconButtonShape,
 	animation?: ChaseAnimationProps | NudgeAnimationProps | ScaleAnimationProps } & typeof defaultProps;
-
-export const FIGURES = { ArrowUp: 1, ArrowRight: 2, ArrowLeft: 3, ArrowDown: 4, Maximize: 5, Minimize: 6 } as const;
-export const KINDS = { Primary: 1, Secondary: 2, Tertiary: 3 } as const;
-export const SIZES = { Small: 1, Medium: 2, Large: 3 } as const;
-export const SHAPES = { Square: 1, Circle: 2} as const;
-const defaultProps = Object.freeze({ kind: KINDS.Primary, size: SIZES.Medium, shape: SHAPES.Square });
 
 let cx = classNames.bind(styles);
 

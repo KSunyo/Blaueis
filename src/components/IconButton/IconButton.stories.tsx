@@ -1,6 +1,7 @@
 import React from "react";
 import {ComponentMeta, ComponentStory} from "@storybook/react";
-import IconButton, { FIGURES, KINDS, SHAPES, SIZES } from "./IconButton";
+import { ICONS, KINDS, SHAPES, SIZES } from "../../values/constants";
+import IconButton from "./IconButton";
 import {Direction} from "../AnimatedIcon/AnimatedIcon";
 
 export default {
@@ -19,8 +20,8 @@ export default {
           6: "Minimize"
         }
       },
-      options: Object.keys(FIGURES),
-      mapping: FIGURES,
+      options: Object.keys(ICONS),
+      mapping: ICONS,
     },
     kind: {
       control: {
@@ -65,7 +66,7 @@ const Template: ComponentStory<typeof IconButton> = (args) => <IconButton {...ar
 export const BackToTop = Template.bind({});
 BackToTop.args = {
   kind: KINDS.Secondary,
-  icon: FIGURES.ArrowUp,
+  icon: ICONS.ArrowUp,
   size: SIZES.Large,
   animation: {type: "NudgeAnimation", direction: Direction.TO_TOP}
 };
@@ -73,7 +74,7 @@ BackToTop.args = {
 export const Minimize = Template.bind({});
 Minimize.args = {
   kind: KINDS.Primary,
-  icon: FIGURES.Minimize,
+  icon: ICONS.Minimize,
   shape: SHAPES.Circle,
   animation: {type: "ScaleAnimation", factor: 0.75}
 };
@@ -81,7 +82,7 @@ Minimize.args = {
 export const Maximize = Template.bind({});
 Maximize.args = {
   kind: KINDS.Primary,
-  icon: FIGURES.Maximize,
+  icon: ICONS.Maximize,
   shape: SHAPES.Circle,
   animation: {type: "ScaleAnimation", factor: 1.5}
 };
