@@ -1,13 +1,12 @@
 import React from "react";
 import classNames from 'classnames/bind';
+import { ORIENTATIONS } from "../../values/constants";
 // @ts-ignore
 import styles from "./Stack.module.scss";
 
 type Orientation = typeof ORIENTATIONS[ keyof typeof ORIENTATIONS ]
-type StackProps = { orientation: Orientation, spacing: number, children?: React.ReactNode[] } & typeof defaultProps;
-
-export const ORIENTATIONS = {Row: 1, RowReverse: 2, Column: 3, ColumnReverse: 4} as const;
 const defaultProps = Object.freeze({ orientation: ORIENTATIONS.Row, spacing: 0});
+type StackProps = { orientation: Orientation, spacing: number, children?: React.ReactNode[] } & typeof defaultProps;
 
 let cx = classNames.bind(styles);
 

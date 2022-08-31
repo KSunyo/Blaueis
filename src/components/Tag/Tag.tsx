@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from 'classnames/bind';
-import {KINDS, TYPES} from "../../values/constants";
+import { KINDS, TYPES } from "../../values/constants";
 //@ts-ignore
 import styles from "./Tag.module.scss";
 

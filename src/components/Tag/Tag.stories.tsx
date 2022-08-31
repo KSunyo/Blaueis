@@ -1,6 +1,6 @@
 import React from "react";
-import {ComponentMeta, ComponentStory} from "@storybook/react";
-import {KINDS, TYPES} from "../../values/constants";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { KINDS, TYPES } from "../../values/constants";
 import Tag from "./Tag";
 
 export default {
