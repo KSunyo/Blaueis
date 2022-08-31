@@ -1,14 +1,13 @@
 import React, {Fragment, ReactNode} from "react";
 import classNames from 'classnames/bind';
+import { ORIENTATIONS } from "../../values/constants";
 // @ts-ignore
 import styles from "./Card.module.scss";
 
 type Orientation = typeof ORIENTATIONS[keyof typeof ORIENTATIONS];
+const defaultProps = Object.freeze({isCoverMediaVideo: false, orientation: ORIENTATIONS.Row, width: 0, height: 0});
 type CardProps = {coverMediaUrl?: string, coverMediaAlt?: string, isCoverMediaVideo?: boolean, orientation: Orientation,
 	width: number, height: number, children?: ReactNode} & typeof defaultProps;
-
-export const ORIENTATIONS = {Row: 1, RowReverse: 2, Column: 3, ColumnReverse: 4} as const;
-const defaultProps = Object.freeze({isCoverMediaVideo: false, orientation: ORIENTATIONS.Row, width: 0, height: 0});
 
 let cx = classNames.bind(styles);
 

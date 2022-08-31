@@ -1,13 +1,13 @@
 import React, {MouseEventHandler, useState} from "react";
 import classNames from 'classnames/bind';
-import Icon, {KINDS, IconType} from "../../Icon/Icon";
+import { KINDS } from "../../../values/constants";
+import Icon, { IconType } from "../../Icon/Icon";
 //@ts-ignore
 import styles from "./CarouselButton.module.scss";
 
+const defaultProps = Object.freeze({disabled: false, touch: false});
 type CarouselButtonProps = { label: string, startIcon?: IconType, endIcon?: IconType, disabled?: boolean,
     touch?: boolean, onClick?: MouseEventHandler } & typeof defaultProps;
-
-const defaultProps = Object.freeze({disabled: false, touch: false});
 
 let cx = classNames.bind(styles);
 

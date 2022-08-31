@@ -1,6 +1,7 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Icon, { FIGURES, KINDS, SIZES } from "./Icon";
+import { ICONS, KINDS, SIZES } from "../../values/constants";
+import Icon from "./Icon";
 
 export default {
     title: "blaueis/Icon",
@@ -18,8 +19,8 @@ export default {
                     6: "Minimize"
                 }
             },
-            options: Object.keys(FIGURES),
-            mapping: FIGURES,
+            options: Object.keys(ICONS),
+            mapping: ICONS,
         },
         kind: {
             control: {
@@ -60,7 +61,7 @@ const Template: ComponentStory<typeof Icon> = (args) => <div id="defes"><Icon {.
 
 export const Icons = Template.bind({});
 Icons.args = {
-    type: FIGURES.ArrowRight,
+    type: ICONS.ArrowRight,
     kind: KINDS.Secondary,
     size: SIZES.Medium
 };

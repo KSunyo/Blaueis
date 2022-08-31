@@ -1,24 +1,21 @@
 import React from "react";
 import { animated, useSpring } from "react-spring";
-import { ArrowUp, ArrowRight, ArrowLeft, ArrowDown, Maximize, Minimize } from "react-feather";
 import classNames from 'classnames/bind';
+import { ArrowUp, ArrowRight, ArrowLeft, ArrowDown, Maximize, Minimize } from "react-feather";
+import { ICONS, KINDS, SIZES, COLORS } from "../../values/constants";
 //@ts-ignore
 import styles from "./Icon.module.scss";
 
-export type IconType = typeof FIGURES[ keyof typeof FIGURES ];
+export type IconType = typeof ICONS[ keyof typeof ICONS ];
 export type IconKind = typeof KINDS[ keyof typeof KINDS ];
 export type IconSize = typeof SIZES[ keyof typeof SIZES ];
+const defaultProps = Object.freeze({ kind: KINDS.Primary, size: SIZES.Medium, rotation: 0, alt: "" });
 type IconProps = { type: IconType; kind?: IconKind, size?: IconSize,
 	rotation?: number, alt?: string } & typeof defaultProps;
 
-export const FIGURES = { ArrowUp: 1, ArrowRight: 2, ArrowLeft: 3, ArrowDown: 4, Maximize: 5, Minimize: 6 } as const;
-export const KINDS = { Primary: 1, Secondary: 2, Tertiary: 3 } as const;
-export const SIZES = { Small: 1, Medium: 2, Large: 3 } as const;
-const defaultProps = Object.freeze({ kind: KINDS.Primary, size: SIZES.Medium, rotation: 0, alt: "" });
-
 const colorMap = new Map<IconKind, string>([
-	[KINDS.Primary, "#FFFFFF"],
-	[KINDS.Secondary, "#1A2026"]
+	[ KINDS.Primary, COLORS.Grayscale00 ],
+	[ KINDS.Secondary, COLORS.Grayscale80 ]
 ]);
 
 const sizeMap = new Map<IconSize, number>([
@@ -34,27 +31,27 @@ const Icon = (props: IconProps) : (JSX.Element | null) => {
 	const rotate = useSpring({
 		to: {transform: `rotate(${rotation}deg)`}
 	});
-	if (type == FIGURES.ArrowUp) {
+	if (type == ICONS.ArrowUp) {
 		return <animated.div className={cx('Icon')} style={rotate}>
 			<ArrowUp color={colorMap.get(kind)} size={sizeMap.get(size)} alt={alt}/>
 		</animated.div>
-	} else if (type == FIGURES.ArrowRight) {
+	} else if (type == ICONS.ArrowRight) {
 		return <animated.div className={cx('Icon')} style={rotate}>
 			<ArrowRight color={colorMap.get(kind)} size={sizeMap.get(size)} alt={alt}/>
 		</animated.div>
-	} else if (type == FIGURES.ArrowLeft) {
+	} else if (type == ICONS.ArrowLeft) {
 		return <animated.div className={cx('Icon')} style={rotate}>
 			<ArrowLeft color={colorMap.get(kind)} size={sizeMap.get(size)} alt={alt}/>
 		</animated.div>
-	} else if (type == FIGURES.ArrowDown) {
+	} else if (type == ICONS.ArrowDown) {
 		return <animated.div className={cx('Icon')} style={rotate}>
 			<ArrowDown color={colorMap.get(kind)} size={sizeMap.get(size)} alt={alt}/>
 		</animated.div>
-	} else if (type == FIGURES.Maximize) {
+	} else if (type == ICONS.Maximize) {
 		return <animated.div className={cx('Icon')} style={rotate}>
 			<Maximize color={colorMap.get(kind)} size={sizeMap.get(size)} alt={alt}/>
 		</animated.div>
-	} else if (type == FIGURES.Minimize) {
+	} else if (type == ICONS.Minimize) {
 		return <animated.div className={cx('Icon')} style={rotate}>
 			<Minimize color={colorMap.get(kind)} size={sizeMap.get(size)} alt={alt}/>
 		</animated.div>

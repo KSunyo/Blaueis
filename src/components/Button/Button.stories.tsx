@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Button, { KINDS, SIZES } from "./Button";
-import { FIGURES } from "../Icon/Icon"
+import { KINDS, SIZES, ICONS } from "../../values/constants";
+import Button from "./Button";
 
 export default {
     title: "blaueis/Button",
@@ -44,8 +44,8 @@ export default {
             options: ["NONE", "RIGHT_ARROW", "DOWN_ARROW"],
             mapping: {
                 NONE: null,
-                RIGHT_ARROW: FIGURES.ArrowRight,
-                DOWN_ARROW: FIGURES.ArrowDown,
+                RIGHT_ARROW: ICONS.ArrowRight,
+                DOWN_ARROW: ICONS.ArrowDown,
             }
         },
         endIcon: {
@@ -53,8 +53,8 @@ export default {
             options: ["NONE", "RIGHT_ARROW", "DOWN_ARROW"],
             mapping: {
                 NONE: null,
-                RIGHT_ARROW: FIGURES.ArrowRight,
-                DOWN_ARROW: FIGURES.ArrowDown,
+                RIGHT_ARROW: ICONS.ArrowRight,
+                DOWN_ARROW: ICONS.ArrowDown,
             }
         }
     }

@@ -1,9 +1,9 @@
-import React, {Fragment} from "react";
-import {ComponentMeta, ComponentStory} from "@storybook/react";
-import Card, { ORIENTATIONS } from "./Card";
+import React, { Fragment } from "react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { ICONS, KINDS, ORIENTATIONS, SIZES } from "../../values/constants";
+
+import Card from "./Card";
 import Button from "../Button";
-import {KINDS, SIZES} from "../Button/Button";
-import {FIGURES, IconType} from "../Icon/Icon";
 
 export default {
     title: "blaueis/Card",
@@ -62,7 +62,7 @@ Article.args = {
             lineHeight: "150%",
             margin: 0
         }}>During the 21st century, digital devices advanced quicker than ever before. However, in spite of the market being consolidated, expectations have gotten higher than ever.</p>
-        <Button kind={KINDS.Primary} label="Read more" endIcon={FIGURES.ArrowRight}/>
+        <Button kind={KINDS.Primary} label="Read more" endIcon={ICONS.ArrowRight}/>
     </Fragment>
 };
 
@@ -85,7 +85,7 @@ ArticleVideo.args = {
             lineHeight: "150%",
             margin: 0
         }}>During the 21st century, digital devices advanced quicker than ever before. However, in spite of the market being consolidated, expectations have gotten higher than ever.</p>
-        <Button kind={KINDS.Primary} label="Read more" endIcon={FIGURES.ArrowRight}/>
+        <Button kind={KINDS.Primary} label="Read more" endIcon={ICONS.ArrowRight}/>
     </Fragment>
 };
 
@@ -109,7 +109,7 @@ ArticleMobile.args = {
             lineHeight: "150%",
             margin: 0
         }}>During the 21st century, digital devices advanced quicker than ever before. However, in spite of the market being consolidated, expectations have gotten higher than ever.</p>
-        <Button kind={KINDS.Primary} label="Read more" endIcon={FIGURES.ArrowRight}/>
+        <Button kind={KINDS.Primary} label="Read more" endIcon={ICONS.ArrowRight}/>
     </Fragment>
 };
 
@@ -128,7 +128,7 @@ ContactCard.args = {
             //@ts-ignore
             size={SIZES.Large}
             label="Get in touch"
-            endIcon={FIGURES.ArrowRight}
+            endIcon={ICONS.ArrowRight}
         />
     </div>
 };

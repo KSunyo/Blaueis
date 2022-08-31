@@ -1,8 +1,8 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { ORIENTATIONS } from "../../values/constants";
+import { ORIENTATIONS, KINDS } from "../../values/constants";
 import Stack from "./Stack";
-import Button, { KINDS } from "../Button/Button";
+import Button from "../Button/Button";
 
 export default {
     title: "blaueis/Stack",

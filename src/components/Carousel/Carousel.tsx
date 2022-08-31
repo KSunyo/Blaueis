@@ -1,17 +1,15 @@
 import React, {ReactNode, useState} from "react";
 import classNames from 'classnames/bind';
 import {animated, useSpring} from 'react-spring';
+import { ICONS, TYPES } from "../../values/constants";
 import CarouselButton from "./CarouselButton/CarouselButton";
-import {FIGURES, IconType} from "../Icon/Icon";
-import Tag, { TYPES } from "../Tag/Tag";
+import Tag from "../Tag/Tag";
 // @ts-ignore
 import styles from "./Carousel.module.scss";
 
-export type Image = { url: string, alt: string };
+const defaultProps = Object.freeze({urls: [], compact: false});
 type CarouselProps = { urls: { url: string, alt: string }[], compact: boolean, width?: number, leftEnhancer?: () => ReactNode,
     rightEnhancer?: () => ReactNode } & typeof defaultProps;
-
-const defaultProps = Object.freeze({urls: [], compact: false});
 
 let cx = classNames.bind(styles);
 
@@ -40,7 +38,7 @@ const Carousel = (props: CarouselProps) => {
                     label="Previous"
                     disabled={imageIndex == 0}
                     touch={compact}
-                    startIcon={FIGURES.ArrowLeft}
+                    startIcon={ICONS.ArrowLeft}
                     onClick={()=>setImageIndex(imageIndex - 1)}
                 />
                 <Tag
@@ -51,7 +49,7 @@ const Carousel = (props: CarouselProps) => {
                     label="Next"
                     disabled={imageIndex == urls.length - 1}
                     touch={compact}
-                    endIcon={FIGURES.ArrowRight}
+                    endIcon={ICONS.ArrowRight}
                     onClick={()=>setImageIndex(imageIndex + 1)}
                 />
             </div>
