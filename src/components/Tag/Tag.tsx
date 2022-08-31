@@ -1,15 +1,13 @@
 import React from "react";
 import classNames from 'classnames/bind';
+import {KINDS, TYPES} from "../../values/constants";
 //@ts-ignore
 import styles from "./Tag.module.scss";
 
 export type TagType = typeof TYPES[ keyof typeof TYPES ];
 type TagKind = typeof KINDS[ keyof typeof KINDS ];
-type TagProps = { label: string, type?: TagType, kind?: TagKind } & typeof defaultProps;
-
-export const TYPES = { Default: 1, Compact: 2 } as const;
-export const KINDS = { Primary: 1, Secondary: 2 } as const;
 const defaultProps = Object.freeze({ type: TYPES.Default, kind: KINDS.Primary });
+type TagProps = { label: string, type?: TagType, kind?: TagKind } & typeof defaultProps;
 
 let cx = classNames.bind(styles);
 

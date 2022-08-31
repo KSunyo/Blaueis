@@ -1,7 +1,7 @@
 import React from "react";
 import {ComponentMeta, ComponentStory} from "@storybook/react";
-import Tag, { KINDS, TYPES } from "./Tag";
-
+import {KINDS, TYPES} from "../../values/constants";
+import Tag from "./Tag";
 
 export default {
     title: "blaueis/Tag",
