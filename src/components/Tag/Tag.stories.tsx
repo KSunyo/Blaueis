@@ -7,30 +7,8 @@ export default {
     title: "blaueis/Tag",
     component: Tag,
     argTypes: {
-        kind: {
-            control: {
-                type: "select",
-                labels: {
-                    1: "Primary",
-                    2: "Secondary",
-                },
-            },
-            options: Object.keys(KINDS),
-            mapping: KINDS,
-            defaultValue: KINDS.Primary,
-        },
-        type: {
-            control: {
-                type: "select",
-                labels: {
-                    1: "Default",
-                    2: "Compact",
-                },
-            },
-            options: Object.keys(TYPES),
-            mapping: TYPES,
-            defaultValue: TYPES.Default,
-        },
+        kind: { control: 'select', options: Object.keys(KINDS), mapping: KINDS, defaultValue: KINDS.Primary },
+        type: { control: 'select', options: Object.keys(TYPES), mapping: TYPES, defaultValue: TYPES.Default },
     }
 } as ComponentMeta<typeof Tag>;
 
@@ -47,6 +25,6 @@ export const ArticleTag = Template.bind({});
 ArticleTag.args = {
     label: "Design",
     kind: KINDS.Primary,
-    //@ts-ignore
+    // @ts-ignore
     type: TYPES.Compact
 };

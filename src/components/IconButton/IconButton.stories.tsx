@@ -7,56 +7,10 @@ export default {
   title: "blaueis/IconButton",
   component: IconButton,
   argTypes: {
-    icon: {
-      control: {
-        type: "select",
-        labels: {
-          1: "ArrowUp",
-          2: "ArrowRight",
-          3: "ArrowLeft",
-          4: "ArrowDown",
-          5: "Maximize",
-          6: "Minimize"
-        }
-      },
-      options: Object.keys(ICONS),
-      mapping: ICONS,
-    },
-    kind: {
-      control: {
-        type: "select",
-        labels: {
-          1: "Primary",
-          2: "Secondary",
-          3: "Tertiary"
-        },
-      },
-      options: Object.keys(KINDS),
-      mapping: KINDS,
-    },
-    size: {
-      control: {
-        type: "select",
-        labels: {
-          1: "Small",
-          2: "Normal",
-          3: "Large",
-        },
-      },
-      options: Object.keys(SIZES),
-      mapping: SIZES,
-    },
-    shape: {
-      control: {
-        type: "select",
-        labels: {
-          1: "Square",
-          2: "Circle",
-        },
-      },
-      options: Object.keys(SHAPES),
-      mapping: SHAPES,
-    }
+    icon: { control: 'select', options: Object.keys(ICONS), mapping: ICONS },
+    kind: { control: 'select', options: Object.keys(KINDS), mapping: KINDS },
+    size: { control: 'select', options: Object.keys(SIZES), mapping: SIZES },
+    shape: { control: 'select', options: Object.keys(SHAPES), mapping: SHAPES }
   }
 } as ComponentMeta<typeof IconButton>;
 

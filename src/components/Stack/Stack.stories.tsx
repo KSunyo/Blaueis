@@ -8,24 +8,9 @@ export default {
     title: "blaueis/Stack",
     component: Stack,
     argTypes: {
-        spacing: {
-            control: {
-                type: 'range',
-                min:1,
-                max:100,
-                step: 1
-            }
-        },
+        spacing: { control: { type: 'range', min:1, max:100, step: 1 } },
         orientation: {
-            control: {
-                type: "select",
-                labels: {
-                    1: "Row",
-                    2: "Row-reverse",
-                    3: "Column",
-                    4: "Column-reverse"
-                },
-            },
+            control: 'select',
             options: Object.keys(ORIENTATIONS),
             mapping: ORIENTATIONS,
             defaultValue: ORIENTATIONS.Row,

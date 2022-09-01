@@ -7,57 +7,14 @@ export default {
     title: "blaueis/Icon",
     component: Icon,
     argTypes: {
-        type: {
-            control: {
-                type: "select",
-                labels: {
-                    1: "ArrowUp",
-                    2: "ArrowRight",
-                    3: "ArrowLeft",
-                    4: "ArrowDown",
-                    5: "Maximize",
-                    6: "Minimize"
-                }
-            },
-            options: Object.keys(ICONS),
-            mapping: ICONS,
-        },
-        kind: {
-            control: {
-                type: "select",
-                labels: {
-                    1: "Primary",
-                    2: "Secondary",
-                    3: "Tertiary"
-                },
-            },
-            options: Object.keys(KINDS),
-            mapping: KINDS,
-        },
-        size: {
-            control: {
-                type: "select",
-                labels: {
-                    1: "Small",
-                    2: "Normal",
-                    3: "Large",
-                },
-            },
-            options: Object.keys(SIZES),
-            mapping: SIZES,
-        },
-        rotation: {
-            control: {
-                type: "range",
-                min: 0,
-                max: 359,
-                step: 1
-            }
-        }
+        type: { control: 'select', options: Object.keys(ICONS), mapping: ICONS },
+        kind: { control: 'select', options: Object.keys(KINDS), mapping: KINDS },
+        size: { control: 'select', options: Object.keys(SIZES), mapping: SIZES },
+        rotation: { control: { type: "range", min: 0, max: 359, step: 1 } }
     }
 } as ComponentMeta<typeof Icon>;
 
-const Template: ComponentStory<typeof Icon> = (args) => <div id="defes"><Icon {...args} /></div>;
+const Template: ComponentStory<typeof Icon> = (args) => <Icon {...args} />;
 
 export const Icons = Template.bind({});
 Icons.args = {

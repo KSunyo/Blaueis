@@ -1,19 +1,14 @@
 import React from "react";
 import {ComponentMeta, ComponentStory} from "@storybook/react";
-import {ICONS, KINDS, SHAPES, TYPES} from "../../values/constants";
+import { ICONS, KINDS, SHAPES } from "../../values/constants";
 import Carousel from "./Carousel";
 import IconButton from "../IconButton";
 
 export default {
     title: "blaueis/Carousel",
     argTypes: {
-        width: {
-            control: { type: 'range', min: 0, max: 1000, step: 10 },
-            defaultValue: 0
-        },
-        compact: {
-            defaultValue: false,
-        }
+        width: { control: { type: 'range', min: 0, max: 1000, step: 10 }, defaultValue: 0 },
+        compact: { defaultValue: false }
     },
     component: Carousel,
 } as ComponentMeta<typeof Carousel>;

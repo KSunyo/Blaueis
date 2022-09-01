@@ -9,32 +9,12 @@ export default {
     title: "blaueis/Card",
     component: Card,
     argTypes: {
-        coverMediaUrl: {
-            control: 'text',
-            defaultValue: '',
-        },
-        coverMediaAlt: {
-            control: 'text',
-            defaultValue: ''
-        },
-        width: {
-            control: { type: 'range', min: 0, max: 1000, step: 10 },
-            defaultValue: 0
-        },
-        height: {
-            control: { type: 'range', min: 0, max: 1000, step: 10 },
-            defaultValue: 0
-        },
+        coverMediaUrl: { control: 'text', defaultValue: '' },
+        coverMediaAlt: { control: 'text', defaultValue: '' },
+        width: { control: { type: 'range', min: 0, max: 1000, step: 10 }, defaultValue: 0 },
+        height: { control: { type: 'range', min: 0, max: 1000, step: 10 }, defaultValue: 0 },
         orientation: {
-            control: {
-                type: "select",
-                labels: {
-                    1: "Row",
-                    2: "Row-reverse",
-                    3: "Column",
-                    4: "Column-reverse",
-                },
-            },
+            control: 'select',
             options: Object.keys(ORIENTATIONS),
             mapping: ORIENTATIONS,
             defaultValue: ORIENTATIONS.Row,
