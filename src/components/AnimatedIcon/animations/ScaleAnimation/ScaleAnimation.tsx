@@ -1,25 +1,25 @@
 import React from "react";
+import {animated, useSpring} from "react-spring";
+import { ANIMATION_STATES } from "../../../../values/constants";
+import {AnimationState} from "../../AnimatedIcon";
 import Icon, {IconKind, IconType} from "../../../Icon/Icon";
-import {AnimationState, Direction} from "../../AnimatedIcon";
 //@ts-ignore
 import styles from "./ScaleAnimation.module.scss";
-import {animated, useSpring} from "react-spring";
+import classNames from "classnames/bind";
 
-export interface ScaleAnimationProps {
-    type: IconType;
-    kind: IconKind;
-    state: AnimationState;
-    factor: number;
-}
+type ScaleAnimationProps = { icon: IconType, kind: IconKind, state: AnimationState, factor: number };
 
-const ScaleAnimation = ({type, kind, state, factor}: ScaleAnimationProps) => {
+let cx = classNames.bind(styles);
+
+const ScaleAnimation = (props: ScaleAnimationProps) => {
+    const { type, kind, state, factor } = props;
     const scale = useSpring({
-        to: {transform: `scale(${state == AnimationState.FORWARD ? factor : 1})`}
+        to: {transform: `scale(${state == ANIMATION_STATES.Forward ? factor : 1})`}
     });
 
     return (
         <animated.div
-            className={styles.iconContainer}
+            className={cx('iconContainer')}
             style={scale}
         >
             <Icon kind={kind} type={type}/>

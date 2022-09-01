@@ -1,8 +1,8 @@
 import React, {ReactNode, MouseEventHandler, useState} from "react";
 import classNames from 'classnames/bind';
-import { KINDS, SIZES } from "../../values/constants";
+import { KINDS, SIZES, ANIMATION_STATES, DIRECTIONS } from "../../values/constants";
 import { IconKind, IconType } from "../Icon/Icon";
-import AnimatedIcon, { AnimationState, Direction } from "../AnimatedIcon/AnimatedIcon";
+import AnimatedIcon, { AnimationState } from "../AnimatedIcon/AnimatedIcon";
 // @ts-ignore
 import styles from "./Button.module.scss";
 
@@ -16,14 +16,14 @@ let cx = classNames.bind(styles);
 
 const Button = (props: ButtonProps) => {
     const { label, kind, size, disabled, touch, startIcon, endIcon, onClick } = props;
-    const [ animationState, setAnimationState ] = useState(AnimationState.DEFAULT);
+    const [ animationState, setAnimationState ] = useState(ANIMATION_STATES.Initial);
     const onClickFunction = (event: React.MouseEvent<Element, MouseEvent>) => {if(!disabled && onClick) onClick(event);}
 
     return (
         <button
             onClick={onClickFunction}
-            onMouseEnter={() => setAnimationState(AnimationState.FORWARD)}
-            onMouseLeave={() => setAnimationState(AnimationState.BACKWARD)}
+            onMouseEnter={() => setAnimationState(ANIMATION_STATES.Forward)}
+            onMouseLeave={() => setAnimationState(ANIMATION_STATES.Backward)}
             className={cx('Button',
                 {
                     primary: kind == KINDS.Primary,
@@ -59,10 +59,10 @@ const renderIcon = (kind: ButtonKind, icon: IconType | undefined, animationState
     if (icon != undefined) {
         return (
             <AnimatedIcon
-                type={icon}
+                icon={icon}
                 kind={kindToIconKind(kind)}
                 state={animationState}
-                animation={{type: "ChaseAnimation", direction: Direction.TO_RIGHT}}
+                animation={{type: "ChaseAnimation", direction: DIRECTIONS.ToRight}}
             />
         );
     } else {

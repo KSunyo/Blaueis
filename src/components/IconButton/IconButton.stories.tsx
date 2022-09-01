@@ -1,8 +1,7 @@
 import React from "react";
 import {ComponentMeta, ComponentStory} from "@storybook/react";
-import { ICONS, KINDS, SHAPES, SIZES } from "../../values/constants";
+import { ICONS, KINDS, SHAPES, SIZES, DIRECTIONS } from "../../values/constants";
 import IconButton from "./IconButton";
-import {Direction} from "../AnimatedIcon/AnimatedIcon";
 
 export default {
   title: "blaueis/IconButton",
@@ -68,7 +67,7 @@ BackToTop.args = {
   kind: KINDS.Secondary,
   icon: ICONS.ArrowUp,
   size: SIZES.Large,
-  animation: {type: "NudgeAnimation", direction: Direction.TO_TOP}
+  animation: {type: "NudgeAnimation", direction: DIRECTIONS.ToTop}
 };
 
 export const Minimize = Template.bind({});

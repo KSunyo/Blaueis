@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import classNames from 'classnames/bind';
-import { ICONS, KINDS, SHAPES, SIZES } from "../../values/constants";
+import { ICONS, KINDS, SHAPES, SIZES, ANIMATION_STATES } from "../../values/constants";
 import Icon from "../Icon/Icon";
 import AnimatedIcon, { AnimationState, ChaseAnimationProps,
 	NudgeAnimationProps, ScaleAnimationProps } from "../AnimatedIcon/AnimatedIcon";
@@ -68,7 +68,7 @@ const IconButton = (props : IconButtonProps) : (JSX.Element | null) => {
 				onMouseLeave={() => setHover(false)}
 			>
 				<AnimatedIcon
-					type={icon}
+					icon={icon}
 					kind={hover ? KINDS.Primary : KINDS.Secondary}
 					state={getAnimationState(hover)}
 					animation={animation}/>
@@ -82,12 +82,12 @@ export default IconButton;
 
 const getAnimationState = (hover): AnimationState => {
 	if (hover == undefined) {
-		return AnimationState.DEFAULT;
+		return ANIMATION_STATES.Initial;
 	} else {
 		if (hover) {
-			return AnimationState.FORWARD;
+			return ANIMATION_STATES.Forward;
 		} else {
-			return AnimationState.BACKWARD;
+			return ANIMATION_STATES.Backward;
 		}
 	}
 }

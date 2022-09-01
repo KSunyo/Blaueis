@@ -9,3 +9,5 @@ export const COLORS = Object.freeze({ Blue60: "#0400D5", Blue50: "#0500FF", Gray
     Grayscale80: "#1A2026", Grayscale60: "#2B3233", Grayscale50: "#3A434D", Grayscale40: "#737A80",
     Grayscale25: "#DADBDE", Grayscale20: "#E7E8EA", Grayscale10: "#F5F6F9", Grayscale05: "#FAFAFA",
     Grayscale00: "#FFFFFF" }) as const;
+export const ANIMATION_STATES = Object.freeze({ Backward: -1, Initial: 0, Forward: 1}) as const;
+export const DIRECTIONS = Object.freeze({ ToTop: 1, ToRight: 2, ToBottom: 3, ToLeft: 4 }) as const;

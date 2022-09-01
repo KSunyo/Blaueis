@@ -1,60 +1,61 @@
 import React from "react";
-import Icon, {IconKind, IconType} from "../../../Icon/Icon";
-import {AnimationState, Direction} from "../../AnimatedIcon";
+import { animated, useSpring } from "react-spring";
+import { ANIMATION_STATES, DIRECTIONS } from "../../../../values/constants";
+import { AnimationDirection, AnimationState } from "../../AnimatedIcon";
+import Icon, { IconKind, IconType } from "../../../Icon/Icon";
 // @ts-ignore
 import styles from "./ChaseAnimation.module.scss";
-import {animated, useSpring} from "react-spring";
+import classNames from "classnames/bind";
 
-export interface ChaseAnimationProps {
-    type: IconType;
-    kind: IconKind;
-    state: AnimationState;
-    direction: Direction;
-    rotation?: number;
-}
+const defaultProps = Object.freeze({ rotation: 0 });
+type ChaseAnimationProps = { icon: IconType, kind: IconKind, state: AnimationState,
+    direction: AnimationDirection, rotation?: number } & typeof defaultProps;
 
-const ChaseAnimation = ({type, kind, state, direction, rotation = 0}: ChaseAnimationProps) => {
+let cx = classNames.bind(styles);
+
+const ChaseAnimation = (props: ChaseAnimationProps) => {
+    const { icon, kind, state, direction, rotation } = props;
     const rotate = useSpring({
         to: {transform: `rotate(${rotation}deg)`}
     });
     const toRight = useSpring({
-        from: {transform: `translateX(${((state) => state == AnimationState.BACKWARD ? 0 : -20)(state)}px)`},
-        to: {transform: `translateX(${((state) => state == AnimationState.FORWARD ? 0 : -20)(state)}px)`}
+        from: {transform: `translateX(${((state) => state == ANIMATION_STATES.Backward ? 0 : -20)(state)}px)`},
+        to: {transform: `translateX(${((state) => state == ANIMATION_STATES.Forward ? 0 : -20)(state)}px)`}
     });
     const toLeft = useSpring({
-        from: {transform: `translateX(${((state) => state == AnimationState.FORWARD ? 0 : -20)(state)}px)`},
-        to: {transform: `translateX(${((state) => state == AnimationState.BACKWARD ? 0 : -20)(state)}px)`}
+        from: {transform: `translateX(${((state) => state == ANIMATION_STATES.Forward ? 0 : -20)(state)}px)`},
+        to: {transform: `translateX(${((state) => state == ANIMATION_STATES.Backward ? 0 : -20)(state)}px)`}
     });
     const toTop = useSpring({
-        from: {transform: `translateY(${((state) => state == AnimationState.BACKWARD ? -20 : 0)(state)}px)`},
-        to: {transform: `translateY(${((state) => state == AnimationState.FORWARD ? -20 : 0)(state)}px)`}
+        from: {transform: `translateY(${((state) => state == ANIMATION_STATES.Backward ? -20 : 0)(state)}px)`},
+        to: {transform: `translateY(${((state) => state == ANIMATION_STATES.Forward ? -20 : 0)(state)}px)`}
     });
     const toBottom = useSpring({
-        from: {transform: `translateY(${((state) => state == AnimationState.FORWARD ? -20 : 0)(state)}px)`},
-        to: {transform: `translateY(${((state) => state == AnimationState.BACKWARD ? -20 : 0)(state)}px)`}
+        from: {transform: `translateY(${((state) => state == ANIMATION_STATES.Forward ? -20 : 0)(state)}px)`},
+        to: {transform: `translateY(${((state) => state == ANIMATION_STATES.Backward ? -20 : 0)(state)}px)`}
     });
 
-    if (direction == Direction.TO_LEFT || direction == Direction.TO_RIGHT) {
+    if (direction == DIRECTIONS.ToLeft || direction == DIRECTIONS.ToRight) {
         return (
-            <animated.div className={styles.animationContainer} style={rotate}>
+            <animated.div className={cx('animationContainer')} style={rotate}>
                 <animated.div
-                    className={`${styles.iconContainer} ${styles.leftRightContainer}`}
-                    style={direction == Direction.TO_LEFT ? toLeft : toRight}
+                    className={cx('iconContainer', 'leftRightContainer')}
+                    style={direction == DIRECTIONS.ToLeft ? toLeft : toRight}
                 >
-                    <span><Icon kind={kind} type={type}/></span>
-                    <span><Icon kind={kind} type={type}/></span>
+                    <span><Icon kind={kind} type={icon}/></span>
+                    <span><Icon kind={kind} type={icon}/></span>
                 </animated.div>
             </animated.div>
         );
-    } else if (direction == Direction.TO_TOP || direction == Direction.TO_BOTTOM) {
+    } else if (direction == DIRECTIONS.ToTop || direction == DIRECTIONS.ToBottom) {
         return (
             <animated.div className={styles.animationContainer} style={rotate}>
                 <animated.div
-                    className={`${styles.iconContainer} ${styles.topBottomContainer}`}
-                    style={direction == Direction.TO_TOP ? toTop : toBottom}
+                    className={cx('iconContainer', 'topBottomContainer')}
+                    style={direction == DIRECTIONS.ToTop ? toTop : toBottom}
                 >
-                    <span><Icon kind={kind} type={type}/></span>
-                    <span><Icon kind={kind} type={type}/></span>
+                    <span><Icon kind={kind} type={icon}/></span>
+                    <span><Icon kind={kind} type={icon}/></span>
                 </animated.div>
             </animated.div>
         );
@@ -62,4 +63,5 @@ const ChaseAnimation = ({type, kind, state, direction, rotation = 0}: ChaseAnima
     return null;
 }
 
+ChaseAnimation.defaultProps = defaultProps;
 export default ChaseAnimation;
