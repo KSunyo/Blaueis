@@ -7,7 +7,6 @@
   border: none;
   padding: 0;
   width: fit-content;
-  font-weight: 700;
 
   span {
     display: flex;
@@ -41,9 +40,16 @@
 
 .primary:not(.disabled, .touch):hover > .buttonBackgroundHelper {
   opacity: 0;
-  -webkit-transition: opacity 300ms linear;
-  -ms-transition: opacity 300ms linear;
-  transition: opacity 300ms linear;  
+  -webkit-transition: opacity 300ms ease-out;
+  -ms-transition: opacity 300ms ease-out;
+  transition: opacity 300ms ease-out;
+}
+
+.primary:not(.disabled, .touch):not(hover) > .buttonBackgroundHelper {
+  opacity: 1;
+  -webkit-transition: opacity 300ms ease-out;
+  -ms-transition: opacity 300ms ease-out;
+  transition: opacity 300ms ease-out;
 }
 
 .primary:not(.disabled):active {
@@ -91,11 +97,13 @@
 
 .touch {}
 
-.normal {
+.medium {
   padding: 13px 18px;
+  font-weight: 600;
 }
 
 .large {
   padding: 20px 28px;
   font-size: 20px;
+  font-weight: 500;
 }

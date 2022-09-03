@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import { KINDS, SIZES, ANIMATION_STATES, DIRECTIONS } from "../../values/constants";
 import { IconKind, IconType } from "../Icon/Icon";
 import AnimatedIcon, { AnimationState } from "../AnimatedIcon/AnimatedIcon";
-// @ts-ignore
 import styles from "./Button.module.scss";
 
 type ButtonKind = typeof KINDS[ keyof typeof KINDS ];
@@ -27,9 +26,7 @@ const Button = (props: ButtonProps) => {
             className={cx('Button',
                 {
                     primary: kind == KINDS.Primary,
-                    // @ts-ignore
                     secondary: kind == KINDS.Secondary,
-                    // @ts-ignore
                     tertiary: kind == KINDS.Tertiary,
                 },
                 {disabled: disabled},
@@ -39,8 +36,7 @@ const Button = (props: ButtonProps) => {
             <span className={cx('buttonBackgroundHelper')}></span>
             <span className={cx('buttonContainer',
                 {
-                    normal: size == SIZES.Medium,
-                    // @ts-ignore
+                    medium: size == SIZES.Medium,
                     large: size == SIZES.Large
                 })}
             >
