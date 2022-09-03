@@ -21,8 +21,8 @@ const Button = (props: ButtonProps) => {
     return (
         <button
             onClick={onClickFunction}
-            onMouseEnter={() => setAnimationState(ANIMATION_STATES.Forward)}
-            onMouseLeave={() => setAnimationState(ANIMATION_STATES.Backward)}
+            onMouseEnter={() => {if (!disabled) setAnimationState(ANIMATION_STATES.Forward)}}
+            onMouseLeave={() => {if (!disabled) setAnimationState(ANIMATION_STATES.Backward)}}
             className={cx('Button',
                 {
                     primary: kind == KINDS.Primary,
