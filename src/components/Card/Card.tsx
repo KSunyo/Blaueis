@@ -7,7 +7,7 @@ import styles from "./Card.module.scss";
 type Orientation = typeof ORIENTATIONS[keyof typeof ORIENTATIONS];
 const defaultProps = Object.freeze({isCoverMediaVideo: false, orientation: ORIENTATIONS.Row, width: 0, height: 0});
 type CardProps = {coverMediaUrl?: string, coverMediaAlt?: string, isCoverMediaVideo?: boolean, orientation: Orientation,
-	width: number, height: number, children?: ReactNode} & typeof defaultProps;
+	width?: number, height?: number, children?: ReactNode} & typeof defaultProps;
 
 let cx = classNames.bind(styles);
 

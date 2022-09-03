@@ -47,5 +47,5 @@ CarouselCompact.args = {
     // @ts-ignore
     urls: urls,
     compact: true,
-    rightEnhancer: () => <IconButton kind={KINDS.Primary} icon={ICONS.Minimize} shape={SHAPES.Circle} animation={{type: "ScaleAnimation", factor: 1.5}}/>,
+    rightEnhancer: () => <IconButton kind={KINDS.Primary} icon={ICONS.Minimize} shape={SHAPES.Circle} animation={{type: "ScaleAnimation", factor: 0.75}}/>,
 };
