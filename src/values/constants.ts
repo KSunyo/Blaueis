@@ -1,7 +1,7 @@
 export const KINDS = Object.freeze({ Primary: 'primary', Secondary: 'secondary', Tertiary: 'tertiary' }) as const;
 export const SIZES = Object.freeze({ Small: 'small', Medium: 'medium', Large: 'large' }) as const;
 export const SHAPES = Object.freeze({ Square: 'square', Circle: 'circle' }) as const;
-export const TYPES = Object.freeze({ Default: 'default', Compact: 'compact' }) as const;
+export const TYPES = Object.freeze({ Default: 'default', Compact: 'compact', Mini: 'mini' }) as const;
 export const ORIENTATIONS = Object.freeze({Row: 'row', RowReverse: 'row-reverse', Column: 'column',
     ColumnReverse: 'column-reverse'}) as const;
 export const ICONS = Object.freeze({ None: 'no-icon', Activity: 'activity', Airplay: 'airplay', AlertCircle: 'alert-circle',

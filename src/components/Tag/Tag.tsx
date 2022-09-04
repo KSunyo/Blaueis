@@ -1,7 +1,6 @@
 import React from "react";
 import classNames from 'classnames/bind';
 import { KINDS, TYPES } from "../../values/constants";
-//@ts-ignore
 import styles from "./Tag.module.scss";
 
 export type TagType = typeof TYPES[ keyof typeof TYPES ];
@@ -19,12 +18,11 @@ const Tag = (props: TagProps) => {
             className={cx('Tag',
                 {
                     default: type == TYPES.Default,
-                    //@ts-ignore
-                    compact: type == TYPES.Compact
+                    compact: type == TYPES.Compact,
+                    mini: type == TYPES.Mini
                 },
                 {
                     primary: kind == KINDS.Primary,
-                    //@ts-ignore
                     secondary: kind == KINDS.Secondary
                 })}
         >
