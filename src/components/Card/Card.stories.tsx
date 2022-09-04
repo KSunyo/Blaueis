@@ -42,7 +42,7 @@ Article.args = {
             lineHeight: "150%",
             margin: 0
         }}>During the 21st century, digital devices advanced quicker than ever before. However, in spite of the market being consolidated, expectations have gotten higher than ever.</p>
-        <Button kind={KINDS.Primary} label="Read more" endIcon={ICONS.ArrowRight}/>
+        <div style={{marginTop: "6px", marginBottom: "3px"}}><Button kind={KINDS.Primary} label="Read more" endIcon={ICONS.ArrowRight}/></div>
     </Fragment>
 };
 
@@ -65,7 +65,7 @@ ArticleVideo.args = {
             lineHeight: "150%",
             margin: 0
         }}>During the 21st century, digital devices advanced quicker than ever before. However, in spite of the market being consolidated, expectations have gotten higher than ever.</p>
-        <Button kind={KINDS.Primary} label="Read more" endIcon={ICONS.ArrowRight}/>
+        <div style={{marginTop: "6px", marginBottom: "3px"}}><Button kind={KINDS.Primary} label="Read more" endIcon={ICONS.ArrowRight}/></div>
     </Fragment>
 };
 
@@ -89,7 +89,7 @@ ArticleMobile.args = {
             lineHeight: "150%",
             margin: 0
         }}>During the 21st century, digital devices advanced quicker than ever before. However, in spite of the market being consolidated, expectations have gotten higher than ever.</p>
-        <Button kind={KINDS.Primary} label="Read more" endIcon={ICONS.ArrowRight}/>
+        <div style={{marginTop: "6px", marginBottom: "3px"}}><Button kind={KINDS.Primary} label="Read more" endIcon={ICONS.ArrowRight}/></div>
     </Fragment>
 };
 
@@ -101,14 +101,17 @@ ContactCard.args = {
             fontSize: "22px",
             lineHeight: "130%",
             margin: 0,
+            fontWeight: 400,
             color: "#2B3233"
         }}>Interested in working together?</h1>
-        <Button
-            kind={KINDS.Primary}
-            //@ts-ignore
-            size={SIZES.Large}
-            label="Get in touch"
-            endIcon={ICONS.ArrowRight}
-        />
+        <div style={{marginBottom: "6px"}}>
+            <Button
+                kind={KINDS.Primary}
+                //@ts-ignore
+                size={SIZES.Large}
+                label="Get in touch"
+                endIcon={ICONS.ArrowRight}
+            />
+        </div>
     </div>
 };
