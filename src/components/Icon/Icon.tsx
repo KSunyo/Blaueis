@@ -3,6 +3,7 @@ import { animated, useSpring } from "react-spring";
 import classNames from 'classnames/bind';
 import * as FeatherIcon from 'react-feather';
 import { ICONS, KINDS, SIZES, COLORS } from "../../values/constants";
+import {iconSizeMap} from "../../values/maps";
 //@ts-ignore
 import styles from "./Icon.module.scss";
 
@@ -18,13 +19,25 @@ let cx = classNames.bind(styles);
 
 const Icon = (props: IconProps) : (JSX.Element | null) => {
 	const { type, kind, size, rotation, alt } = props;
-	const args = { color: colorMap.get(kind), size: sizeMap.get(size), alt: alt };
+	const args = { color: colorMap.get(kind), size: iconSizeMap.get(size), alt: alt };
 	const rotate = useSpring({
 		to: {transform: `rotate(${rotation}deg)`}
 	});
-	return <animated.div className={cx('Icon')} style={rotate}>
+	if (type == ICONS.None) {
+		return null;
+	}
+	return (
+		<animated.div
+			className={cx('Icon', {
+				small: size == SIZES.Small,
+				medium: size == SIZES.Medium,
+				large: size == SIZES.Large
+			})}
+			style={rotate}
+		>
 		{(iconMap.get(type) || (x => null) )(args)}
-	</animated.div>
+		</animated.div>
+	);
 };
 
 Icon.defaultProps = defaultProps;
@@ -33,12 +46,6 @@ export default Icon;
 const colorMap = new Map<IconKind, string>([
 	[ KINDS.Primary, COLORS.Grayscale00 ],
 	[ KINDS.Secondary, COLORS.Grayscale80 ]
-]);
-
-const sizeMap = new Map<IconSize, number>([
-	[SIZES.Small, 16],
-	[SIZES.Medium, 24],
-	[SIZES.Large, 32]
 ]);
 
 const iconMap = new Map<IconType, (args: FeatherProps) => ReactNode>([

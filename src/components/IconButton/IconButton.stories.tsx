@@ -37,5 +37,5 @@ Maximize.args = {
   kind: KINDS.Primary,
   icon: ICONS.Maximize,
   shape: SHAPES.Circle,
-  animation: {type: "ScaleAnimation", factor: 1.5}
+  animation: {type: "ScaleAnimation", factor: 1.25}
 };

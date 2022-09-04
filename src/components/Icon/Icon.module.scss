@@ -1,6 +1,23 @@
+@import "../../values/sizes.scss";
+
 .Icon {
   width: fit-content;
   height: fit-content;
   padding: 0;
   margin: 0;
+}
+
+.small {
+  width: $small-icon;
+  height: $small-icon;
+}
+
+.medium {
+  width: $medium-icon;
+  height: $medium-icon;
+}
+
+.large {
+  width: $large-icon;
+  height: $large-icon;
 }

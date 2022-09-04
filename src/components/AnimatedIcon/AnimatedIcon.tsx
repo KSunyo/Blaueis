@@ -1,28 +1,30 @@
 import React from "react";
-import { ANIMATION_STATES, DIRECTIONS } from "../../values/constants";
-import { IconType, IconKind } from "../Icon/Icon";
+import {ANIMATION_STATES, DIRECTIONS, ICONS, SIZES} from "../../values/constants";
+import { IconType, IconKind, IconSize } from "../Icon/Icon";
 import ChaseAnimation from "./animations/ChaseAnimation/ChaseAnimation";
 import NudgeAnimation from "./animations/NudgeAnimation/NudgeAnimation";
 import ScaleAnimation from "./animations/ScaleAnimation/ScaleAnimation";
-// @ts-ignore
-import styles from "./AnimatedIcon.module.scss";
 
 export type AnimationDirection = typeof DIRECTIONS[ keyof typeof DIRECTIONS ];
 export type AnimationState = typeof ANIMATION_STATES[ keyof typeof ANIMATION_STATES ];
 export type ChaseAnimationProps = { type: "ChaseAnimation", direction: AnimationDirection, rotation?: number };
 export type NudgeAnimationProps = { type: "NudgeAnimation", direction: AnimationDirection, rotation?: number };
 export type ScaleAnimationProps = { type: "ScaleAnimation", factor: number };
-const defaultProps = Object.freeze({ state: ANIMATION_STATES.Initial });
-export type AnimatedIconProps = { icon: IconType, kind: IconKind, state?: AnimationState,
+const defaultProps = Object.freeze({ state: ANIMATION_STATES.Initial, size: SIZES.Medium });
+export type AnimatedIconProps = { icon: IconType, kind: IconKind, size?: IconSize, state?: AnimationState,
   animation: ChaseAnimationProps | NudgeAnimationProps | ScaleAnimationProps } & typeof defaultProps;
 
 const AnimatedIcon = (props: AnimatedIconProps) : (JSX.Element | null) => {
-    const { icon, kind, state, animation } = props;
+    const { icon, kind, size, state, animation } = props;
+    if (icon == ICONS.None) {
+        return null;
+    }
     if (animation.type === "ChaseAnimation") {
         return (
             <ChaseAnimation
                 icon={icon}
                 kind={kind}
+                size={size}
                 state={state}
                 direction={animation.direction}
                 rotation={animation.rotation ? animation.rotation : 0}
@@ -33,6 +35,7 @@ const AnimatedIcon = (props: AnimatedIconProps) : (JSX.Element | null) => {
             <NudgeAnimation
                 type={icon}
                 kind={kind}
+                size={size}
                 state={state}
                 direction={animation.direction}
                 rotation={animation.rotation ? animation.rotation : 0}
@@ -43,6 +46,7 @@ const AnimatedIcon = (props: AnimatedIconProps) : (JSX.Element | null) => {
             <ScaleAnimation
                 type={icon}
                 kind={kind}
+                size={size}
                 state={state}
                 factor={animation.factor}
             />

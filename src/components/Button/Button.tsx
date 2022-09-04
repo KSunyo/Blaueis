@@ -1,7 +1,7 @@
 import React, {ReactNode, MouseEventHandler, useState} from "react";
 import classNames from 'classnames/bind';
 import { KINDS, SIZES, ANIMATION_STATES, DIRECTIONS } from "../../values/constants";
-import { IconKind, IconType } from "../Icon/Icon";
+import {IconKind, IconSize, IconType} from "../Icon/Icon";
 import AnimatedIcon, { AnimationState } from "../AnimatedIcon/AnimatedIcon";
 import styles from "./Button.module.scss";
 
@@ -40,9 +40,9 @@ const Button = (props: ButtonProps) => {
                     large: size == SIZES.Large
                 })}
             >
-                <span>{renderIcon(kind, startIcon, animationState)}</span>
+                <span>{renderIcon(kind, size, startIcon, animationState)}</span>
                 <span>{label}</span>
-                <span>{renderIcon(kind, endIcon, animationState)}</span>
+                <span>{renderIcon(kind, size, endIcon, animationState)}</span>
             </span>
         </button>
     );
@@ -51,12 +51,13 @@ const Button = (props: ButtonProps) => {
 Button.defaultProps = defaultProps;
 export default Button;
 
-const renderIcon = (kind: ButtonKind, icon: IconType | undefined, animationState: AnimationState) : ReactNode => {
+const renderIcon = (kind: ButtonKind, size: IconSize, icon: IconType | undefined, animationState: AnimationState) : ReactNode => {
     if (icon != undefined) {
         return (
             <AnimatedIcon
                 icon={icon}
                 kind={kindToIconKind(kind)}
+                size={size}
                 state={animationState}
                 animation={{type: "ChaseAnimation", direction: DIRECTIONS.ToRight}}
             />
