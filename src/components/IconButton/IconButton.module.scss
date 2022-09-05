@@ -14,18 +14,28 @@
 	background-color: $grayscale--3;
 }
 
+.primary:not(hover) {
+	background-color: $grayscale--3;
+	transition: background-color 100ms ease-out;
+}
+
 .secondary {
 	background-color: $grayscale-20;
 }
 
+.secondary:not(hover) {
+	background-color: $grayscale-20;
+	transition: background-color 150ms ease-out;
+}
+
 .primary:hover {
 	background-color: $blue-50;
-	transition: background-color 300ms linear;
+	transition: background-color 100ms ease-out;
 }
 
 .secondary:hover {
 	background-color: $grayscale-80;
-	transition: background-color 300ms linear;
+	transition: background-color 150ms ease-out;
 }
 
 .primary:active {

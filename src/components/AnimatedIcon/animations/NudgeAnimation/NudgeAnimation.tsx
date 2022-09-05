@@ -12,8 +12,8 @@ type NudgeAnimationProps = { icon: IconType, kind: IconKind, size: IconSize, sta
     direction: AnimationDirection, rotation?: number } & typeof defaultProps;
 
 const nudgeMap = new Map<IconSize, number>([
-    [SIZES.Small, 5],
-    [SIZES.Medium, 8],
+    [SIZES.Small, 3],
+    [SIZES.Medium, 4],
     [SIZES.Large, 15]
 ]);
 
