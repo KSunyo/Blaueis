@@ -1,7 +1,7 @@
 import React, {ReactNode, useState} from "react";
 import classNames from 'classnames/bind';
 import {animated, useSpring} from 'react-spring';
-import { ICONS, TYPES } from "../../values/constants";
+import {ICONS, KINDS, TYPES} from "../../values/constants";
 import CarouselButton from "./CarouselButton/CarouselButton";
 import Tag from "../Tag/Tag";
 // @ts-ignore
@@ -43,7 +43,8 @@ const Carousel = (props: CarouselProps) => {
                 />
                 <Tag
                     label={`${imageIndex + 1}/${urls.length}`}
-                    type={compact ? TYPES.Compact : TYPES.Default}
+                    kind={KINDS.Secondary}
+                    type={compact ? TYPES.Mini : TYPES.Default}
                 />
                 <CarouselButton
                     label="Next"
