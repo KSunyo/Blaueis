@@ -43,6 +43,7 @@ const IconButton = (props : IconButtonProps) : (JSX.Element | null) => {
 			>
 				<Icon
 					type={icon}
+					size={size}
 					kind={hover ? KINDS.Primary : KINDS.Secondary}
 				/>
 			</button>
@@ -70,6 +71,7 @@ const IconButton = (props : IconButtonProps) : (JSX.Element | null) => {
 				<AnimatedIcon
 					icon={icon}
 					kind={hover ? KINDS.Primary : KINDS.Secondary}
+					size={size}
 					state={getAnimationState(hover)}
 					animation={animation}/>
 			</button>

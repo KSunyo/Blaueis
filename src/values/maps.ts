@@ -4,5 +4,5 @@ import {IconSize} from "../components/Icon/Icon";
 export const iconSizeMap = new Map<IconSize, number>([
     [SIZES.Small, 14],
     [SIZES.Medium, 16],
-    [SIZES.Large, 18]
+    [SIZES.Large, 21]
 ]);
