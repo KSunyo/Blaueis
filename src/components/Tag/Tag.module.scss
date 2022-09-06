@@ -1,0 +1,37 @@
+@import "../../values/colors.scss";
+
+.Tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 75px;
+  padding: 4px 8px;
+  font-weight: 500;
+}
+
+.default {
+  font-size: 16px;
+  /*min-height: 32px;*/
+}
+
+.compact {
+  font-size: 12px;
+  min-height: 24px;
+}
+
+.mini {
+  font-size: 12px;
+  /*min-height: 21px;*/
+}
+
+.primary {
+  background-color: $grayscale-10;
+  color: $blue-50;
+}
+
+.secondary {
+  background-color: $grayscale-80;
+  color: $grayscale-00;
+}

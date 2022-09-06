@@ -1,0 +1,74 @@
+@import "../../values/colors.scss";
+
+.IconButton {
+	display: flex;
+	align-items: center;
+  	justify-content: center;
+	border: none;
+	width: fit-content;
+	height: fit-content;
+	aspect-ratio: 1;
+}
+
+.primary {
+	background-color: $grayscale--3;
+}
+
+.primary:not(hover) {
+	background-color: $grayscale--3;
+	transition: background-color 100ms ease-out;
+}
+
+.secondary {
+	background-color: $grayscale-20;
+}
+
+.secondary:not(hover) {
+	background-color: $grayscale-20;
+	transition: background-color 150ms ease-out;
+}
+
+.primary:hover {
+	background-color: $blue-50;
+	transition: background-color 100ms ease-out;
+}
+
+.secondary:hover {
+	background-color: $grayscale-80;
+	transition: background-color 150ms ease-out;
+}
+
+.primary:active {
+	background-color: $blue-60;
+}
+
+.secondary:active {
+	background-color: $grayscale-95;
+}
+
+.large {
+	width: 80px;
+	height: 80px;
+}
+
+.small {
+	width: 35px;
+	height: 35px;
+
+	img {
+		width: 60%;
+		height: 60%;
+	}
+}
+
+.square {
+	border-radius: 0;
+}
+
+.circle {
+	border-radius: 50%;
+}
+
+.disabled {
+	opacity: 50%;
+}

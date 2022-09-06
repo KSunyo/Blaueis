@@ -1,0 +1,71 @@
+@import "../../values/colors.scss";
+
+.Card {
+	display: flex;
+	background-color: $grayscale-05;
+	border-radius: 20px;
+}
+
+.cardCover {
+	-webkit-user-drag: none;
+	-khtml-user-drag: none;
+	-moz-user-drag: none;
+	-o-user-drag: none;
+	user-select: none;
+}
+
+.row {
+	flex-direction: row;
+
+	.cardCover {
+		width: 50%;
+		border-top-left-radius: 20px;
+		border-bottom-left-radius: 20px;
+	}
+}
+
+.rowReverse {
+	flex-direction: row-reverse;
+
+	.cardInfo {
+		width: auto;
+	}
+
+	.cardCover {
+		width: 50%;
+		border-top-right-radius: 20px;
+		border-bottom-right-radius: 20px;
+	}
+}
+
+.column {
+	flex-direction: column;
+
+	.cardCover {
+		height: 50%;
+		border-bottom-left-radius: 20px;
+		border-bottom-right-radius: 20px;
+	}
+}
+
+.columnReverse {
+	flex-direction: column;
+
+	.cardCover {
+		height: 50%;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+	}
+}
+
+.cardInfo {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 32px 27px 32px 28px;
+	justify-content: center;
+}
+
+.noMedia {
+	width: 100%;
+}

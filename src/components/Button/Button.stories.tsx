@@ -1,23 +1,26 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { KINDS, SIZES, ICONS } from "../../values/constants";
 import Button from "./Button";
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "blaueis/Button",
-  component: Button,
+    title: "blaueis/Button",
+    component: Button,
+    argTypes: {
+        kind: { control: 'select', options: Object.keys(KINDS), mapping: KINDS, defaultValue: KINDS.Primary },
+        size: { control: 'select', options: Object.keys(SIZES), mapping: SIZES, defaultValue: SIZES.Medium },
+        disabled: { defaultValue: false },
+        touch: { defaultValue: false },
+        startIcon: { control: 'select', options: Object.keys(ICONS), mapping: ICONS },
+        endIcon: { control: 'select', options: Object.keys(ICONS), mapping: ICONS }
+    }
 } as ComponentMeta<typeof Button>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
-
-export const HelloWorld = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-HelloWorld.args = {
-  label: "Hello world!",
-};
 
 export const ClickMe = Template.bind({});
 ClickMe.args = {
-  label: "Click me!",
+    label: 'Click me!',
+    kind: KINDS.Primary,
+    size: SIZES.Medium
 };

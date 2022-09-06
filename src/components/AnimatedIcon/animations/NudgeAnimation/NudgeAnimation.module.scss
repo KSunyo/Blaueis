@@ -1,0 +1,34 @@
+@import "../../../../values/sizes.scss";
+
+.iconContainer {
+  display: flex;
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.leftRightContainer {
+  flex-direction: row;
+}
+
+.topBottomContainer {
+  flex-direction: column;
+}
+
+.small {
+  width: $small-icon;
+  height: $small-icon;
+}
+
+.medium {
+  width: $medium-icon;
+  height: $medium-icon;
+}
+
+.large {
+  width: $large-icon;
+  height: $large-icon;
+}

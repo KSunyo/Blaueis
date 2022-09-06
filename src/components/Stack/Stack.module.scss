@@ -1,0 +1,21 @@
+.Stack {
+	display: flex;
+	align-items: center;
+  	justify-content: center;
+}
+
+.row {
+	flex-direction: row;
+}
+
+.rowReverse {
+	flex-direction: row-reverse;
+}
+
+.column {
+	flex-direction: column;
+}
+
+.columnReverse {
+	flex-direction: column-reverse;
+}
