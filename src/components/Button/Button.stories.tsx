@@ -4,7 +4,7 @@ import { KINDS, SIZES, ICONS } from "../../values/constants";
 import Button from "./Button";
 
 export default {
-    title: "blaueis/Button",
+    title: "components/Button",
     component: Button,
     argTypes: {
         kind: { control: 'select', options: Object.keys(KINDS), mapping: KINDS, defaultValue: KINDS.Primary },
