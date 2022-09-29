@@ -4,7 +4,7 @@ import { ICONS, KINDS, SHAPES, SIZES, DIRECTIONS } from "../../values/constants"
 import IconButton from "./IconButton";
 
 export default {
-  title: "blaueis/IconButton",
+  title: "components/IconButton",
   component: IconButton,
   argTypes: {
     icon: { control: 'select', options: Object.keys(ICONS), mapping: ICONS },

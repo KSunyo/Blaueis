@@ -5,7 +5,7 @@ import Carousel from "./Carousel";
 import IconButton from "../IconButton";
 
 export default {
-    title: "blaueis/Carousel",
+    title: "components/Carousel",
     argTypes: {
         width: { control: { type: 'range', min: 0, max: 1000, step: 10 }, defaultValue: 0 },
         compact: { defaultValue: false }

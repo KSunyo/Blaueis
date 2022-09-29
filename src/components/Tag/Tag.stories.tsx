@@ -4,7 +4,7 @@ import { KINDS, TYPES } from "../../values/constants";
 import Tag from "./Tag";
 
 export default {
-    title: "blaueis/Tag",
+    title: "components/Tag",
     component: Tag,
     argTypes: {
         kind: { control: 'select', options: Object.keys(KINDS), mapping: KINDS, defaultValue: KINDS.Primary },

@@ -5,7 +5,7 @@ import Stack from "./Stack";
 import Button from "../Button/Button";
 
 export default {
-    title: "blaueis/Stack",
+    title: "components/Stack",
     component: Stack,
     argTypes: {
         spacing: { control: { type: 'range', min:1, max:100, step: 1 } },
