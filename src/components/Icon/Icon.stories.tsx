@@ -4,7 +4,7 @@ import { ICONS, KINDS, SIZES } from "../../values/constants";
 import Icon from "./Icon";
 
 export default {
-    title: "blaueis/Icon",
+    title: "components/Icon",
     component: Icon,
     argTypes: {
         type: { control: 'select', options: Object.keys(ICONS), mapping: ICONS },

@@ -7,7 +7,7 @@ import Button from "../Button";
 
 
 export default {
-    title: "blaueis/Card",
+    title: "components/Card",
     component: Card,
     argTypes: {
         coverMediaUrl: { control: 'text', defaultValue: '' },
